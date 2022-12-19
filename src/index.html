@@ -8,7 +8,24 @@
     <script type="module" src="./index.js"></script>
   </head>
   <body>
-    <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <!-- <include src="./partials/example.html"></include> -->
+    <!-- * Імпорт ХЕДЕРА -->
+    <include src="./partials/header.html"></include>
+
+    <main>
+      <section class="movies-slider">
+        <div class="container"></div>
+      </section>
+
+      <section class="movies-grid">
+        <div class="container">
+          <ul class="movies-grid__list"></ul>
+
+          <ul class="movies-grid__pagination"></ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- * Імпорт ФУТЕРА -->
+    <include src="./partials/footer.html"></include>
   </body>
 </html>
