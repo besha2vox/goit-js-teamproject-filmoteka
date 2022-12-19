@@ -8,7 +8,7 @@ body {
   min-width: 320px;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
-  font-size: 20;
+  font-size: 12px;
   line-height: 1.2;
   color: $primeryTextColor;
   background-color: $primeryBackgroundColor;
@@ -16,7 +16,7 @@ body {
   transition: color 300ms $cubicBezier, background-color 300ms $cubicBezier;
 
   @media screen and (min-width: $desktop) {
-    font-size: 20;
+    font-size: 20px;
     line-height: 1.2;
   }
 }
