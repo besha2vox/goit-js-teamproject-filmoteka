@@ -1,23 +1,24 @@
 {
-  "name": "parcel-project-template",
+  "name": "goit-js-teamproject-filmoteka",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://goitacademy.github.io/parcel-project-template",
+  "homepage": "https://besha2vox.github.io/goit-js-teamproject-filmoteka",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /parcel-project-template/"
+    "build": "parcel build src/*.html --public-url /goit-js-teamproject-filmoteka/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/goitacademy/parcel-project-template.git"
+    "url": "git+https://github.com/besha2vox/goit-js-teamproject-filmoteka.git"
   },
   "keywords": [],
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/goitacademy/parcel-project-template/issues"
+    "url": "https://github.com/besha2vox/goit-js-teamproject-filmoteka/issues"
   },
   "dependencies": {
+    "firebase": "^9.13.0",
     "modern-normalize": "^1.1.0"
   },
   "devDependencies": {
