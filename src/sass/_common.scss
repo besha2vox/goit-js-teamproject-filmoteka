@@ -1,1 +1,56 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.2;
+  color: $primeryTextColor;
+  background-color: $primeryBackgroundColor;
+
+  transition: color 300ms $cubicBezier, background-color 300ms $cubicBezier;
+
+  @media screen and (min-width: $desktop) {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+}
+
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+a,
+button,
+input,
+textarea {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+}
