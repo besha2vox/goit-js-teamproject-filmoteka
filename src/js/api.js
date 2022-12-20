@@ -3,7 +3,7 @@ export class TheMovieDatabaseAPI {
     this._queryToFetch = '';
     this._pageToFetch = 1;
 
-    this.BASE_URL = 'https://api.themoviedb.org/3/';
+    this.BASE_URL = 'https://api.themoviedb.org/3';
     this.API_KEY = '9cca312caffd11f4ae9f11244d585025';
     this.TRENDING_MOVIES = 'trending/all/';
   }
@@ -31,7 +31,9 @@ export class TheMovieDatabaseAPI {
       language: getLanguage(),
     });
 
-    const url = `${this.BASE_URL}/${type}/${time}?${params.toString()}`;
+    const url = `${
+      this.BASE_URL
+    }/trending/${type}/${time}?${params.toString()}`;
 
     return await this.basicFetch(url);
   }
