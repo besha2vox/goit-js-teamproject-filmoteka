@@ -53,9 +53,10 @@ const api = new API();
 1. Перевірка типу:
 
 ```js
+let mediaTitle = '';
 
-if (media_type === 'tv') const mediaTitle = name;
-if (media_type === 'movie') const mediaTitle = title;
+if (media_type === 'tv') mediaTitle = name;
+if (media_type === 'movie') mediaTitle = title;
 ```
 
 і використовувати `mediaTitle` у шаблоні
@@ -69,3 +70,46 @@ const mediaTitle = title ? title : name;
 у цьому випадку якщо медіа є серіалом, тоді значення `title` буде `undefined` і
 запишиться значення `name`, а якщо тип медіа фільм, тоді відразу запишеться
 значення `title`.
+
+## Шаблон модального вікна:
+
+Із АРІ шаблон буде отримувати об'єкт параметрів, необхідні для нас
+`poster_path`, `genres`, `vote_average`, `vote_count`, `popularity`,
+`original_title`, `original_name`, `title`, `name`, `overview`, `title`, `name`.
+`title` і `name` це однакова властивість але за виключенням того, що
+`title`/`original_title` - це назва фільму, а `name`/`original_name` - це назва
+серіалу.
+
+<p></p>
+
+Через це необхідно робити додаткову перевірку на тип і передавади у шаблон
+потрібне значення(якийсь один із варіантів):
+
+1. Перевірка типу:
+
+```js
+let mediaTitle = '';
+let originalTitle = '';
+
+if (media_type === 'tv') {
+  mediaTitle = name;
+  originalTitle = original_name;
+}
+if (media_type === 'movie') {
+  mediaTitle = title;
+  originalTitle = original_title;
+}
+```
+
+і використовувати `mediaTitle`/`originalTitle` у шаблоні
+
+2. Перевірка на `undefined`:
+
+```js
+const mediaTitle = title ? title : name;
+const originalTitle = original_title ? original_title : original_name;
+```
+
+у цьому випадку якщо медіа є серіалом, тоді значення `title`/`original_title`
+буде `undefined` і запишиться значення `name`/`original_name`, а якщо тип медіа
+фільм, тоді відразу запишеться значення `title`/`original_title`.
