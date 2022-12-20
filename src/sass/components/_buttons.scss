@@ -52,17 +52,16 @@
     min-width: 136px;
     padding: 14px 10px 12px 10px;
 
-    font-weight: 500;
     text-transform: uppercase;
 
-    border-radius: 5px;
+    border-radius: $imgBorderRadius;
 
-    transition: background-color 300ms ease, border 300ms ease, color 300ms ease;
+    transition: background-color 300ms $cubicBezier, border 300ms $cubicBezier, color 300ms $cubicBezier;
 }
 
 .button--orange {
-    background-color: #FF6B01;
-    color: #ffffff;
+    background-color: $accentColor;
+    color: $secondaryColor;
 
     border: 1px solid transparent;
 }
@@ -70,22 +69,22 @@
 .button--orange:focus,
 .button--orange:hover {
     background-color: transparent;
-    color: #000000;
+    color: $primeryTextColor;
 
-    border: 1px solid #000000;
+    border: 1px solid $primeryTextColor;
 }
 
 .button--transparent:focus,
 .button--transparent:hover {
-    background-color: #FF6B01;
-    color: #ffffff;
+    background-color: $accentColor;
+    color: $secondaryColor;
 
     border: 1px solid transparent;
 }
 
 .button--transparent {
     background-color: transparent;
-    border: 1px solid #000000;
+    border: 1px solid $primeryTextColor;
 }
 
 .button__header {
@@ -95,7 +94,7 @@
 }
 
 .button__header--transparent {
-    color: #ffffff;
+    color: $secondaryColor;
 
-    border: 1px solid #FFFFFF;
+    border: 1px solid $secondaryColor;
 }
