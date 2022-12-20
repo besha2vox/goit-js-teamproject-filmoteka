@@ -69,6 +69,15 @@ export class TheMovieDatabaseAPI {
     return await this.basicFetch(url);
   }
 
+  incrementPage() {
+    this._pageToFetch += 1;
+  }
+
+  decrementPage() {
+    if (this._pageToFetch <= 1) return;
+    this._pageToFetch -= 1;
+  }
+
   resetPage() {
     this._pageToFetch = 0;
   }
