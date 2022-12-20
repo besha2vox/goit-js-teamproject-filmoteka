@@ -2,7 +2,7 @@
 
 // <ul class="buttons-list">
 //     <li class="buttons-list__item">
-//         <button class="button button--orange" type="button">
+//         <button class="button button--orange button__modal--orange" type="button">
 //             add to Watched
 //         </button>
 //     </li>
@@ -16,7 +16,7 @@
 //=========== buttons for header ===============
 
 // <ul class="buttons-list buttons-list__header">
-//     <li class="buttons-list__item">
+//     <li class="buttons-list__item buttons-list__item__header">
 //         <button
 //             class="button button--transparent button__header button__header--transparent"
 //             type="button"
@@ -24,7 +24,7 @@
 //             Watched
 //         </button>
 //     </li>
-//     <li class="buttons-list__item">
+//     <li class="buttons-list__item buttons-list__item__header">
 //         <button
 //             class="button button--transparent button__header button__header--transparent"
 //             type="button"
@@ -45,18 +45,43 @@
 }
 
 .buttons-list__item:not(:first-child) {
-    margin-left: 16px;
+    margin-left: 20px;
+
+    @media screen and (min-width: $tablet) {
+        margin-left: 16px;
+    }
+}
+
+.buttons-list__item__header:not(:first-child) {
+    margin-left: 20px;
+
+    @media screen and (min-width: $tablet) {
+            margin-left: 32px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        margin-left: 16px;
+    }
 }
 
 .button {
-    min-width: 136px;
-    padding: 14px 10px 12px 10px;
+    min-width: 110px;
+    padding: 13px;
 
     text-transform: uppercase;
 
     border-radius: $imgBorderRadius;
 
     transition: background-color 300ms $cubicBezier, border 300ms $cubicBezier, color 300ms $cubicBezier;
+
+    @media screen and (min-width: $tablet) {
+        min-width: 125px;
+        padding: 14px 10px 12px 10px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        min-width: 136px;
+    }
 }
 
 .button--orange {
@@ -66,11 +91,22 @@
     border: 1px solid transparent;
 }
 
+.button__modal--orange {
+    @media screen and (min-width: $tablet) {
+        padding: 6px 27px;
+    }
+}
+
 .button--orange:focus,
 .button--orange:hover {
     background-color: transparent;
     color: $primeryTextColor;
 
+    border: 1px solid $primeryTextColor;
+}
+
+.button--transparent {
+    background-color: transparent;
     border: 1px solid $primeryTextColor;
 }
 
@@ -82,15 +118,20 @@
     border: 1px solid transparent;
 }
 
-.button--transparent {
-    background-color: transparent;
-    border: 1px solid $primeryTextColor;
-}
-
 .button__header {
-    min-width: 147px;
-    padding-left: 41px;
-    padding-right: 41px;
+    min-width: 130px;
+    padding: 13px 36px;
+    
+    @media screen and (min-width: $tablet) {
+        min-width: 152px;
+        padding: 13px 46px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        min-width: 147px;
+        padding-left: 41px;
+        padding-right: 41px;
+    }
 }
 
 .button__header--transparent {
