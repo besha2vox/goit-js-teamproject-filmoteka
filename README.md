@@ -39,6 +39,7 @@ const api = new API();
   знадобитись, але хай буде)
 
 ### Сітка фільмів:
+<hr>
 
 Із АРІ шаблон буде отримувати об'єкт параметрів, необхідні для нас `id`,
 `media_type`, `poster_path`, `release_date`, `first_air_date`, `genre_ids`,
