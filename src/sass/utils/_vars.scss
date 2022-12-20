@@ -1,0 +1,32 @@
+//* Брекпоінти
+
+$mobile: 480px; // Мобільний
+$tablet: 768px; // Планшет
+$desktop: 1280px; //Десктоп
+
+//* COLORS
+
+$accentColor: #ff6b08;
+
+$primeryTextColor: #000000;
+$secondaryColor: #ffffff;
+$footerTextColor: #545454;
+$tertiaryTextColor: #8c8c8c;
+
+$activePageColor: #ff001b;
+$errorTextColor: #ff001b;
+
+$primeryBackgroundColor: #ffffff;
+$darkThemeBackgroundColor: #12181c;
+$headerBackgroundColor: rgba(0, 0, 0, 0.56);
+$footerBackgroundColor: #f7f7f7;
+$backdropColor: rgba(0, 0, 0, 0.25);
+
+//* Cubic-bezier:
+
+$cubicBezier: cubic-bezier(0.4, 0, 0.2, 1);
+
+//* border:
+
+$inputBorder: 0.5px solid #ffffff;
+$imgBorderRadius: 5px;
