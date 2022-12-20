@@ -1,0 +1,64 @@
+.movie-card {
+  width: 280px;
+  height: 438px;
+  border: 10px;
+  border-color: red;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+
+  &__img {
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+  }
+
+  &__wrap {
+    display: flex;
+    align-items: flex-end;
+    gap: 9px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__name {
+    line-height: 1.3;
+    text-transform: uppercase;
+
+    color: $primeryTextColor;
+  }
+
+  &__genre {
+    color: $accentColor;
+  }
+
+  &__rating {
+    width: 36px;
+    height: 16px;
+
+    background: $accentColor;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+
+    color: $secondaryColor;
+  }
+
+  @media screen and (min-width: $tablet) {
+    width: 336px;
+    height: 495px;
+  }
+  @media screen and (min-width: $desktop) {
+    width: 394px;
+    height: 634px;
+  }
+}
