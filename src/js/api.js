@@ -23,14 +23,16 @@ export class API {
   //? ТРЕНДИ
 
   async getTrendingMovies(time) {
-    const params = new URLSearchParams({
-      api_key: this.API_KEY,
-      page: this._pageToFetch,
-      keyword: this._queryToFetch,
-      language: getLanguage(),
-    });
+    // const params = new URLSearchParams({
+    //   api_key: this.API_KEY,
+    //   page: this._pageToFetch,
+    //   keyword: this._queryToFetch,
+    //   language: getLanguage(),
+    // });
 
-    const url = `${this.BASE_URL}trending/movie/${time}?${params.toString()}`;
+    // const url = `${this.BASE_URL}trending/movie/${time}?${params.toString()}`;
+
+    const url = `${this.BASE_URL}trending/movie/${time}?api_key=${this.API_KEY}`;
 
     return await this.basicFetch(url);
   }
