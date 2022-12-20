@@ -19,7 +19,7 @@ import { API } from './api';
 const api = new API();
 ```
 
-### Методи екземпляра:
+### Методи екземпляра
 
 1. Пошук трендів виконує метод `api.getTrendingMovies(type, time)`. Він приймає
    2 параметри `type`(`'movie'` або `'tv'`) i `time` (`'day'` або `'week'`).
@@ -44,7 +44,7 @@ const api = new API();
 - гетер `api.pageToFetch` для отримання поточної сторінки (поки не знаю де може
   знадобитись, але хай буде)
 
-## Сітка фільмів(шаблон):
+## Сітка фільмів(шаблон)
 
 Із АРІ шаблон буде отримувати об'єкт параметрів, необхідні для нас `id`,
 `media_type`, `poster_path`, `release_date`, `first_air_date`, `genre_ids`,
@@ -77,7 +77,7 @@ const mediaTitle = title ? title : name;
 запишиться значення `name`, а якщо тип медіа фільм, тоді відразу запишеться
 значення `title`.
 
-## Шаблон модального вікна:
+## Шаблон модального вікна
 
 Із АРІ шаблон буде отримувати об'єкт параметрів, необхідні для нас
 `poster_path`, `genres`, `vote_average`, `vote_count`, `popularity`,
@@ -119,3 +119,5 @@ const originalTitle = original_title ? original_title : original_name;
 у цьому випадку якщо медіа є серіалом, тоді значення `title`/`original_title`
 буде `undefined` і запишиться значення `name`/`original_name`, а якщо тип медіа
 фільм, тоді відразу запишеться значення `title`/`original_title`.
+
+## Клас модального вікна
