@@ -7,7 +7,7 @@
     
     background-color: $headerBackgroundColor;
     
-    background-image: url('../images/home/home_mobile_1x.png');
+    background-image: url('/src/images/home/home_mobile_1x.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -17,17 +17,30 @@
         (-webkit-min-device-pixel-ratio: 2),
         (min-resolution: 192dpi),
         (min-resolution: 2dppx) {
-        background-image: url('../images/home/home_mobile_2x.png');
+        background-image: url('/src/images/home/home_mobile_2x.jpg');
+    }
+    
+    @media (min-device-pixel-ratio: 3),
+    (-webkit-min-device-pixel-ratio: 3),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url('/src/images/home/home_mobile_3x.jpg');
     }
     
     @media screen and (min-width: $tablet) {
-        background-image: url('../images/home/home_tablet_1x.png');
+        background-image: url('/src/images/home/home_tablet_1x.jpg');
     
         @media (min-device-pixel-ratio: 2),
         (-webkit-min-device-pixel-ratio: 2),
         (min-resolution: 192dpi),
         (min-resolution: 2dppx) {
-        background-image: url('../images/home/home_tablet_2x.png');
+        background-image: url('/src/images/home/home_tablet_2x.jpg');
+        }
+        @media (min-device-pixel-ratio: 3),
+        (-webkit-min-device-pixel-ratio: 3),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url('/src/images/home/home_tablet_3x.jpg');
         }
     }
     
@@ -35,13 +48,19 @@
         margin-right: auto;
         margin-left: auto;
     
-        background-image: url('../images/home/home_pc_1x.png');
+        background-image: url('/src/images/home/home_pc_1x.jpg');
     
         @media (min-device-pixel-ratio: 2),
         (-webkit-min-device-pixel-ratio: 2),
         (min-resolution: 192dpi),
         (min-resolution: 2dppx) {
-        background-image: url('../images/home/home_pc_2x.png');
+        background-image: url('/src/images/home/home_pc_2x.jpg');
+        }
+        @media (min-device-pixel-ratio: 3),
+        (-webkit-min-device-pixel-ratio: 3),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url('/src/images/home/home_pc_3x.jpg');
         }
     }
     }
@@ -79,7 +98,6 @@
         }
     }
     }
-    
     
     // form
     
@@ -189,8 +207,8 @@
         cursor: pointer;
     }
     
-    &__toggle:checked+.theme-switch__track {
-    }
+    // &__toggle:checked+.theme-switch__track {
+    // }
 }
     
     body.light-theme {
