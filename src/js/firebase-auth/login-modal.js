@@ -8,7 +8,6 @@ import {
   signupFormTitle,
 } from './auth-refs';
 import { classToggle } from './interface-change';
-import { classToggle } from './interface-change';
 
 sigupLink.addEventListener('click', onSignupLinkClick);
 loginLink.addEventListener('click', onLoginLinkClick);
