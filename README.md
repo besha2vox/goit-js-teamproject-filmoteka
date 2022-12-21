@@ -124,3 +124,36 @@ const originalTitle = original_title ? original_title : original_name;
 у цьому випадку якщо медіа є серіалом, тоді значення `title`/`original_title`
 буде `undefined` і запишиться значення `name`/`original_name`, а якщо тип медіа
 фільм, тоді відразу запишеться значення `title`/`original_title`.
+
+## Клас модального вікна
+
+Імпортуємо до себе, потім ініціалізуємо і відкриваємо
+
+```js
+import { Modal } from './js/class-modal';
+
+const modal = new Modal(option);
+
+modal.open(markup);
+```
+
+`markup` - це розмітка модалки(без врахування бекдропу, модального вікна і
+кнопки закриття). `options` - це опціональний об'єкт із властивостями `onShow`
+та `onClose`. ви можете передати їх при необхідності.
+
+```js
+const options = {
+  onShow() {
+    console.log('onShow');
+  },
+  onClose() {
+    console.log('onClose');
+  },
+};
+```
+
+Це є колбек функції, `onShow` виконується при відкритті модалки, `onClose` - при
+закритті модалки
+
+Звісно, якщо вам неподрібно нічого передавати, тоді нічого не передавайте при
+ініціалізації, оскільки це опціонально
