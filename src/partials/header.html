@@ -8,7 +8,9 @@
 
     <nav class="nav nav__links">
       <a class="link logo" href="./index.html" class="logo">
-        <img src="/src/images/logo.svg" alt="logo" />
+        <svg width="24" height="24" role="img" aria-label="Logo">
+          <use href="/src/images/icons.svg#icon-logo"></use>
+        </svg>
         <span class="logo__text">Filmoteka</span>
       </a>
       <ul class="nav__list" id="nav">
@@ -51,14 +53,14 @@
             role="img"
             aria-label="Іконка сонця"
           >
-            <use href="/src/images/sprite.svg#sun"></use>
+            <use href="/src/images/icons.svg#sun"></use>
           </svg>
           <svg
             width="20"
             class="theme-switch__icon theme-switch__icon--dark"
             aria-label="Іконка місяця"
           >
-            <use href="/src/images/sprite.svg#moon"></use>
+            <use href="/src/images/icons.svg#moon"></use>
           </svg>
         </label>
       </div>
@@ -83,7 +85,7 @@
       <button class="form__submit" type="submit">
         <img
           class="icon-search"
-          src="/src/images/search.svg"
+          src="/src/images/icons.svg#search"
           alt="Іконка пошуку"
         />
       </button>
