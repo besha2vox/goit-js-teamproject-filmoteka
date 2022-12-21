@@ -21,5 +21,21 @@
 <symbol id="icon-facebook" viewBox="0 0 32 32">
 <path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/>
 </symbol>
+<symbol id="search" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.5 9.5C7.70914 9.5 9.5 7.70914 9.5 5.5C9.5 3.29086 7.70914 1.5 5.5 1.5C3.29086 1.5 1.5 3.29086 1.5 5.5C1.5 7.70914 3.29086 9.5 5.5 9.5Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M10.5 10.5002L8.32495 8.3252" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+<symbol id="moon" viewBox="0 0 32 32"><path fill="white" d="M17.701 32a15.97 15.97 0 0012.429-5.925c.442-.544-.04-1.339-.723-1.209-7.763 1.478-14.891-4.474-14.891-12.31 0-4.514 2.416-8.665 6.344-10.9.605-.345.453-1.262-.235-1.389-.879-.17-1.89-.267-2.923-.268-8.832 0-16 7.157-16 16 0 8.832 7.157 16 16 16z"/></symbol>
+<symbol id="sun" viewBox="0 0 32 32"><path fill="white" d="M16 10c-3.306 0-6 2.694-6 6s2.694 6 6 6 6-2.694 6-6-2.694-6-6-6zm15.4 5.031l-5.919-2.956L27.575 5.8c.281-.85-.525-1.656-1.369-1.369l-6.275 2.094L16.969.6c-.4-.8-1.537-.8-1.938 0l-2.956 5.919-6.281-2.094c-.85-.281-1.656.525-1.369 1.369l2.094 6.275L.6 15.032c-.8.4-.8 1.538 0 1.938l5.919 2.956-2.094 6.281c-.281.85.525 1.656 1.369 1.369l6.275-2.094 2.956 5.919c.4.8 1.538.8 1.938 0l2.956-5.919 6.275 2.094c.85.281 1.656-.525 1.369-1.369l-2.094-6.275 5.919-2.956c.813-.406.813-1.544.012-1.944zm-9.744 6.625c-3.119 3.119-8.194 3.119-11.313 0s-3.119-8.194 0-11.313c3.119-3.119 8.194-3.119 11.313 0s3.119 8.194 0 11.313z"/></symbol>
+<symbol id="logo" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M19.82 2.70435H4.18C2.97602 2.70435 2 3.63369 2 4.78008V19.6721C2 20.8185 2.97602 21.7478 4.18 21.7478H19.82C21.024 21.7478 22 20.8185 22 19.6721V4.78008C22 3.63369 21.024 2.70435 19.82 2.70435Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M7 2.70435V21.7478" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17 2.70435V21.7478" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2 12.2261H22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2 7.46521H7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2 16.9869H7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17 16.9869H22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17 7.46521H22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
 </defs>
 </svg>
