@@ -1,5 +1,5 @@
 export class Modal {
-  constructor({ onShow, onClose }) {
+  constructor({ onShow, onClose } = {}) {
     this.onShow = onShow;
     this.onClose = onClose;
     this.backdrop = null;
@@ -28,8 +28,7 @@ export class Modal {
     this.closeIcon.removeEventListener('click', this.onCloseClick);
     window.removeEventListener('keyup', this.onEscClose);
 
-    if (this.onShow) this.onShow();
-    this.onClose();
+    if (this.onClose) this.onClose;
   }
 
   onbackDropClose = e => {
@@ -45,8 +44,6 @@ export class Modal {
     if (e.code !== 'Escape') return;
     this.close();
   };
-
-  emptyFn() {}
 }
 
 function modalTemplate(markup) {
