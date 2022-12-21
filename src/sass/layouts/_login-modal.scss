@@ -427,23 +427,29 @@
     text-align: right;
 }
 
+.greeting__wrapper {
+    height: 20px;
+}
+
 .greeting {
     display: none;
 
-    margin-top: 30px;
+    font-size: 14px;
+    text-align: right;
+}
 
-    font-size: 30px;
-    text-align: center;
+.greeting .hello {
+    color: $accentColor;
 }
 
 .greeting.visible {
     display: block;
 }
 
-// .login-user,
-// .logout-user {
-//     display: none;
-// }
+.login-user,
+.logout-user {
+    display: none;
+}
 
 .auth-providers {
     display: flex;
