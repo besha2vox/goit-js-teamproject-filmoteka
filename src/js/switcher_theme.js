@@ -5,7 +5,6 @@ const refs = {
 refs.body.classList.add("light-theme");
 refs.toggle.addEventListener('change', changeTheme);
 
-
 function changeTheme(evt) {
     if (refs.body.classList.contains("light-theme")) {
         refs.body.classList.remove("light-theme");
