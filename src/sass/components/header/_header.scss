@@ -3,6 +3,7 @@
 .header {
     position: relative;
     padding: 40px 0 44px;
+    padding-top: 20px;
     
     background-color: $headerBackgroundColor;
     
@@ -57,6 +58,7 @@
 .nav {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     
     .link {
         color: $secondaryColor;
