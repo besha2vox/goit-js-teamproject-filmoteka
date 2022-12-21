@@ -1,5 +1,5 @@
 export class Modal {
-  constructor(onShow = () => {}, onClose = () => {}) {
+  constructor({ onShow, onClose }) {
     this.onShow = onShow;
     this.onClose = onClose;
     this.backdrop = null;
@@ -16,7 +16,7 @@ export class Modal {
     this.closeIcon.addEventListener('click', this.onCloseClick);
     window.addEventListener('keyup', this.onEscClose);
 
-    this.onShow();
+    if (this.onShow) this.onShow();
   }
 
   close() {
@@ -28,6 +28,7 @@ export class Modal {
     this.closeIcon.removeEventListener('click', this.onCloseClick);
     window.removeEventListener('keyup', this.onEscClose);
 
+    if (this.onShow) this.onShow();
     this.onClose();
   }
 
@@ -44,10 +45,11 @@ export class Modal {
     if (e.code !== 'Escape') return;
     this.close();
   };
+
+  emptyFn() {}
 }
 
 function modalTemplate(markup) {
-  console.log('markup', markup);
   const sadCat =
     '<img src="https://media.istockphoto.com/id/1018127028/vector/sorry.jpg?s=612x612&w=0&k=20&c=Ghc4Qgtbg1V-dreFXiGGT5haoq3Cwo6Kw6qpv2ibwRg=" />';
   const html = markup ? markup : sadCat;
