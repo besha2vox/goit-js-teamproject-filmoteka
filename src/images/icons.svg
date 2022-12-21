@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
-<>
+<defs>
 <symbol id="icon-arrow" viewBox="0 0 32 32">
 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.667" d="M6.667 16h18.667M16 25.334l9.333-9.333L16 6.668"/>
 </symbol>
