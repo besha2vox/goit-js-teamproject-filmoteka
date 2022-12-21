@@ -19,6 +19,10 @@ body {
     font-size: 20px;
     line-height: 1.2;
   }
+  &.dark-theme {
+    background-color: #12181c;
+    color: #ffffff;
+  }
 }
 
 h1,
