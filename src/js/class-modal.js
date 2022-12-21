@@ -47,6 +47,10 @@ export class Modal {
 }
 
 function modalTemplate(markup) {
+  console.log('markup', markup);
+  const sadCat =
+    '<img src="https://media.istockphoto.com/id/1018127028/vector/sorry.jpg?s=612x612&w=0&k=20&c=Ghc4Qgtbg1V-dreFXiGGT5haoq3Cwo6Kw6qpv2ibwRg=" />';
+  const html = markup ? markup : sadCat;
   return `<div class="backdrop">
     <div class="modal">
     <button type="button" class="modal__close">
@@ -55,7 +59,7 @@ function modalTemplate(markup) {
     <path d="M8 22L22 8" stroke="black" stroke-width="2"/>
     </svg>
     </button>
-    ${markup}
+    ${html}
     </div>
     </div>`;
 }
