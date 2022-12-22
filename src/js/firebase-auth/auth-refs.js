@@ -7,9 +7,15 @@ const devider = document.getElementById('devider');
 const greeting = document.querySelector('.greeting');
 const loginLinks = document.querySelectorAll('.login-user');
 const logoutLinks = document.querySelectorAll('.logout-user');
+const homeLink = document.querySelector('.home-link');
+const libraryPage = document.querySelectorAll('.library');
+const homePage = document.querySelectorAll('.home');
+const watchedBtn = document.querySelector('.watched');
+const queueBtn = document.querySelector('.queue');
 
 export {
   siteNav,
+  homeLink,
   libraryLink,
   sigupLink,
   loginLink,
@@ -18,4 +24,8 @@ export {
   greeting,
   loginLinks,
   logoutLinks,
+  libraryPage,
+  homePage,
+  watchedBtn,
+  queueBtn,
 };

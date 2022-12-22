@@ -1,6 +1,8 @@
 .header {
   position: relative;
 
+  width: 100vw;
+
   background-color: $headerBackgroundColor;
 
   background-image: url('/src/images/home/home_mobile_1x.jpg');
@@ -133,6 +135,7 @@
 
 .buttons-list__header {
   display: none;
+  
   padding-top: 40px;
   padding-bottom: 16px;
 }
@@ -309,3 +312,4 @@ body.dark-theme {
   line-height: 16px;
   color: $errorTextColor;
 }
+
