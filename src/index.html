@@ -44,28 +44,32 @@
   </head>
 
   <body>
-    <!-- * Імпорт ХЕДЕРА -->
-    <include src="./partials/header.html"></include>
+    <div class="wrapper">
+      <!--  * Лоадер і кнопка скролу догори -->
+      <include src="./partials/loader_scrollToTop.html"></include>
 
-    <!-- * MAIN -->
-    <main>
-      <!-- * SLIDER -->
-      <section class="movies-slider">
-        <div class="container"></div>
-      </section>
+      <!-- * Імпорт ХЕДЕРА -->
+      <include src="./partials/header.html"></include>
 
-      <section class="movies-grid">
-        <div class="container">
-          <!-- * СІТКА ФІЛЬМІВ -->
-          <ul class="movies-grid__list"></ul>
+      <!-- * MAIN -->
+      <main>
+        <!-- * SLIDER -->
+        <section class="movies-slider">
+          <div class="container"></div>
+        </section>
 
-          <!-- * ПАГІНАЦІЯ -->
-          <include src="./partials/pagination.html"></include>
-        </div>
-      </section>
-    </main>
+        <section class="movies-grid">
+          <div class="container">
+            <!-- * СІТКА ФІЛЬМІВ -->
+            <ul class="movies-grid__list"></ul>
 
-    <!-- * Імпорт ФУТЕРА -->
-    <include src="./partials/footer.html"></include>
+            <!-- * ПАГІНАЦІЯ -->
+            <include src="./partials/pagination.html"></include>
+          </div>
+        </section>
+      </main>
+      <!-- * Імпорт ФУТЕРА -->
+      <include src="./partials/footer.html"></include>
+    </div>
   </body>
 </html>

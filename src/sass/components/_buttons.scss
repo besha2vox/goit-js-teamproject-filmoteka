@@ -38,10 +38,6 @@
 .buttons-list {
     display: flex;
     justify-content: center;
-
-    margin-top: 100px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .buttons-list__item:not(:first-child) {
@@ -136,6 +132,13 @@
 
 .button__header--transparent {
     color: $secondaryColor;
-
+    
     border: 1px solid $secondaryColor;
+}
+
+.button__header--active {
+    background-color: $accentColor;
+        color: $secondaryColor;
+    
+        border: 1px solid transparent;
 }

@@ -1,0 +1,41 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  padding: 20px 20px;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: $backdropColor;
+
+  @media screen and (min-width: $tablet) {
+    padding: 32px 0;
+  }
+
+  @media screen and (min-width: $desktop) {
+    column-gap: 16px;
+  }
+}
+
+.modal {
+  position: relative;
+  padding: 48px 20px;
+
+  width: 100%;
+  max-width: 806px;
+  max-height: 100%;
+  background-color: $primeryBackgroundColor;
+  overflow: auto;
+}
+
+.modal__close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
