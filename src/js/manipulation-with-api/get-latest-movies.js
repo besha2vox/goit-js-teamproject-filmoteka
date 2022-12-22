@@ -17,7 +17,7 @@ getLatestMovies();
 async function getLatestMovies() {
   const movies = await createData();
   const getPromise = movies.results.map(createMovieCardMarkup);
-  const template = await (await Promise.all(getPromise)).join('');
+  const template = (await Promise.all(getPromise)).join('');
 
   refs.moviesList.innerHTML = template;
   renderPagination(movies.total_pages, refs.pagination, getLatestMovies, api);

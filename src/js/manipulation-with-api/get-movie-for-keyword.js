@@ -40,9 +40,9 @@ async function createData() {
 }
 
 async function getMoviesByKeyword() {
-  const movies = await createData();
+  const movies = await getData();
   const getPromise = movies.results.map(createMovieCardMarkup);
-  const template = await (await Promise.all(getPromise)).join('');
+  const template = (await Promise.all(getPromise)).join('');
 
   refs.moviesList.innerHTML = template;
   renderPagination(
@@ -53,7 +53,7 @@ async function getMoviesByKeyword() {
   );
 }
 
-async function createData() {
+async function getData() {
   try {
     return await api.getMovieLatest('week');
   } catch (error) {
