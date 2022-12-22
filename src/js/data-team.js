@@ -1,87 +1,86 @@
-import photoRevva from '/src/images/team/Revva.jpg';
-import photoNikitiuk from '/src/images/team/Nikitiuk.jpg';
-import photoKuzma from '/src/images/team/Kuzma.jpg';
-import photoMelnyk from '/src/images/team/Melnyk.jpg';
-import photoGorokhova from '/src/images/team/Gorokhova.jpg';
-import photoRomanchuk from '/src/images/team/Romanchuk.jpg';
-import photoKostiana from '/src/images/team/Kostiana.jpg';
-import photoSurovytskyi from '/src/images/team/Surovytskyi.jpg';
-import photoHanzenko from '/src/images/team/Hanzenko.jpg';
-import photoBelkina from '/src/images/team/Belkina.jpg';
-import photoReva from '/src/images/team/Reva.jpg';
-import photoUrsolov from '/src/images/team/Ursolov.jpg';
-
 export default [
   {
     name: 'Serhii Revva',
-    photo: photoRevva,
+    photo:
+      'https://lh3.google.com/u/0/d/1D8KMxy6g5avFkJJ5t9icYaIqLJ_4xov1=w903-h948-iv1',
     position: 'Team Lead',
     git: 'https://github.com/besha2vox',
   },
   {
     name: 'Valeria Nikitiuk',
-    photo: photoNikitiuk,
+    photo:
+      'https://lh3.google.com/u/0/d/14WpuDG-TiTtUYxSxEYh4XUIlaX0cezt1=w903-h948-iv1',
     position: 'Scrum Master',
     git: 'https://github.com/ValeriaNikitiuk',
   },
   {
     name: 'Leonid Melnyk',
-    photo: photoMelnyk,
+    photo:
+      'https://lh3.google.com/u/0/d/1QNoeElHKYPAgrt0CIgZMJ2byQdXmqjHL=w903-h948-iv1',
     position: 'Developer',
     git: 'https://github.com/LM2030',
   },
   {
     name: 'Nastya Belkina',
-    photo: photoBelkina,
+    photo:
+      'https://lh3.google.com/u/0/d/1bq65LCfPXOnt5GOPH09FVgKONUSSA31r=w1920-h948-iv1',
     position: 'Developer',
     git: 'https://github.com/Belkina23',
   },
   {
     name: 'Yuliia Gorokhova',
-    photo: photoGorokhova,
+    photo:
+      'https://lh3.google.com/u/0/d/1KEbY47UZaqvWps6FPm6MiMlqu-kYgGxR=w903-h948-iv1',
     position: 'Developer',
     git: 'https://github.com/YuliiaGorokhova',
   },
   {
     name: 'Oleksandr Romanchuk',
-    photo: photoRomanchuk,
+    photo:
+      'https://lh3.google.com/u/0/d/1g_xxDp1jAumW9QFcBCBt_JjocFpUbYMN=w903-h948-iv1',
     position: 'Developer',
     git: 'https://github.com/OleksandrRomanchuk',
   },
   {
     name: 'Hanna Kostiana',
-    photo: photoKostiana,
+    photo:
+      'https://lh3.google.com/u/0/d/1h10bsGscmJuYpnZIBAY1Gb9NOy1djyCg=w903-h948-iv1',
     position: 'Developer',
     git: 'https://github.com/AnnaKostyanaya',
   },
   {
     name: 'Viktor Hanzenko',
-    photo: photoHanzenko,
+    photo:
+      'https://lh3.google.com/u/0/d/12Zl7VMxmOxa1zp0UH5lgfzc0jRjwbxGV=w903-h948-iv1',
     position: 'Developer',
     git: 'https://github.com/HanzenkoViktor',
   },
   {
     name: 'Tetiana Kuzma',
-    photo: photoKuzma,
+    photo:
+      'https://lh3.google.com/u/0/d/1bAS0uPBoKKS-oZMS4sgHlBTbXKq-Z9EW=w903-h948-iv1',
     position: 'Developer',
     git: 'https://github.com/tekuzm',
   },
 
   {
     name: 'Nikita Reva',
-    photo: photoReva,
+    photo:
+      'https://lh3.google.com/u/0/d/14vwdl8nCFkFcR5I4Y2Hh778LdVIyw3q6=w903-h948-iv1',
     position: 'Developer',
     git: 'github.com/Nikita0708',
   },
   {
     name: 'Andrii Ursolov',
-    photo: photoUrsolov,
+    photo:
+      'https://lh3.google.com/u/0/d/1wD85kdSqvgfIhfydU_a__judCeCW4f6k=w903-h948-iv1',
     position: 'Developer',
     git: 'https://github.com/andrewurs',
   },
   {
     name: 'Vadym Surovytskyi',
-    photo: photoSurovytskyi,
+    photo:
+      'https://lh3.google.com/u/0/d/1if2ps3vZ3TP_Fkvs_LqaKDJb20frPlAm=w903-h948-iv1',
     position: 'Developer',
     git: 'https://github.com/xnskie',
   },
