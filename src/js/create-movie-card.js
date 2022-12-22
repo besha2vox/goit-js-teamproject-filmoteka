@@ -9,12 +9,12 @@ const film = {
   title: 'Cat wars',
   release_date: '2022-08-09',
   vote_average: 7.0876,
-  ids: [28, 12, 16],
+  genre_ids: [28, 12, 16],
 };
 
 export default function createMovieCardMarkup(movie) {
-  function searchGenres(ids) {
-    const genres = api.getGenres();
+  async function searchGenres(ids) {
+    const genres = await api.getGenres();
     const genresArr = ids.map(id => genres.find(genre => genre.id === id));
     const genresNames = genresArr
       .map(({ name }) => name)
@@ -30,7 +30,7 @@ export default function createMovieCardMarkup(movie) {
         <div class="movie-card__wrap">
           <div class="movie-card__info">
             <p class="movie-card__name">${movie.title}</p>
-              <p class="movie-card__genre">${searchGenres(genre_ids)} | ${
+              <p class="movie-card__genre">${searchGenres(movie.genre_ids)} | ${
     movie.release_date.split('-')[0]
   }</p>
               </div>
