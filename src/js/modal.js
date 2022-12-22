@@ -21,11 +21,9 @@ export const getModalMarkup = ({
               <div class="modal-card-list-wrapper">
                 <ul class="modal-list-info">
                   <li class="modal-card__item"><span class="modal-card__info">Vote / Votes</span>
-                    <div class="modal-card__value">
                       <span class="modal-card__vote">${vote_average}</span>
                       <span class="modal-card__slash">/</span>
                       <span class="modal-card__value">${vote_count}</span>
-                    </div>
                   </li>
                   <li class="modal-card__item"><span class="modal-card__info">Popularity</span><span
                       class="modal-card__value">${popularity}</span></li>
