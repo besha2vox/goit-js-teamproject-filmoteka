@@ -1,20 +1,23 @@
-const refs = {
-    langSwitcher: document.querySelector('.language-switcher__checkbox'),
-    span: document.querySelector('.language-switcher__lang'),
-};
-
-// если локалстр пустой или там выбран укр --- укряз, иначе - англ
+const storageLanguage = loadDataFromLocalSt("language");
+if (storageLanguage !== undefined) {
+    if (storageLanguage === "EN") {
+        refs.span.textContent = "EN";
+    } else {
+        refs.span.textContent = "UA";
+    }
+} else {
+    refs.span.textContent = "UA";
+}
 
 refs.langSwitcher.addEventListener('change', changeLanguage);
 
 function changeLanguage(evt) {
-    console.log('hi');
     if (refs.span.textContent === 'UA') {
         refs.span.textContent = 'EN';   
-        console.log('change');
-   // локалстор    
-    } else { refs.span.textContent = "UA"; 
-    //  локалстор 
+        saveDataToLocalSt("language", "EN");
+    } else { 
+        refs.span.textContent = "UA"; 
+        saveDataToLocalSt("language", "UA");
 }
 }
 
