@@ -1,2 +1,3 @@
-import { refs } from './js/refs';
-import createMovieCardMarkup from './js/create-movie-card';
+import './js/firebase-auth/login-modal';
+import './js/firebase-auth/auth-realization';
+import './js/loader&topScroll';
