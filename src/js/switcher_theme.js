@@ -1,7 +1,7 @@
+import { saveDataToLocalSt, loadDataFromLocalSt, removeDataFromLocalSt } from './tool-tip';
+
 const refs = {
-    toggle: document.querySelector('.theme-switch__toggle'),
-    langSwitcher: document.querySelector('.language-switcher__checkbox'),
-    span: document.querySelector('.language-switcher__lang'),
+    toggleLang: document.querySelector('.theme-switch__toggle'),
 };
 
 const storageTheme = loadDataFromLocalSt("theme");
@@ -17,7 +17,7 @@ if (storageTheme !== undefined) {
     document.body.classList.add("light-theme");
 }
 
-refs.toggle.addEventListener('change', changeTheme);
+refs.toggleLang.addEventListener('change', changeTheme);
 
 
 function changeTheme(evt) {
