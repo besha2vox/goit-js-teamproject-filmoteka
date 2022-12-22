@@ -32,7 +32,7 @@ export class API {
 
     // const url = `${this.BASE_URL}trending/movie/${time}?${params.toString()}`;
 
-    const url = `${this.BASE_URL}trending/movie/${time}?api_key=${this.API_KEY}`;
+    const url = `${this.BASE_URL}/trending/movie/${time}?api_key=${this.API_KEY}`;
 
     return await this.basicFetch(url);
   }
@@ -47,7 +47,7 @@ export class API {
 
     // const url = `${this.BASE_URL}movie/${id}?${params.toString()}`;
 
-    const url = `${this.BASE_URL}movie/${id}?api_key=${this.API_KEY}`;
+    const url = `${this.BASE_URL}/movie/${id}?api_key=${this.API_KEY}`;
 
     return await this.basicFetch(url);
   }
@@ -63,21 +63,21 @@ export class API {
 
     // const url = `${this.BASE_URL}search/movie?${params.toString()}`;
 
-    const url = `${this.BASE_URL}search/movie?api_key=${this.API_KEY}&query=${this._queryToFetch}`;
+    const url = `${this.BASE_URL}/search/movie?api_key=${this.API_KEY}&query=${this._queryToFetch}`;
     return await this.basicFetch(url);
   }
 
   //? ПОШУК ТРЕЙЛЕРА ПО АЙДІ
 
   async getMovieTreiler(type, id) {
-    const url = `${this.BASE_URL}movie/${id}/videos?api_key=${this.API_KEY}`;
+    const url = `${this.BASE_URL}/movie/${id}/videos?api_key=${this.API_KEY}`;
     return await this.basicFetch(url);
   }
 
   //? ЗАПИТ СПИСКУ ЖАНРІВ
 
   async getGenres(ids) {
-    const url = `${this.BASE_URL}genre/movie/list?api_key=${this.API_KEY}`;
+    const url = `${this.BASE_URL}/genre/movie/list?api_key=${this.API_KEY}`;
     return await this.basicFetch(url);
   }
 
