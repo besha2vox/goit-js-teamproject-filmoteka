@@ -1,10 +1,13 @@
-li {
-  list-style: none;
-}
-
 .movie-card {
-  width: 280px;
-  height: auto;
+  width: 100%;
+
+  @media screen and (min-width: $tablet) {
+    width: calc((100% - 32px) / 2);
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: calc((100% - 32px) / 3);
+  }
 
   border-radius: 5px;
 
@@ -12,14 +15,6 @@ li {
   &:focus {
     box-shadow: 1px 8px 20px grey;
     transition: box-shadow 0.6s ease-in;
-  }
-
-  @media screen and (min-width: $tablet) {
-    width: 336px;
-  }
-
-  @media screen and (min-width: $desktop) {
-    width: 395px;
   }
 
   &__wrap {
