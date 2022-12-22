@@ -4,7 +4,7 @@ import { Modal } from './class-modal';
 const modal = new Modal();
 
 const refs = {
-  teamBtn: document.querySelector('.page-footer__action-btn'),
+  teamBtns: document.querySelectorAll('.page-footer__action-btn'),
 };
 
 const teamCardTpl = () => {
@@ -30,4 +30,4 @@ export const markupTeamCards = data => {
   modal.open(markup);
 };
 
-refs.teamBtn.addEventListener('click', markupTeamCards);
+refs.teamBtns.forEach(btn => btn.addEventListener('click', markupTeamCards));
