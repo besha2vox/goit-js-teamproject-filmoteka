@@ -3,6 +3,7 @@ import { saveDataToLocalSt, loadDataFromLocalSt, removeDataFromLocalSt } from '.
 const refs = {
     langSwitcher: document.querySelector('.language-switcher__checkbox'),
     switcherText: document.querySelector('.language-switcher__lang'),
+    placeholderUa: document.querySelector('.form_input'),
 };
 
 const storageLanguage = loadDataFromLocalSt("language");
@@ -53,9 +54,11 @@ function changeLanguageLocalStr(language) {
 
 function changeLanguageText(language) {
     if (language === 'UA') {
-        refs.switcherText.textContent = 'EN';   
+        refs.switcherText.textContent = 'EN';
+        refs.placeholderUa.placeholder = "Movie search";   
     } else { 
-        refs.switcherText.textContent = "UA"; 
+        refs.switcherText.textContent = "UA";
+        refs.placeholderUa.placeholder = "Пошук фильму"; 
 }
 
 }
