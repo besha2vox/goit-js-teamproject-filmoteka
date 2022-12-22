@@ -20,7 +20,7 @@
         <nav class="nav nav__links">
           <ul class="nav__list" id="nav">
             <li class="nav__item">
-              <a class="nav__link active" href="./index.html">HOME</a>
+              <a class="nav__link home-link active" href="#">HOME</a>
             </li>
             <li class="nav__item login-user">
               <a class="nav__link" id="link__library" href="№">My library</a>
@@ -87,7 +87,7 @@
     </div>
 
     <div class="header__positioning header__positioning--for-form">
-      <div class="query__wrapper">
+      <div class="query__wrapper home">
         <form class="form home__form">
           <input
             class="form_input"
@@ -103,15 +103,12 @@
             /> -->
           </button>
         </form>
-        <p class="form__error-notification--for-header">
-          Search result not successful. Enter the correct movie name and try
-          again.
-        </p>
+        <p class="form__error-notification--for-header"></p>
       </div>
-      <ul class="buttons-list buttons-list__header">
+      <ul class="buttons-list buttons-list__header library">
         <li class="buttons-list__item buttons-list__item__header">
           <a
-            class="button button--transparent button__header button__header--transparent"
+            class="button button--transparent button__header button__header--transparent button__header--active watched"
             type="button"
           >
             Watched
@@ -119,7 +116,7 @@
         </li>
         <li class="buttons-list__item buttons-list__item__header">
           <a
-            class="button button--transparent button__header button__header--transparent"
+            class="button button--transparent button__header button__header--transparent queue"
             type="button"
           >
             queue

@@ -27,13 +27,17 @@ import {
 } from './interface-change';
 import {
   siteNav,
-  libraryLink,
   sigupLink,
   loginLink,
   logoutLink,
   greeting,
   loginLinks,
   logoutLinks,
+  homeLink,
+  libraryPage,
+  homePage,
+  watchedBtn,
+  queueBtn,
 } from './auth-refs';
 import { Modal } from '../class-modal';
 import { loginModalMarkup, signupModalMarkup } from './login-modal-markup';
@@ -57,6 +61,7 @@ onAuthStateChanged(auth, user => {
   } else {
     showElements(logoutLinks);
     hideElements(loginLinks);
+    classToggle(homeLink, 'add', 'active');
     classToggle(siteNav, 'add', 'visible');
     // classToggle(greeting, 'remove', 'visible');
     greeting.querySelector('.user-name').textContent = '';
@@ -90,6 +95,12 @@ async function onLogoutClick(event) {
   event.preventDefault();
 
   removeDataFromLocalSt(KEY);
+  classToggle(homeLink, 'add', 'active');
+  classToggle(watchedBtn, 'add', 'button__header--active');
+  classToggle(queueBtn, 'remove', 'button__header--active');
+
+  hideElements(libraryPage);
+  showElements(homePage);
 
   //logout the user
   await signOut(auth);
