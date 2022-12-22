@@ -95,6 +95,7 @@ async function onLogoutClick(event) {
   event.preventDefault();
 
   removeDataFromLocalSt(KEY);
+  classToggle(libraryLink, 'remove', 'active');
   classToggle(homeLink, 'add', 'active');
   classToggle(watchedBtn, 'add', 'button__header--active');
   classToggle(queueBtn, 'remove', 'button__header--active');
