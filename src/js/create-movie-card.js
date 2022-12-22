@@ -19,16 +19,17 @@ export default async function createMovieCardMarkup(movie) {
         <img src="https://image.tmdb.org/t/p/original${
           movie.poster_path
         }" alt="Poster of ${movie.title}" class="movie-card__img" />
-        <div class="movie-card__wrap">
+        
           <div class="movie-card__info">
             <p class="movie-card__name">${movie.title}</p>
+            <div class="movie-card__wrap">
               <p class="movie-card__genre">${genre} | ${
     movie.release_date.split('-')[0]
   }</p>
-              </div>
               <span class="movie-card__rating">${movie.vote_average.toFixed(
                 1
               )}</span>
+              </div>
           </div>
       </li>`;
 }

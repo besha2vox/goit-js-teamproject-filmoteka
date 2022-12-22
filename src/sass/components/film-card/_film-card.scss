@@ -1,52 +1,46 @@
+li {
+  list-style: none;
+}
+
 .movie-card {
   width: 280px;
-  height: 438px;
+  height: auto;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 10px;
+  @media screen and (min-width: $tablet) {
+    width: 336px;
+  }
 
-  &__img {
-    width: 280px;
-    height: 398px;
-    border-radius: 5px;
-
-    @media screen and (min-width: $tablet) {
-      width: 336px;
-      height: 455px;
-    }
-    @media screen and (min-width: $desktop) {
-      width: 395px;
-      height: 574px;
-    }
+  @media screen and (min-width: $desktop) {
+    width: 395px;
   }
 
   &__wrap {
     display: flex;
-    align-items: flex-end;
-    gap: 9px;
+    align-items: center;
+    gap: 8px;
   }
 
   &__info {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 8px;
 
-    line-height: 1.3;
+    margin-top: 8px;
 
     @media screen and (min-width: $desktop) {
-      font-size: 20px;
-      line-height: 1.2px;
-
-      gap: 10px;
+      margin-top: 12px;
     }
   }
 
   &__name {
     text-transform: uppercase;
-
     color: $primeryTextColor;
+    line-height: 1.3;
+
+    @media screen and (min-width: $desktop) {
+      font-size: 20px;
+      line-height: 1.2;
+    }
   }
 
   &__genre {
@@ -56,9 +50,10 @@
   &__rating {
     width: 36px;
     height: 16px;
-
     background: $accentColor;
     border-radius: 5px;
+
+    font-size: 12px;
 
     display: flex;
     align-items: center;
@@ -71,15 +66,5 @@
       width: 40px;
       height: 20px;
     }
-  }
-
-  @media screen and (min-width: $tablet) {
-    width: 336px;
-    height: 495px;
-    gap: 8px;
-  }
-  @media screen and (min-width: $desktop) {
-    width: 395px;
-    gap: 12px;
   }
 }
