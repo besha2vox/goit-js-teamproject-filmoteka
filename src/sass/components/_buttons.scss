@@ -132,6 +132,13 @@
 
 .button__header--transparent {
     color: $secondaryColor;
-
+    
     border: 1px solid $secondaryColor;
+}
+
+.button__header--active {
+    background-color: $accentColor;
+        color: $secondaryColor;
+    
+        border: 1px solid transparent;
 }

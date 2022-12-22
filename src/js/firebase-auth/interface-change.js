@@ -10,7 +10,7 @@ function loginFormNotify(notifyEl, string) {
 
 function showElements(elements) {
   elements.forEach(link => {
-    link.style.display = 'inline-block';
+    link.style.display = 'flex';
   });
 }
 
