@@ -1,6 +1,8 @@
 import { API } from '../api';
 import { Modal } from '../class-modal';
+import { getModalMarkup } from '../modal';
 
+const modal = new Modal();
 const api = new API();
 
 export async function onMovieClick(e) {
@@ -9,10 +11,9 @@ export async function onMovieClick(e) {
   if (!article) return;
 
   const movie = await api.getSearchMoviesByID(article.id);
-  console.log('movie', movie);
 
-  // const markup = modalTemplate(movie);
-  // modal.open(markup);
+  const markup = await getModalMarkup(movie);
+  modal.open(markup);
 
   // renderTrailer(article.id);
 }

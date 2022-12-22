@@ -1,0 +1,159 @@
+@import '~node_modules/modern-normalize/modern-normalize.css';
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.2;
+  color: #000000;
+  background-color: #ffffff;
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1), background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media screen and (min-width: 1280px) {
+  body {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+}
+
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+a,
+button,
+input,
+textarea {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+}
+
+.buttons-list {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.buttons-list__item:not(:first-child) {
+  margin-left: 20px;
+}
+@media screen and (min-width: 768px) {
+  .buttons-list__item:not(:first-child) {
+    margin-left: 16px;
+  }
+}
+
+.buttons-list__item__header:not(:first-child) {
+  margin-left: 20px;
+}
+@media screen and (min-width: 768px) {
+  .buttons-list__item__header:not(:first-child) {
+    margin-left: 32px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .buttons-list__item__header:not(:first-child) {
+    margin-left: 16px;
+  }
+}
+
+.button {
+  min-width: 110px;
+  padding: 13px;
+  text-transform: uppercase;
+  border-radius: 5px;
+  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1), border 300ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media screen and (min-width: 768px) {
+  .button {
+    min-width: 125px;
+    padding: 14px 10px 12px 10px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .button {
+    min-width: 136px;
+  }
+}
+
+.button--orange {
+  background-color: #ff6b08;
+  color: #ffffff;
+  border: 1px solid transparent;
+}
+
+@media screen and (min-width: 768px) {
+  .button__modal--orange {
+    padding: 6px 27px;
+  }
+}
+
+.button--orange:focus,
+.button--orange:hover {
+  background-color: transparent;
+  color: #000000;
+  border: 1px solid #000000;
+}
+
+.button--transparent {
+  background-color: transparent;
+  border: 1px solid #000000;
+}
+
+.button--transparent:focus,
+.button--transparent:hover {
+  background-color: #ff6b08;
+  color: #ffffff;
+  border: 1px solid transparent;
+}
+
+.button__header {
+  min-width: 130px;
+  padding: 13px 36px;
+}
+@media screen and (min-width: 768px) {
+  .button__header {
+    min-width: 152px;
+    padding: 13px 46px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .button__header {
+    min-width: 147px;
+    padding-left: 41px;
+    padding-right: 41px;
+  }
+}
+
+.button__header--transparent {
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}/*# sourceMappingURL=index.css.map */
