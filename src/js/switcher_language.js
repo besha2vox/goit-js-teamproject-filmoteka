@@ -8,25 +8,54 @@ const refs = {
 const storageLanguage = loadDataFromLocalSt("language");
 if (storageLanguage !== undefined) {
     if (storageLanguage === "EN") {
-        refs.switcherText.textContent = "EN";
+        changeLanguageText("EN");   
+        changeLanguageClass("en");
     } else {
-        refs.switcherText.textContent = "UA";
+        changeLanguageText("UA");   
+        changeLanguageClass("ua");
     }
 } else {
-    refs.switcherText.textContent = "UA";
+    changeLanguageText("UA");   
+    document.body.classList.add("ua");
 }
 
 refs.langSwitcher.addEventListener('change', changeLanguage);
 
 function changeLanguage(evt) {
-    if (refs.switcherText.textContent === 'UA') {
-        refs.switcherText.textContent = 'EN';   
-        saveDataToLocalSt("language", "EN");
+    if (document.body.classList.contains("ua")) {
+        changeLanguageText("UA");   
+        changeLanguageLocalStr("UA");
+        changeLanguageClass("ua");
     } else { 
-        refs.switcherText.textContent = "UA"; 
+        changeLanguageText("EN");   
+        changeLanguageLocalStr("EN");
+        changeLanguageClass("en");
+}
+}
+
+function changeLanguageClass(language) {
+    if (language === 'ua') {
+        document.body.classList.remove("ua");
+        document.body.classList.add("en");
+    } else {
+        document.body.classList.remove("en");
+        document.body.classList.add("ua");
+    }
+}
+
+function changeLanguageLocalStr(language) {
+    if (language === 'UA') {  
+        saveDataToLocalSt("language", "EN");
+    } else {  
         saveDataToLocalSt("language", "UA");
 }
 }
 
-// class
-export { refs, changeLanguage };
+function changeLanguageText(language) {
+    if (language === 'UA') {
+        refs.switcherText.textContent = 'EN';   
+    } else { 
+        refs.switcherText.textContent = "UA"; 
+}
+
+}
