@@ -1,12 +1,14 @@
 import { API } from '../api';
 import { createMovieCardMarkup } from '../create-movie-card';
 import { onMovieClick } from './modal-open';
+import { renderPagination } from '../utils/pagination';
 
 const api = new API();
 
 const refs = {
   form: document.querySelector('.home__form'),
   moviesList: document.querySelector('.movies-grid__list'),
+  pagination: document.querySelector('.pagination-list'),
 };
 
 refs.moviesList.addEventListener('click', onMovieClick);
@@ -26,15 +28,34 @@ async function onFormSubmit(e) {
   const movies = await createData();
 
   if (!movies) return;
-  const getPromise = movies.results.map(createMovieCardMarkup);
-  const template = await (await Promise.all(getPromise)).join('');
-
-  refs.moviesList.innerHTML = template;
+  getMoviesByKeyword();
 }
 
 async function createData() {
   try {
     return await api.getMoviesByKeyWord();
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+async function getMoviesByKeyword() {
+  const movies = await createData();
+  const getPromise = movies.results.map(createMovieCardMarkup);
+  const template = await (await Promise.all(getPromise)).join('');
+
+  refs.moviesList.innerHTML = template;
+  renderPagination(
+    movies.total_pages,
+    refs.pagination,
+    getMoviesByKeyword,
+    api
+  );
+}
+
+async function createData() {
+  try {
+    return await api.getMovieLatest('week');
   } catch (error) {
     console.log(error.message);
   }
