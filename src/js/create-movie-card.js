@@ -12,7 +12,7 @@ async function searchGenres(ids) {
     .join(', ');
 }
 
-export default async function createMovieCardMarkup(movie) {
+export async function createMovieCardMarkup(movie) {
   const genre = await searchGenres(movie.genre_ids);
 
   return `<li class="movie-card" id="${movie.id}">
