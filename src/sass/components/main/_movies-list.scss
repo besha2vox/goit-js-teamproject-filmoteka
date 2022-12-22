@@ -1,0 +1,14 @@
+.movies-grid__list {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 20px;
+
+  @media screen and (min-width: $tablet) {
+    row-gap: 32px;
+    column-gap: 32px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    column-gap: 16px;
+  }
+}

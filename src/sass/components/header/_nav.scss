@@ -1,0 +1,86 @@
+.nav__list {
+    display: none;
+
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.17;
+}
+
+.nav__list.visible {
+    display: flex;
+    justify-content: center;
+}
+
+.nav__item:not(:first-child) {
+    margin-left: 40px;
+}
+
+.nav__link, .naw__login-link {
+    position: relative;
+
+    overflow: hidden;
+}
+
+.nav__link {
+    position: relative;
+
+    color: $secondaryColor;
+    text-transform: uppercase;
+}
+
+.naw__login-link {
+    position: relative;
+
+    color: $secondaryColor;
+}
+
+.link__enter #devider, .link__logout {
+    color: $accentColor;
+}
+
+.nav__link.active::before {
+    display: none;
+}
+
+.nav__link.active {
+    overflow: visible;
+}
+
+.nav__link:before, .naw__login-link::before {
+    content: '';
+    
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+
+    width: 100%;
+    height: 0;
+
+    background-color: $errorTextColor;
+
+    transition: height 300ms ease;
+}
+
+.nav__link:hover:before,
+.naw__login-link:hover::before,
+.nav__link:focus:before,
+.naw__login-link:focus::before {
+    height: 3px;
+}
+
+.active::after {
+    content: '';
+
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+
+    width: calc(100% - 1px);
+    height: 3px;
+
+    background-color: $errorTextColor;
+}
+
+.user-name {
+    color: $secondaryColor;
+}
