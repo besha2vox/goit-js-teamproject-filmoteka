@@ -1,6 +1,3 @@
-import { refs, changeTheme } from "/src/js/switcher_theme";
-import { refs, changeLanguage } from "/src/js/switcher_language";
-
 // Ф-ции localStorage:
 
 function saveDataToLocalSt(key, value) {

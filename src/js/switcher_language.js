@@ -28,4 +28,5 @@ function changeLanguage(evt) {
 }
 }
 
+// class
 export { refs, changeLanguage };

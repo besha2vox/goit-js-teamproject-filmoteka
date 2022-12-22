@@ -23,6 +23,21 @@ body {
     background-color: #12181c;
     color: #ffffff;
   }
+  &.uk .uk {
+    display: block;
+  }
+
+  &.uk .en {
+    display: none;
+  }
+
+  &.en .en {
+    display: block;
+  }
+
+  &.en .uk {
+    display: none;
+  }
 }
 
 h1,
