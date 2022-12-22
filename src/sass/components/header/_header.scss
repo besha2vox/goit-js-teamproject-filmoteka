@@ -1,29 +1,24 @@
-// header
-
 .header {
   position: relative;
-  padding: 40px 0 44px;
-  padding-top: 20px;
 
   background-color: $headerBackgroundColor;
 
   background-image: url('/src/images/home/home_mobile_1x.jpg');
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-  text-align: center;
-  color: #ffffff;
+  background-size: 100%;
+
   @media (min-device-pixel-ratio: 2),
-    (-webkit-min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
+  (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
     background-image: url('/src/images/home/home_mobile_2x.jpg');
   }
 
   @media (min-device-pixel-ratio: 3),
-    (-webkit-min-device-pixel-ratio: 3),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
+  (-webkit-min-device-pixel-ratio: 3),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
     background-image: url('/src/images/home/home_mobile_3x.jpg');
   }
 
@@ -31,15 +26,16 @@
     background-image: url('/src/images/home/home_tablet_1x.jpg');
 
     @media (min-device-pixel-ratio: 2),
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
       background-image: url('/src/images/home/home_tablet_2x.jpg');
     }
+
     @media (min-device-pixel-ratio: 3),
-      (-webkit-min-device-pixel-ratio: 3),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
+    (-webkit-min-device-pixel-ratio: 3),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
       background-image: url('/src/images/home/home_tablet_3x.jpg');
     }
   }
@@ -51,18 +47,102 @@
     background-image: url('/src/images/home/home_pc_1x.jpg');
 
     @media (min-device-pixel-ratio: 2),
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
       background-image: url('/src/images/home/home_pc_2x.jpg');
     }
+
     @media (min-device-pixel-ratio: 3),
-      (-webkit-min-device-pixel-ratio: 3),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
+    (-webkit-min-device-pixel-ratio: 3),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
       background-image: url('/src/images/home/home_pc_3x.jpg');
     }
   }
+}
+
+.posioning-group--header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__positioning {
+  display: flex;
+}
+
+.header__positioning--for-logo {
+  padding-top: 25px;
+  align-items: flex-start;
+}
+
+.header__positioning--for-form {
+  justify-content: center;
+  align-items: flex-end;
+
+  margin: 0;
+}
+
+.header__positioning--for-nav {
+  flex-direction: column;
+}
+
+.logo {
+  display: flex;
+  align-content: center;
+  gap: 10px;
+
+  color: $secondaryColor;
+}
+
+.logo svg {
+  align-self: center;
+}
+
+.logo__text {
+   font-size: 30px;
+   line-height: 35px;
+
+   @media screen and (max-width: 703px) {
+     display: none;
+   }
+ }
+
+ .form__error-notification--for-header {
+   height: 32px;
+   margin-top: 20px;
+
+   font-size: 14px;
+   color: $errorTextColor;
+
+   opacity: 1;
+
+  @media screen and (min-width: $desktop) {
+    height: 16px;
+  }
+ }
+
+.query__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding-top: 34px;
+}
+
+
+.buttons-list__header {
+  display: none;
+  padding-top: 40px;
+  padding-bottom: 16px;
+}
+
+// nav
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .utils {
@@ -72,46 +152,15 @@
   gap: 30px;
 }
 
-// nav
-
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  .link {
-    color: $secondaryColor;
-  }
-}
-
-.logo {
-  display: flex;
-  align-content: center;
-  gap: 10px;
-
-  & svg {
-    align-self: center;
-  }
-
-  &__text {
-    font-size: 30px;
-    line-height: 35px;
-
-    @media screen and (max-width: 703px) {
-      display: none;
-    }
-  }
-}
-
 // form
 
 .form {
   position: relative;
-  margin: 48px auto 16px;
+
+  width: 280px;
+  margin: 0 auto;
 
   @media screen and (min-width: $tablet) {
-    margin-top: 36px;
-    margin-bottom: 20px;
     width: 336px;
   }
 }
