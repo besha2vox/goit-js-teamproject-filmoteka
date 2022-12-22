@@ -1,15 +1,21 @@
-import { Modal } from './js/class-modal';
+import { Modal } from './class-modal';
 
-const itemCardEl = document.querySelector('.movie-card');
+const modal = new Modal();
 
-const modal = new Modal(option);
-
-const url = `https://image.tmdb.org/t/p/original${poster_path}`;
-
-const getModalMarkup = ({ overview, vote_average, popularity, original_title, genres, poster_path, vote_count, title }) => {
+export const getModalMarkup = ({
+  overview,
+  vote_average,
+  popularity,
+  original_title,
+  genres,
+  poster_path,
+  vote_count,
+  title,
+}) => {
+  const url = `https://image.tmdb.org/t/p/original${poster_path}`;
   const genresNames = genres.map(genre => genre.name).join(' ');
-            return `
-              <img src="${url}${poster_path}" alt="film photo" class="modal-card-film-img">
+  return `
+              <img src="${url}" alt="film photo" class="modal-card-film-img">
               <div>
               <h2 class="modal-card__title">${title}</h2>
               <div class="modal-card-list-wrapper">
@@ -34,8 +40,4 @@ const getModalMarkup = ({ overview, vote_average, popularity, original_title, ge
               <button class="modal-card-watched-btn" type="button">add to watched</button>
               <button type="button" class="modal-card-queue-btn">add to queue</button>
               </div>`;
-             
-}
-
-
-modal.open(getModalMarkup());
+};
