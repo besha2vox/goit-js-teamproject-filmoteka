@@ -1,12 +1,16 @@
 import { API } from '../api';
 import { createMovieCardMarkup } from '../create-movie-card';
 import { onMovieClick } from './modal-open';
+import { renderPagination } from '../utils/pagination';
 
 const api = new API();
 
-const moviesRef = document.querySelector('.movies-grid__list');
+const refs = {
+  moviesList: document.querySelector('.movies-grid__list'),
+  pagination: document.querySelector('.pagination-list'),
+};
 
-moviesRef.addEventListener('click', onMovieClick);
+refs.moviesList.addEventListener('click', onMovieClick);
 
 getLatestMovies();
 
@@ -15,8 +19,8 @@ async function getLatestMovies() {
   const getPromise = movies.results.map(createMovieCardMarkup);
   const template = await (await Promise.all(getPromise)).join('');
 
-  moviesRef.innerHTML = template;
-  // renderPagination(movies.total_pages, refs.pagination, getTranding, api);
+  refs.moviesList.innerHTML = template;
+  renderPagination(movies.total_pages, refs.pagination, getLatestMovies, api);
 }
 
 async function createData() {
