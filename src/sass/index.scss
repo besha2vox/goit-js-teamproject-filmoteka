@@ -1,8 +1,9 @@
 //* Utils
 
 @import './utils/vars';
-@import './utils/container';
 @import './common';
+@import './utils/container';
+@import './utils/animations';
 
 //* Components
 @import './components/buttons';
@@ -13,5 +14,6 @@
 @import './components/header/nav';
 @import './components/main/main';
 @import './layouts/login-modal';
+@import './layouts/footer';
 
 @import './components/modal/modal-team';

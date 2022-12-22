@@ -44,32 +44,32 @@
   </head>
 
   <body>
-    <!--  * Лоадер і кнопка скролу догори -->
-    <include src="./partials/loader_scrollToTop.html"></include>
+    <div class="wrapper">
+      <!--  * Лоадер і кнопка скролу догори -->
+      <include src="./partials/loader_scrollToTop.html"></include>
 
-    <!-- * Імпорт ХЕДЕРА -->
-    <include src="./partials/header.html"></include>
+      <!-- * Імпорт ХЕДЕРА -->
+      <include src="./partials/header.html"></include>
 
-    <!-- * MAIN -->
-    <main>
-      <!-- * SLIDER -->
-      <section class="movies-slider">
-        <div class="container"></div>
-      </section>
+      <!-- * MAIN -->
+      <main>
+        <!-- * SLIDER -->
+        <section class="movies-slider">
+          <div class="container"></div>
+        </section>
 
-      <section class="movies-grid">
-        <div class="container">
-          <!-- * СІТКА ФІЛЬМІВ -->
-          <ul class="movies-grid__list"></ul>
+        <section class="movies-grid">
+          <div class="container">
+            <!-- * СІТКА ФІЛЬМІВ -->
+            <ul class="movies-grid__list"></ul>
 
-          <!-- * ПАГІНАЦІЯ -->
-          <ul class="movies-grid__pagination"></ul>
-        </div>
-      </section>
-    </main>
-
-    <include src="./partials//modal.html"></include>
-    <!-- * Імпорт ФУТЕРА -->
-    <include src="./partials/footer.html"></include>
+            <!-- * ПАГІНАЦІЯ -->
+            <ul class="movies-grid__pagination"></ul>
+          </div>
+        </section>
+      </main>
+      <!-- * Імпорт ФУТЕРА -->
+      <include src="./partials/footer.html"></include>
+    </div>
   </body>
 </html>
