@@ -1,73 +1,80 @@
-import {
-  sigupLink,
-  loginLink,
-  enterModal,
-  modalAuth,
-  loginFormTitle,
-  modalAuth,
-  signupFormTitle,
-} from './auth-refs';
-import { classToggle } from './interface-change';
+// import {
+//   sigupLink,
+//   loginLink,
+//   enterModal,
+//   modalAuth,
+//   loginFormTitle,
+//   modalAuth,
+//   signupFormTitle,
+// } from './auth-refs';
+// import { classToggle } from './interface-change';
+// import { Modal } from '../class-modal';
+// import { loginModalMarkup } from './login-modal-markup';
 
-sigupLink.addEventListener('click', onSignupLinkClick);
-loginLink.addEventListener('click', onLoginLinkClick);
-signupFormTitle.addEventListener('click', onSignupTitleClick);
-loginFormTitle.addEventListener('click', onLoginTitleClick);
+// const loginModal = new Modal();
 
-function onSignupLinkClick() {
-  classToggle(enterModal, 'add', 'visible');
-  classToggle(loginFormTitle.closest('form'), 'add', 'slide-up');
-  classToggle(signupFormTitle.closest('form'), 'remove', 'slide-up');
-  classToggle(modalAuth, 'remove', 'modal__signup--up');
+// sigupLink.addEventListener('click', onSignupLinkClick);
+// loginLink.addEventListener('click', onLoginLinkClick);
 
-  document.addEventListener('keydown', event => {
-    if (event.code !== 'Escape') return;
+// // signupFormTitle.addEventListener('click', onSignupTitleClick);
+// // loginFormTitle.addEventListener('click', onLoginTitleClick);
 
-    classToggle(enterModal, 'remove', 'visible');
-  });
-}
+// function onSignupLinkClick() {
+//   loginModal.open(loginModalMarkup);
+//   classToggle(enterModal, 'add', 'visible');
+//   classToggle(loginFormTitle.closest('form'), 'add', 'slide-up');
+//   classToggle(signupFormTitle.closest('form'), 'remove', 'slide-up');
+//   classToggle(modalAuth, 'remove', 'modal__signup--up');
 
-function onLoginLinkClick() {
-  classToggle(enterModal, 'add', 'visible');
-  classToggle(loginFormTitle.closest('form'), 'remove', 'slide-up');
-  classToggle(signupFormTitle.closest('form'), 'add', 'slide-up');
-  classToggle(modalAuth, 'add', 'modal__signup--up');
+//   document.addEventListener('keydown', event => {
+//     if (event.code !== 'Escape') return;
 
-  document.addEventListener('keydown', event => {
-    if (event.code !== 'Escape') return;
+//     classToggle(enterModal, 'remove', 'visible');
+//   });
+// }
 
-    classToggle(enterModal, 'remove', 'visible');
-  });
-}
+// function onLoginLinkClick() {
+//   loginModal.open(loginModalMarkup);
+//   classToggle(enterModal, 'add', 'visible');
+//   classToggle(loginFormTitle.closest('form'), 'remove', 'slide-up');
+//   classToggle(signupFormTitle.closest('form'), 'add', 'slide-up');
+//   classToggle(modalAuth, 'add', 'modal__signup--up');
 
-function onLoginTitleClick(event) {
-  event.preventDefault();
+//   document.addEventListener('keydown', event => {
+//     if (event.code !== 'Escape') return;
 
-  const parent = event.target.closest('form');
+//     classToggle(enterModal, 'remove', 'visible');
+//   });
+// }
 
-  parent.classList.value.split(' ').find(el => {
-    if (el !== 'slide-up') {
-      classToggle(parent, 'add', 'slide-up');
-    } else {
-      classToggle(signupFormTitle.closest('form'), 'add', 'slide-up');
-      classToggle(modalAuth, 'add', 'modal__signup--up');
-      classToggle(parent, 'remove', 'slide-up');
-    }
-  });
-}
+// function onLoginTitleClick(event) {
+//   event.preventDefault();
 
-function onSignupTitleClick(event) {
-  event.preventDefault();
+//   const parent = event.target.closest('form');
 
-  const parent = event.target.closest('form');
+//   parent.classList.value.split(' ').find(el => {
+//     if (el !== 'slide-up') {
+//       classToggle(parent, 'add', 'slide-up');
+//     } else {
+//       classToggle(signupFormTitle.closest('form'), 'add', 'slide-up');
+//       classToggle(modalAuth, 'add', 'modal__signup--up');
+//       classToggle(parent, 'remove', 'slide-up');
+//     }
+//   });
+// }
 
-  parent.classList.value.split(' ').find(el => {
-    if (el !== 'slide-up') {
-      classToggle(parent, 'add', 'slide-up');
-    } else {
-      classToggle(loginFormTitle.closest('form'), 'add', 'slide-up');
-      classToggle(modalAuth, 'remove', 'modal__signup--up');
-      classToggle(parent, 'remove', 'slide-up');
-    }
-  });
-}
+// function onSignupTitleClick(event) {
+//   event.preventDefault();
+
+//   const parent = event.target.closest('form');
+
+//   parent.classList.value.split(' ').find(el => {
+//     if (el !== 'slide-up') {
+//       classToggle(parent, 'add', 'slide-up');
+//     } else {
+//       classToggle(loginFormTitle.closest('form'), 'add', 'slide-up');
+//       classToggle(modalAuth, 'remove', 'modal__signup--up');
+//       classToggle(parent, 'remove', 'slide-up');
+//     }
+//   });
+// }

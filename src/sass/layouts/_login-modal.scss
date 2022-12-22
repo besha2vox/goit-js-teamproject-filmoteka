@@ -1,6 +1,4 @@
 .backdrop {
-    display: none;
-
     position: absolute;
     top: 0;
     left: 0;
@@ -8,10 +6,6 @@
     right: 0;
 
     background-color: rgba(128, 128, 128, 0.503);
-}
-
-.backdrop.visible {
-    display: block;
 }
 
 .modal__auth {
@@ -504,6 +498,17 @@
 .auth-providers__link:hover .auth-providers__icon,
 .auth-providers__link:focus .auth-providers__icon {
     fill: rgba(255, 107, 1, 0.8);
+}
+
+.modal__close {
+    position: absolute;
+    top: 4px;
+    right: 0;
+    z-index: 8;
+
+    border: none;
+    background-color: transparent;
+
 }
 
 @keyframes show {

@@ -3,7 +3,7 @@ export class API {
     this._queryToFetch = '';
     this._pageToFetch = 1;
 
-    this.BASE_URL = 'https://api.themoviedb.org/3';
+    this.BASE_URL = 'https://api.themoviedb.org/3/';
     this.API_KEY = '9cca312caffd11f4ae9f11244d585025';
   }
 
@@ -37,9 +37,16 @@ export class API {
     return await this.basicFetch(url);
   }
 
+  //? ПОШУК НОВИНОК
+
+  async getMovieLatest() {
+    const url = `${this.BASE_URL}movie/now_playing?api_key=${this.API_KEY}&page=${this.pageToFetch}`;
+    return await this.basicFetch(url);
+  }
+
   //? ПОШУК ЗА АЙДІ
 
-  async getSearchMoviesByID(type, id) {
+  async getSearchMoviesByID(id) {
     // const params = new URLSearchParams({
     //   api_key: this.API_KEY,
     //   language: getLanguage(),
@@ -47,14 +54,13 @@ export class API {
 
     // const url = `${this.BASE_URL}movie/${id}?${params.toString()}`;
 
-    const url = `${this.BASE_URL}/movie/${id}?api_key=${this.API_KEY}`;
-
+    const url = `${this.BASE_URL}movie/${id}?api_key=${this.API_KEY}`;
     return await this.basicFetch(url);
   }
 
   //? ПОШУК ЗА КЛЮЧОВИМ СЛОВОМ
 
-  async getMoviesByKeyWord(type) {
+  async getMoviesByKeyWord() {
     // const params = new URLSearchParams({
     //   api_key: this.API_KEY,
     //   language: getLanguage(),
@@ -69,15 +75,15 @@ export class API {
 
   //? ПОШУК ТРЕЙЛЕРА ПО АЙДІ
 
-  async getMovieTreiler(type, id) {
-    const url = `${this.BASE_URL}/movie/${id}/videos?api_key=${this.API_KEY}`;
+  async getMovieTreiler(id) {
+    const url = `${this.BASE_URL}movie/${id}/videos?api_key=${this.API_KEY}`;
     return await this.basicFetch(url);
   }
 
   //? ЗАПИТ СПИСКУ ЖАНРІВ
 
-  async getGenres(ids) {
-    const url = `${this.BASE_URL}/genre/movie/list?api_key=${this.API_KEY}`;
+  async getGenres() {
+    const url = `${this.BASE_URL}genre/movie/list?api_key=${this.API_KEY}`;
     return await this.basicFetch(url);
   }
 
