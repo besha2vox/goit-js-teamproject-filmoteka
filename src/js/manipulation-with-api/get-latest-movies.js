@@ -5,12 +5,10 @@ import { renderPagination } from '../utils/pagination';
 
 const api = new API();
 
-const refs = {
-  moviesList: document.querySelector('.movies-grid__list'),
-  pagination: document.querySelector('.pagination-list'),
-};
+const moviesList = document.querySelector('.movies-grid__list');
+const pagination = document.querySelector('.pagination-list');
 
-refs.moviesList.addEventListener('click', onMovieClick);
+moviesList.addEventListener('click', onMovieClick);
 
 getLatestMovies();
 
@@ -19,14 +17,16 @@ async function getLatestMovies() {
   const getPromise = movies.results.map(createMovieCardMarkup);
   const template = (await Promise.all(getPromise)).join('');
 
-  refs.moviesList.innerHTML = template;
-  renderPagination(movies.total_pages, refs.pagination, getLatestMovies, api);
+  moviesList.innerHTML = template;
+  renderPagination(movies.total_pages, pagination, getLatestMovies, api);
 }
 
 async function createData() {
   try {
-    return await api.getMovieLatest('week');
+    return await api.getMovieLatest('day');
   } catch (error) {
     console.log(error.message);
   }
 }
+
+export { getLatestMovies, moviesList, pagination };

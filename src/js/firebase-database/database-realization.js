@@ -17,23 +17,10 @@ const KEY = 'userUID';
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-//========== to delete
-// const addWatched = document.getElementById('ad-watched');
-// const addQueue = document.getElementById('ad-queue');
-// const getWatched = document.getElementById('show-watched');
-// const getQueue = document.getElementById('show-queue');
-
-// addWatched.addEventListener('click', addFilmToWatchedList);
-// addQueue.addEventListener('click', addFilmToQueueList);
-// getWatched.addEventListener('click', deleteFilmFromList);
-// getQueue.addEventListener('click', getUserDataFromDB);
-
-// let counter = 9;
-
-async function deleteFilmFromList() {
+async function deleteFilmFromList(data, list) {
   try {
     await updateDoc(doc(db, 'users', `${loadDataFromLocalSt(KEY)}`), {
-      queue: arrayRemove(counter),
+      [list]: arrayRemove(data),
     });
   } catch (error) {
     console.log(error.message);
@@ -47,7 +34,6 @@ async function getUserDataFromDB() {
     );
 
     if (docSnap.exists()) {
-      console.log('Document data:', docSnap.data());
       return docSnap.data();
     } else {
       // doc.data() will be undefined in this case
@@ -59,28 +45,14 @@ async function getUserDataFromDB() {
   }
 }
 
-async function addFilmToQueueList() {
+async function addFilmToTheList(data, list) {
   try {
     await updateDoc(doc(db, 'users', `${loadDataFromLocalSt(KEY)}`), {
-      queue: arrayUnion(counter),
+      [list]: arrayUnion(data),
     });
   } catch (error) {
     console.log(error.message);
   }
-
-  counter += 1;
-}
-
-async function addFilmToWatchedList() {
-  try {
-    await updateDoc(doc(db, 'users', `${loadDataFromLocalSt(KEY)}`), {
-      watched: arrayUnion(counter),
-    });
-  } catch (error) {
-    console.log(error.message);
-  }
-
-  counter += 1;
 }
 
 async function createUserDoc(id, name, email) {
@@ -98,8 +70,7 @@ async function createUserDoc(id, name, email) {
 
 export {
   createUserDoc,
-  addFilmToWatchedList,
-  addFilmToQueueList,
+  addFilmToTheList,
   deleteFilmFromList,
   getUserDataFromDB,
 };
