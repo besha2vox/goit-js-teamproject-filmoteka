@@ -3,17 +3,27 @@
 #scrollTop {
     position: fixed;
     bottom: 150px;
-    right: 70px;
-    font-size: 40px;
+    right: 22px;
+    font-size: 28px;
     z-index: 9999;
     cursor: pointer;
-    color: #FF001B;
+    color: $accentColor;
+    @media screen and (min-width: $tablet) {
+            right: 60px;
+            font-size: 44px;
+        }
+    @media screen and (min-width: $desktop) {
+        right: 100px;
+        font-size: 55px;
+        }
 }
 
 #scrollTop:hover {
-    color: #FF6B08 ;
+    
+    color: $activePageColor;
 
 }
+
 
 
 .isShowBtn {
