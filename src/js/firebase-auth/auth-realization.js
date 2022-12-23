@@ -17,7 +17,6 @@ import {
 import { firebaseConfig } from './firebase-config';
 import {
   saveDataToLocalSt,
-  removeDataFromLocalSt,
 } from '../utils/local-st-functions';
 import {
   loginFormNotify,
@@ -34,19 +33,12 @@ import {
   loginLinks,
   logoutLinks,
   homeLink,
-  libraryPage,
-  homePage,
-  watchedBtn,
-  queueBtn,
 } from './auth-refs';
 import { Modal } from '../class-modal';
 import { loginModalMarkup, signupModalMarkup } from './login-modal-markup';
 import {
-  renderFilmsFromDB,
   homePageInterface,
-  libraryPageInterface,
 } from '../change-page';
-import { loadDataFromLocalSt } from '../utils/local-st-functions';
 
 const KEY = 'userUID';
 const PAGE_KEY = 'page';

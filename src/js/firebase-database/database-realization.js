@@ -1,5 +1,4 @@
 import { initializeApp } from 'firebase/app';
-
 import {
   getFirestore,
   doc,
@@ -36,10 +35,6 @@ function getSnapshotOfUserDataFromDB() {
       } else {
         homePageInterface();
       }
-      doc.data();
-
-      // renderFilmsFromDB(doc.data().watched);
-      console.log(doc.data());
     }
   );
 }

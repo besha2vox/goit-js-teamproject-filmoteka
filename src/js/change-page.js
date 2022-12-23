@@ -17,10 +17,7 @@ import {
   getLatestMovies,
   pagination,
 } from './manipulation-with-api/get-latest-movies';
-import {
-  loadDataFromLocalSt,
-  saveDataToLocalSt,
-} from './utils/local-st-functions';
+import { saveDataToLocalSt } from './utils/local-st-functions';
 import { renderPagination } from './utils/pagination';
 import { getUserDataFromDB } from './firebase-database/database-realization';
 
