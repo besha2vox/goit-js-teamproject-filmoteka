@@ -23,7 +23,7 @@ async function getLatestMovies() {
 
 async function createData() {
   try {
-    return await api.getMovieLatest('day');
+    return await api.getTrendingMovies('day');
   } catch (error) {
     console.log(error.message);
   }
