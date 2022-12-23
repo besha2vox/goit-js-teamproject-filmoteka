@@ -17,6 +17,7 @@ tip.className = "tooltip";
 tip.hidden = true;                       
 document.body.append(tip);               
 
+removeDataFromLocalSt("theme");
 document.addEventListener("mouseover", showTip);
 document.addEventListener("mouseout", hideTip)
 
@@ -31,7 +32,7 @@ function showTip(event) {
         if (currentLang !== undefined) {
             tip.innerHTML = tipStorage.language[currentLang];
         } else {
-            tip.innerHTML = tipStorage.language[UA];
+            tip.innerHTML = tipStorage.language["UA"];
         }
     }
     
@@ -39,7 +40,7 @@ function showTip(event) {
         if (currentLang !== undefined) {
             tip.innerHTML = tipStorage.theme[currentLang][currentTheme];
         } else {
-            tip.innerHTML = tipStorage.theme[UA][light];
+            tip.innerHTML = tipStorage.theme["UA"]["light"];
         }
     }
     tip.hidden = false;
