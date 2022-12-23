@@ -15,7 +15,10 @@ import {
   getUserDataFromDB,
 } from '../firebase-database/database-realization';
 import { firebaseConfig } from './firebase-config';
-import { saveDataToLocalSt } from '../utils/local-st-functions';
+import {
+  saveDataToLocalSt,
+  removeDataFromLocalSt,
+} from '../utils/local-st-functions';
 import {
   loginFormNotify,
   showElements,
@@ -92,7 +95,7 @@ async function onLogoutClick(event) {
 
   homePageInterface();
 
-  saveDataToLocalSt(PAGE_KEY, 'home');
+  removeDataFromLocalSt(KEY);
 
   //logout the user
   await signOut(auth);

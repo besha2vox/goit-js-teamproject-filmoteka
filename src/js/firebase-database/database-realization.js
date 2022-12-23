@@ -23,9 +23,7 @@ const PAGE_KEY = 'page';
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-getSnapshotOfUserDataFromDB();
-
-function getSnapshotOfUserDataFromDB() {
+if (loadDataFromLocalSt(KEY)) {
   const snapshot = onSnapshot(
     doc(db, 'users', loadDataFromLocalSt(KEY)),
     doc => {
@@ -37,6 +35,8 @@ function getSnapshotOfUserDataFromDB() {
       }
     }
   );
+} else {
+  homePageInterface();
 }
 
 async function deleteFilmFromList(data, list) {
@@ -95,6 +95,5 @@ export {
   addFilmToTheList,
   deleteFilmFromList,
   getUserDataFromDB,
-  getSnapshotOfUserDataFromDB,
   db,
 };
