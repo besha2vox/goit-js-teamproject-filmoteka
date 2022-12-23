@@ -5,23 +5,25 @@ const refs = {
 };
 let dataLanguage = document.querySelectorAll("[data-enlang]");
 
+checkLocalStrLanguage();
+refs.langSwitcher.addEventListener('change', changeLanguage);
 
-const storageLanguage = loadDataFromLocalSt("language");
-console.log(storageLanguage);
-if (storageLanguage !== undefined) {
-    if (storageLanguage === "EN") {
-        changeLanguageText("EN"); 
-        changeLanguageClass("en");
-    } else {
-        changeLanguageText("UA");  
-        changeLanguageClass("ua");
-    }
-} else {
-    changeLanguageText("UA"); 
-    document.body.classList.add("ua");
+function checkLocalStrLanguage() {
+    const storageLanguage = loadDataFromLocalSt("language");
+        if (storageLanguage !== undefined) {
+            if (storageLanguage === "EN") {
+                changeLanguageText("EN"); 
+                changeLanguageClass("en");
+            } else {
+                changeLanguageText("UA");  
+                changeLanguageClass("ua");
+            }
+        } else {
+            changeLanguageText("UA"); 
+            document.body.classList.add("ua");
+        }
 }
 
-refs.langSwitcher.addEventListener('change', changeLanguage);
 
 function changeLanguage(evt) {
     if (document.body.classList.contains("ua")) {
