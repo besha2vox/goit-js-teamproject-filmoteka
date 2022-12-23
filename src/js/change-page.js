@@ -106,8 +106,6 @@ function onHomePage(event) {
   hideElements(libraryPage);
   showElements(homePage);
 
-  // removeDataFromLocalSt(LIST_KEY);
-
   getLatestMovies();
 }
 
@@ -161,20 +159,4 @@ function searchGenres(genres) {
   return genresArr.join(', ');
 }
 
-async function renderFilmsFromDB(userData) {
-  const getPromisesById = userData.map(async id => await createData(id));
-
-  const getDataFromPromises = await Promise.all(getPromisesById);
-  const countOfPages = Math.ceil(getDataFromPromises.length / 9);
-  const template = getDataFromPromises.map(createMovieCardMarkup).join('');
-
-  moviesList.innerHTML = template;
-  // renderPagination(
-  //   countOfPages,
-  //   pagination,
-  //   getUserDataFromDB(loadDataFromLocalSt(KEY)),
-  //   api
-  // );
-}
-
-export { renderFilmsFromDB, homePageInterface, libraryPageInterface };
+export { homePageInterface, libraryPageInterface };
