@@ -2,25 +2,23 @@ import { API } from './api';
 
 const api = new API();
 
-async function searchGenres(ids) {
-  const genresObj = await api.getGenres();
-  const genres = genresObj.genres;
-  const genresArr = ids.map(id => genres.find(genre => genre.id === id));
+async function searchGenres(ids, genres) {
+  const getPromise = ids.map(
+    async id => await genres.find(genre => genre.id === id)
+  );
+  const genresArr = await Promise.all(getPromise);
+  console.log('genresArr', genresArr);
   return genresArr
     .map(({ name }) => name)
-    .slice(0, 2)
+    .slice(0, 3)
     .join(', ');
 }
 
-export async function createMovieCardMarkup({
-  genre_ids,
-  id,
-  title,
-  poster_path,
-  vote_average,
-  release_date,
-}) {
-  const genre = await searchGenres(genre_ids);
+export async function createMovieCardMarkup(
+  { genre_ids, id, title, poster_path, vote_average, release_date },
+  genres
+) {
+  const genre = await searchGenres(genre_ids, genres);
 
   return await `<li class="movie-card" id="${id}">
         <img 

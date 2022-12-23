@@ -3,6 +3,7 @@ import { createMovieCardMarkup } from '../create-movie-card';
 import { onMovieClick } from './modal-open';
 import { renderPagination } from '../utils/pagination';
 import { loginFormNotify } from '../firebase-auth/interface-change';
+import { createGenreData } from './get-genres';
 
 const api = new API();
 
@@ -50,10 +51,14 @@ async function createData() {
 
 async function getMoviesByKeyword() {
   const movies = await getData();
-  const getPromise = movies.results.map(createMovieCardMarkup);
+  const genres = await createGenreData();
+  const getPromise = movies.results.map(movie =>
+    createMovieCardMarkup(movie, genres.genres)
+  );
   const template = (await Promise.all(getPromise)).join('');
 
   refs.moviesList.innerHTML = template;
+
   renderPagination(
     movies.total_pages,
     refs.pagination,
@@ -64,7 +69,7 @@ async function getMoviesByKeyword() {
 
 async function getData() {
   try {
-    return await api.getMovieLatest('week');
+    return await api.getMoviesByKeyWord('week');
   } catch (error) {
     console.log(error.message);
   }
