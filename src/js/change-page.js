@@ -17,12 +17,19 @@ import {
   getLatestMovies,
   pagination,
 } from './manipulation-with-api/get-latest-movies';
-import { saveDataToLocalSt } from './utils/local-st-functions';
+import {
+  saveDataToLocalSt,
+  removeDataFromLocalSt,
+} from './utils/local-st-functions';
 import { renderPagination } from './utils/pagination';
-import { getUserDataFromDB } from './firebase-database/database-realization';
+import {
+  getUserDataFromDB,
+  monitorsChangesInDB,
+} from './firebase-database/database-realization';
 
 const KEY = 'uaerUID';
 const PAGE_KEY = 'page';
+const LIST_KEY = 'film-list';
 
 libraryLink.addEventListener('click', onLibraryPage);
 homeLink.addEventListener('click', onHomePage);
@@ -36,6 +43,10 @@ function onWatchedBtnClick(event) {
   classToggle(queueBtn, 'remove', 'button__header--active');
 
   renderFilmListsFromDB('watched');
+
+  saveDataToLocalSt(LIST_KEY, 'watched');
+
+  monitorsChangesInDB();
 }
 
 function onQueueBtnClick(event) {
@@ -45,16 +56,23 @@ function onQueueBtnClick(event) {
   classToggle(watchedBtn, 'remove', 'button__header--active');
 
   renderFilmListsFromDB('queue');
+
+  saveDataToLocalSt(LIST_KEY, 'queue');
+
+  monitorsChangesInDB();
 }
 
 async function onLibraryPage(event) {
   event.preventDefault();
+
+  // monitorsChangesInDB();
 
   libraryPageInterface();
 
   renderFilmListsFromDB('watched');
 
   saveDataToLocalSt(PAGE_KEY, 'library');
+  saveDataToLocalSt(LIST_KEY, 'watched');
 }
 
 async function renderFilmListsFromDB(list) {
@@ -87,6 +105,8 @@ function onHomePage(event) {
 
   hideElements(libraryPage);
   showElements(homePage);
+
+  // removeDataFromLocalSt(LIST_KEY);
 
   getLatestMovies();
 }
