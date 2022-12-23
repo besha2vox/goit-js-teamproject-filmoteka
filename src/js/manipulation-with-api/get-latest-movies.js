@@ -2,7 +2,6 @@ import { API } from '../api';
 import { createMovieCardMarkup } from '../create-movie-card';
 import { onMovieClick } from './modal-open';
 import { renderPagination } from '../utils/pagination';
-import { createGenreData } from './get-genres';
 
 const api = new API();
 
@@ -15,10 +14,7 @@ moviesList.addEventListener('click', onMovieClick);
 
 async function getLatestMovies() {
   const movies = await createMovieData();
-  const genres = await createGenreData();
-  const getPromise = movies.results.map(movie =>
-    createMovieCardMarkup(movie, genres.genres)
-  );
+  const getPromise = movies.results.map(movie => createMovieCardMarkup(movie));
   const template = (await Promise.all(getPromise)).join('');
 
   moviesList.innerHTML = template;

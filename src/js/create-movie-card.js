@@ -1,24 +1,26 @@
-import { API } from './api';
+import { loadDataFromLocalSt } from './utils/local-st-functions';
+import { GENRES_STORAGE_KEY } from './manipulation-with-api/get-genres';
 
-const api = new API();
+function searchGenres(ids) {
+  const allGenres = JSON.parse(loadDataFromLocalSt(GENRES_STORAGE_KEY));
+  console.log('allGenres', allGenres);
+  const genresArr = ids.map(id => allGenres.find(genre => genre.id === id));
 
-async function searchGenres(ids, genres) {
-  const getPromise = ids.map(
-    async id => await genres.find(genre => genre.id === id)
-  );
-  const genresArr = await Promise.all(getPromise);
-  console.log('genresArr', genresArr);
   return genresArr
     .map(({ name }) => name)
     .slice(0, 3)
     .join(', ');
 }
 
-export async function createMovieCardMarkup(
-  { genre_ids, id, title, poster_path, vote_average, release_date },
-  genres
-) {
-  const genre = await searchGenres(genre_ids, genres);
+export async function createMovieCardMarkup({
+  genre_ids,
+  id,
+  title,
+  poster_path,
+  vote_average,
+  release_date,
+}) {
+  const genre = await searchGenres(genre_ids);
 
   return await `<li class="movie-card" id="${id}">
         <img 
