@@ -12,6 +12,7 @@ const libraryPage = document.querySelectorAll('.library');
 const homePage = document.querySelectorAll('.home');
 const watchedBtn = document.querySelector('.watched');
 const queueBtn = document.querySelector('.queue');
+const moviesList = document.querySelector('.movies-grid__list');
 
 export {
   siteNav,
@@ -28,4 +29,5 @@ export {
   homePage,
   watchedBtn,
   queueBtn,
+  moviesList,
 };

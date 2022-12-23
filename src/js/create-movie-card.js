@@ -12,23 +12,28 @@ async function searchGenres(ids) {
     .join(', ');
 }
 
-export async function createMovieCardMarkup(movie) {
-  const genre = await searchGenres(movie.genre_ids);
+export async function createMovieCardMarkup({
+  genre_ids,
+  id,
+  title,
+  poster_path,
+  vote_average,
+  release_date,
+}) {
+  const genre = await searchGenres(genre_ids);
 
-  return `<li class="movie-card" id="${movie.id}">
-        <img src="https://image.tmdb.org/t/p/original${
-          movie.poster_path
-        }" alt="Poster of ${movie.title}" class="movie-card__img" />
+  return await `<li class="movie-card" id="${id}">
+        <img 
+        src="https://image.tmdb.org/t/p/original${poster_path}" 
+        alt="Poster of ${title}" class="movie-card__img" />
         
           <div class="movie-card__info">
-            <p class="movie-card__name">${movie.title}</p>
+            <p class="movie-card__name">${title}</p>
             <div class="movie-card__wrap">
               <p class="movie-card__genre">${genre} | ${
-    movie.release_date.split('-')[0]
+    release_date.split('-')[0]
   }</p>
-              <span class="movie-card__rating">${movie.vote_average.toFixed(
-                1
-              )}</span>
+              <span class="movie-card__rating">${vote_average.toFixed(1)}</span>
               </div>
           </div>
       </li>`;

@@ -15,10 +15,7 @@ import {
   getUserDataFromDB,
 } from '../firebase-database/database-realization';
 import { firebaseConfig } from './firebase-config';
-import {
-  saveDataToLocalSt,
-  removeDataFromLocalSt,
-} from '../utils/local-st-functions';
+import { saveDataToLocalSt } from '../utils/local-st-functions';
 import {
   loginFormNotify,
   showElements,
@@ -34,15 +31,13 @@ import {
   loginLinks,
   logoutLinks,
   homeLink,
-  libraryPage,
-  homePage,
-  watchedBtn,
-  queueBtn,
 } from './auth-refs';
 import { Modal } from '../class-modal';
 import { loginModalMarkup, signupModalMarkup } from './login-modal-markup';
+import { homePageInterface } from '../change-page';
 
 const KEY = 'userUID';
+const PAGE_KEY = 'page';
 
 //app initialization
 const app = initializeApp(firebaseConfig);
@@ -59,6 +54,7 @@ onAuthStateChanged(auth, user => {
     greeting.querySelector('.user-name').textContent = `${user.displayName}!`;
     greeting.style.display = 'block';
   } else {
+    saveDataToLocalSt(PAGE_KEY, 'home');
     showElements(logoutLinks);
     hideElements(loginLinks);
     classToggle(homeLink, 'add', 'active');
@@ -94,14 +90,9 @@ function onLoginLinkClick() {
 async function onLogoutClick(event) {
   event.preventDefault();
 
-  removeDataFromLocalSt(KEY);
-  classToggle(libraryLink, 'remove', 'active');
-  classToggle(homeLink, 'add', 'active');
-  classToggle(watchedBtn, 'add', 'button__header--active');
-  classToggle(queueBtn, 'remove', 'button__header--active');
+  homePageInterface();
 
-  hideElements(libraryPage);
-  showElements(homePage);
+  saveDataToLocalSt(PAGE_KEY, 'home');
 
   //logout the user
   await signOut(auth);
