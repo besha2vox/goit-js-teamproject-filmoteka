@@ -8,7 +8,7 @@ async function searchGenres(ids) {
   const genresArr = ids.map(id => genres.find(genre => genre.id === id));
   return genresArr
     .map(({ name }) => name)
-    .slice(0, 2)
+    .slice(0, 4)
     .join(', ');
 }
 
@@ -21,7 +21,6 @@ export async function createMovieCardMarkup({
   release_date,
 }) {
   const genre = await searchGenres(genre_ids);
-
   return await `<li class="movie-card" id="${id}">
         <img 
         src="https://image.tmdb.org/t/p/original${poster_path}" 
@@ -30,9 +29,11 @@ export async function createMovieCardMarkup({
           <div class="movie-card__info">
             <p class="movie-card__name">${title}</p>
             <div class="movie-card__wrap">
-              <p class="movie-card__genre">${genre} | ${
+            <p class="movie-card__info-wrap">
+              <span class="movie-card__genre">${genre}</span> | <span class="movie-card__release">${
     release_date.split('-')[0]
-  }</p>
+  }</span>
+              </p>
               <span class="movie-card__rating">${vote_average.toFixed(1)}</span>
               </div>
           </div>

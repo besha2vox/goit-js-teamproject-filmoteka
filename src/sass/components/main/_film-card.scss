@@ -18,15 +18,22 @@
     transition: box-shadow 0.6s ease-in;
   }
 
-  &__wrap {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  &__img {
+    border-radius: 5px;
+    // height: 402px;
+
+    // @media screen and (min-width: $tablet) {
+    //   height: 455px;
+    // }
+
+    // @media screen and (min-width: $desktop) {
+    //   height: 574px;
+    // }
   }
 
   &__info {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 8px;
     padding-right: 10px;
     padding-left: 10px;
@@ -51,8 +58,16 @@
     }
   }
 
-  &__genre {
+  &__wrap {
+  }
+
+  &__info-wrap {
     color: $accentColor;
+
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    display: flex;
   }
 
   &__rating {
