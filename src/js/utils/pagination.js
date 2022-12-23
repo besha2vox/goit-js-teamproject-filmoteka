@@ -1,6 +1,8 @@
 let api = {};
 let fetchCurrentPage = () => {};
 
+const element = document.querySelector('.pagination-list');
+
 function createPagination(totalPages) {
   let liTag = '';
   let active;
@@ -61,7 +63,7 @@ function createPagination(totalPages) {
   return liTag;
 }
 
-export function renderPagination(totalPages, element, func, fetchApi) {
+export function renderPagination(totalPages, func, fetchApi) {
   fetchCurrentPage = func;
   api = fetchApi;
   element.innerHTML = createPagination(totalPages);
@@ -69,7 +71,7 @@ export function renderPagination(totalPages, element, func, fetchApi) {
   addListenersBtns(btnRefs);
 }
 
-function getRefs(element) {
+function getRefs() {
   const prevBtn = element.querySelector('.btn.prev');
   const numberedBtns = element.querySelectorAll('.numb');
   const nextBtn = element.querySelector('.btn.next');
@@ -84,7 +86,6 @@ function onPrevBtnClick(e) {
 
 async function onNextBtnClick(e) {
   api.incrementPage();
-  console.log('api', api);
   fetchCurrentPage();
 }
 
