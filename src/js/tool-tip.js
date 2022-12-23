@@ -1,36 +1,4 @@
-// Ф-ции localStorage:
-
-function saveDataToLocalSt(key, value) {
-    try {
-    const serializedState = JSON.stringify(value);
-    localStorage.setItem(key, serializedState);
-} catch (error) {
-    console.error('Set state error: ', error.message);
-}
-}
-
-function loadDataFromLocalSt(key) {
-try {
-    const serializedState = localStorage.getItem(key);
-    return serializedState === null ? undefined : JSON.parse(serializedState);
-} catch (error) {
-    console.error('Get state error: ', error.message);
-}
-}
-
-function removeDataFromLocalSt(key) {
-try {
-    localStorage.removeItem(key);
-} catch (error) {
-    console.error('Get state error: ', error.message);
-}
-}
-
-export { saveDataToLocalSt, loadDataFromLocalSt, removeDataFromLocalSt };
-
-
-
-// Підказки
+import { saveDataToLocalSt, loadDataFromLocalSt, removeDataFromLocalSt } from './utils/local-st-functions';
 
 const tipStorage = {
     language: {
@@ -44,14 +12,13 @@ const tipStorage = {
             },
 }
 
-
 let tip = document.createElement("div"); 
 tip.className = "tooltip";               
 tip.hidden = true;                       
 document.body.append(tip);               
 
 document.addEventListener("mouseover", showTip);
-document.addEventListener("mouseout", hideTip);
+document.addEventListener("mouseout", hideTip)
 
 function showTip(event) {
     let tar = event.target.closest("[data-tooltip]");
@@ -61,13 +28,20 @@ function showTip(event) {
     let currentLang = loadDataFromLocalSt("language");
     
     if (tar.dataset.tooltip === "language-switch") {
-        tip.innerHTML = tipStorage.language[currentLang];
-    } 
-    
-    if (tar.dataset.tooltip === "theme-switch") {
-        tip.innerHTML = tipStorage.theme[currentLang][currentTheme];
+        if (currentLang !== undefined) {
+            tip.innerHTML = tipStorage.language[currentLang];
+        } else {
+            tip.innerHTML = tipStorage.language[UA];
+        }
     }
     
+    if (tar.dataset.tooltip === "theme-switch") {
+        if (currentLang !== undefined) {
+            tip.innerHTML = tipStorage.theme[currentLang][currentTheme];
+        } else {
+            tip.innerHTML = tipStorage.theme[UA][light];
+        }
+    }
     tip.hidden = false;
 
     let tarRect = tar.getBoundingClientRect(); 
@@ -86,5 +60,3 @@ function showTip(event) {
 function hideTip() {
     tip.hidden = true;
 }
-
-export { showTip, hideTip };
