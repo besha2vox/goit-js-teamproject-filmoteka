@@ -2,9 +2,9 @@ import { saveDataToLocalSt, loadDataFromLocalSt, removeDataFromLocalSt } from '.
 
 const refs = {
     langSwitcher: document.querySelector('.language-switcher__checkbox'),
-    switcherText: document.querySelector('.language-switcher__lang'),
-    placeholderUa: document.querySelector('.form_input'),
+    // switcherText: document.querySelector('.language-switcher__lang'),
 };
+let dataLanguage = document.querySelectorAll("[data-enlang]");
 
 const storageLanguage = loadDataFromLocalSt("language");
 if (storageLanguage !== undefined) {
@@ -54,11 +54,19 @@ function changeLanguageLocalStr(language) {
 
 function changeLanguageText(language) {
     if (language === 'UA') {
-        refs.switcherText.textContent = 'EN';
-        refs.placeholderUa.placeholder = "Movie search";   
-    } else { 
-        refs.switcherText.textContent = "UA";
-        refs.placeholderUa.placeholder = "Пошук фильму"; 
-}
+        dataLanguage.forEach((data) => {
+            data.textContent = data.dataset.enlang;
+            if (data.hasAttribute("placeholder")) {
+                data.placeholder = data.dataset.enlang;
+            }
+        }); 
 
+    } else { 
+        dataLanguage.forEach((data) => {
+            data.textContent = data.dataset.ualang;
+            if (data.hasAttribute("placeholder")) {
+                data.placeholder = data.dataset.ualang;
+            }
+        });
+}
 }
