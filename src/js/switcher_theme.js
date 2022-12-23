@@ -4,21 +4,23 @@ const refs = {
     toggleLang: document.querySelector('.theme-switch__toggle'),
 };
 
-const storageTheme = loadDataFromLocalSt("theme");
-if (storageTheme !== undefined) {
-    if (storageTheme === "dark") {
-        document.body.classList.remove("light-theme");
-        document.body.classList.add("dark-theme");
-    } else {
-        document.body.classList.remove("dark-theme");
-        document.body.classList.add("light-theme");
-    }
-} else {
-    document.body.classList.add("light-theme");
-}
-
+checkLocalStrLanguage();
 refs.toggleLang.addEventListener('change', changeTheme);
 
+function checkLocalStrLanguage() {
+    const storageTheme = loadDataFromLocalSt("theme");
+    if (storageTheme !== undefined) {
+        if (storageTheme === "dark") {
+            document.body.classList.remove("light-theme");
+            document.body.classList.add("dark-theme");
+        } else {
+            document.body.classList.remove("dark-theme");
+            document.body.classList.add("light-theme");
+        }
+    } else {
+        document.body.classList.add("light-theme");
+    }
+}
 
 function changeTheme(evt) {
     if (document.body.classList.contains("light-theme")) {
