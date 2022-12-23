@@ -41,8 +41,15 @@ import {
 } from './auth-refs';
 import { Modal } from '../class-modal';
 import { loginModalMarkup, signupModalMarkup } from './login-modal-markup';
+import {
+  renderFilmsFromDB,
+  homePageInterface,
+  libraryPageInterface,
+} from '../change-page';
+import { loadDataFromLocalSt } from '../utils/local-st-functions';
 
 const KEY = 'userUID';
+const PAGE_KEY = 'page';
 
 //app initialization
 const app = initializeApp(firebaseConfig);
@@ -59,6 +66,7 @@ onAuthStateChanged(auth, user => {
     greeting.querySelector('.user-name').textContent = `${user.displayName}!`;
     greeting.style.display = 'block';
   } else {
+    saveDataToLocalSt(PAGE_KEY, 'home');
     showElements(logoutLinks);
     hideElements(loginLinks);
     classToggle(homeLink, 'add', 'active');
@@ -94,13 +102,9 @@ function onLoginLinkClick() {
 async function onLogoutClick(event) {
   event.preventDefault();
 
-  removeDataFromLocalSt(KEY);
-  classToggle(homeLink, 'add', 'active');
-  classToggle(watchedBtn, 'add', 'button__header--active');
-  classToggle(queueBtn, 'remove', 'button__header--active');
+  homePageInterface();
 
-  hideElements(libraryPage);
-  showElements(homePage);
+  saveDataToLocalSt(PAGE_KEY, 'home');
 
   //logout the user
   await signOut(auth);

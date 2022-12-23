@@ -5,28 +5,27 @@ import {
   homePage,
   watchedBtn,
   queueBtn,
+  moviesList,
 } from './firebase-auth/auth-refs';
 import {
   classToggle,
   showElements,
   hideElements,
 } from './firebase-auth/interface-change';
-import {
-  onMovieClick,
-  modalOptions,
-  modal,
-  api,
-} from './manipulation-with-api/modal-open';
+import { api } from './manipulation-with-api/modal-open';
 import {
   getLatestMovies,
-  moviesList,
   pagination,
 } from './manipulation-with-api/get-latest-movies';
-import { getUserDataFromDB } from './firebase-database/database-realization';
-import { loadDataFromLocalSt } from './utils/local-st-functions';
+import {
+  loadDataFromLocalSt,
+  saveDataToLocalSt,
+} from './utils/local-st-functions';
 import { renderPagination } from './utils/pagination';
+import { getUserDataFromDB } from './firebase-database/database-realization';
 
 const KEY = 'uaerUID';
+const PAGE_KEY = 'page';
 
 libraryLink.addEventListener('click', onLibraryPage);
 homeLink.addEventListener('click', onHomePage);
@@ -38,6 +37,8 @@ function onWatchedBtnClick(event) {
 
   classToggle(watchedBtn, 'add', 'button__header--active');
   classToggle(queueBtn, 'remove', 'button__header--active');
+
+  renderFilmListsFromDB('watched');
 }
 
 function onQueueBtnClick(event) {
@@ -45,11 +46,31 @@ function onQueueBtnClick(event) {
 
   classToggle(queueBtn, 'add', 'button__header--active');
   classToggle(watchedBtn, 'remove', 'button__header--active');
+
+  renderFilmListsFromDB('queue');
 }
 
 async function onLibraryPage(event) {
   event.preventDefault();
 
+  libraryPageInterface();
+
+  renderFilmListsFromDB('watched');
+
+  saveDataToLocalSt(PAGE_KEY, 'library');
+}
+
+async function renderFilmListsFromDB(list) {
+  const userData = await getUserDataFromDB();
+  const getPromisesById = userData[list].map(async id => await createData(id));
+  const getDataFromPromises = await Promise.all(getPromisesById);
+  // const countOfPages = Math.ceil(getDataFromPromises.length / 9);
+  const template = getDataFromPromises.map(createMovieCardMarkup).join('');
+
+  moviesList.innerHTML = template;
+}
+
+function libraryPageInterface() {
   classToggle(libraryLink, 'add', 'active');
   classToggle(homeLink, 'remove', 'active');
   classToggle(watchedBtn, 'add', 'button__header--active');
@@ -57,31 +78,23 @@ async function onLibraryPage(event) {
 
   hideElements(homePage);
   showElements(libraryPage);
-
-  const userData = await getUserDataFromDB(loadDataFromLocalSt(KEY));
-
-  const getPromisesById = userData.watched.map(
-    async id => await createData(id)
-  );
-  const getDataFromPromises = await Promise.all(getPromisesById);
-  const countOfPages = Math.ceil(getDataFromPromises.length / 9);
-
-  console.log(getDataFromPromises.map(createMovieCardMarkup));
-
-  const template = getDataFromPromises.map(createMovieCardMarkup).join('');
-
-  moviesList.innerHTML = template;
-  renderPagination(
-    countOfPages,
-    pagination,
-    getUserDataFromDB(loadDataFromLocalSt(KEY)),
-    api
-  );
 }
 
 function onHomePage(event) {
   event.preventDefault();
 
+  saveDataToLocalSt(PAGE_KEY, 'home');
+
+  classToggle(homeLink, 'add', 'active');
+  classToggle(libraryLink, 'remove', 'active');
+
+  hideElements(libraryPage);
+  showElements(homePage);
+
+  getLatestMovies();
+}
+
+function homePageInterface() {
   classToggle(homeLink, 'add', 'active');
   classToggle(libraryLink, 'remove', 'active');
 
@@ -107,7 +120,6 @@ function createMovieCardMarkup({
   vote_average,
   release_date,
 }) {
-  console.log(genres);
   const genresStr = searchGenres(genres);
 
   return `<li class="movie-card" id="${id}">
@@ -128,7 +140,24 @@ function createMovieCardMarkup({
 }
 
 function searchGenres(genres) {
-  console.log(genres);
   const genresArr = genres.map(genre => genre.name);
   return genresArr.join(', ');
 }
+
+async function renderFilmsFromDB(userData) {
+  const getPromisesById = userData.map(async id => await createData(id));
+
+  const getDataFromPromises = await Promise.all(getPromisesById);
+  const countOfPages = Math.ceil(getDataFromPromises.length / 9);
+  const template = getDataFromPromises.map(createMovieCardMarkup).join('');
+
+  moviesList.innerHTML = template;
+  // renderPagination(
+  //   countOfPages,
+  //   pagination,
+  //   getUserDataFromDB(loadDataFromLocalSt(KEY)),
+  //   api
+  // );
+}
+
+export { renderFilmsFromDB, homePageInterface, libraryPageInterface };

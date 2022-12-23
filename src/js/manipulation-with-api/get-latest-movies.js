@@ -10,7 +10,7 @@ const pagination = document.querySelector('.pagination-list');
 
 moviesList.addEventListener('click', onMovieClick);
 
-getLatestMovies();
+// getLatestMovies();
 
 async function getLatestMovies() {
   const movies = await createData();

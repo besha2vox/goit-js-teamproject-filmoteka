@@ -71,6 +71,8 @@
     text-transform: uppercase;
     text-align: center;
 
+    cursor: pointer;
+
     border-radius: $imgBorderRadius;
 
     transition: background-color 300ms $cubicBezier, border 300ms $cubicBezier, color 300ms $cubicBezier;

@@ -8,14 +8,41 @@ import {
   arrayUnion,
   arrayRemove,
   getDoc,
+  onSnapshot,
 } from 'firebase/firestore';
 import { firebaseConfig } from '../firebase-auth/firebase-config';
 import { loadDataFromLocalSt } from '../utils/local-st-functions';
+import {
+  renderFilmsFromDB,
+  homePageInterface,
+  libraryPageInterface,
+} from '../change-page';
 
 const KEY = 'userUID';
+const PAGE_KEY = 'page';
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+getSnapshotOfUserDataFromDB();
+
+function getSnapshotOfUserDataFromDB() {
+  const snapshot = onSnapshot(
+    doc(db, 'users', loadDataFromLocalSt(KEY)),
+    doc => {
+      if (loadDataFromLocalSt(PAGE_KEY) === 'library') {
+        libraryPageInterface();
+        renderFilmsFromDB(doc.data().watched);
+      } else {
+        homePageInterface();
+      }
+      doc.data();
+
+      // renderFilmsFromDB(doc.data().watched);
+      console.log(doc.data());
+    }
+  );
+}
 
 async function deleteFilmFromList(data, list) {
   try {
@@ -73,4 +100,6 @@ export {
   addFilmToTheList,
   deleteFilmFromList,
   getUserDataFromDB,
+  getSnapshotOfUserDataFromDB,
+  db,
 };
