@@ -5,6 +5,9 @@
   align-items: center;
   margin: 0 auto;
   row-gap: 20px;
+  width: 806px;
+
+  background-color: $primeryBackgroundColor;
 
   @media screen and (min-width: $tablet) {
     flex-direction: row;
@@ -104,3 +107,10 @@ body.dark-theme {
   border-radius: 5px;
   max-width: 375px;
 }
+
+.modal-movie__notify {
+  // height: 32px;
+  text-align: center;
+}
+
+

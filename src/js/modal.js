@@ -1,7 +1,3 @@
-import { Modal } from './class-modal';
-
-const modal = new Modal();
-
 export const getModalMarkup = ({
   overview,
   vote_average,
@@ -11,11 +7,12 @@ export const getModalMarkup = ({
   poster_path,
   vote_count,
   title,
+  id,
 }) => {
   const url = `https://image.tmdb.org/t/p/original${poster_path}`;
   const genresNames = genres.map(genre => genre.name).join(', ');
 
-  return `<div class="modal-movie">
+  return `<div class="modal-movie" data-id='${id}'>
   <img class="poster" width="375" src="${url}" alt="${title}" />
   <div class="modal-movie__descr">   
     
@@ -49,10 +46,20 @@ export const getModalMarkup = ({
       </div>
       
       <div class="trailer-wrapper"></div>
-      <div class="modal-movie__button-wrapper">
-        <button class="modal-movie__btn">add to Watched</button>
-        <button class="modal-movie__btn">add to queue</button>
-      </div>
+       <ul class="buttons-list buttons-list__film-modal">
+     <li class="buttons-list__item">
+         <button class="button button--transparent" type="button" data-list="watched">
+             add to Watched
+         </button>
+     </li>
+     <li class="buttons-list__item">
+         <button class="button button--transparent" type="button" data-list="queue">
+             add to queue
+         </button>
+     </li>
+
+     </ul>
+     <p class='modal-movie__notify form__error-notification--for-header'></p>
     </div>
   </div>
 </div>`;
