@@ -31,7 +31,7 @@ let mask = document.querySelector('.loader-inner');
 
 window.addEventListener('load', () => {
     mask.classList.add('hide');
-    setTimeout(() => {
+  setTimeout(() => {
         mask.remove()
     }, 400)
 });
