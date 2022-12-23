@@ -11,15 +11,29 @@ const teamCardTpl = () => {
   return teamOfList
     .map(
       ({ git, photo, name, position }) =>
-        `
-<li class="team-item">
-      <img class="team-img" src="${photo}" alt="${name}" width="100">
-      <a href="${git}" class="team-link"></a>
-    <div class="team-desc-container">
-        <p class="team-name">${name}</p>
-        <p class="team-position">${position}</p>
+      `
+
+
+   <div class="container">
+        <div class="card">
+            <div class="face face1">
+                <div class="content">
+                    <img class="team-img" src="${photo}" alt="${name}" width="300">
+                    
+                    <p class="team-name">${name}</p>
+                    <p class="team-position">${position}</p>
+                </div>
+                <a href="${git}" class="team-link"></a>
+            </div>
+            <div class="face face2">
+                <div class="content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cum cumque minus iste veritatis provident at.</p>
+                        <a href="#">Read More</a>
+                </div>
+            </div>
+        </div>
     </div>
-</li> `
+ `
     )
     .join('');
 };
@@ -31,3 +45,13 @@ export const markupTeamCards = data => {
 };
 
 refs.teamBtns.forEach(btn => btn.addEventListener('click', markupTeamCards));
+
+
+{/* <li class="team-item" id="universe">
+      <img class="team-img" src="${photo}" alt="${name}" width="100">
+      <a href="${git}" class="team-link"></a>
+    <div class="team-desc-container" >
+        <p class="team-name">${name}</p>
+        <p class="team-position">${position}</p>
+    </div>
+</li> */}
