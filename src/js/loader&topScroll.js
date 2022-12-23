@@ -27,7 +27,7 @@ window.onload = () => {
 
 // Лоадер//
 
-let mask = document.querySelector('.loader-inner');
+let mask = document.querySelector('.loader');
 
 window.addEventListener('load', () => {
     mask.classList.add('hide');
