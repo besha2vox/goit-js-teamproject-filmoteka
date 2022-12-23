@@ -2,6 +2,7 @@ import { API } from '../api';
 import { createMovieCardMarkup } from '../create-movie-card';
 import { onMovieClick } from './modal-open';
 import { renderPagination } from '../utils/pagination';
+import { loginFormNotify } from '../firebase-auth/interface-change';
 
 const api = new API();
 
@@ -9,6 +10,7 @@ const refs = {
   form: document.querySelector('.home__form'),
   moviesList: document.querySelector('.movies-grid__list'),
   pagination: document.querySelector('.pagination-list'),
+  notifyEl: document.querySelector('.form__error-notification--for-header'),
 };
 
 refs.moviesList.addEventListener('click', onMovieClick);
@@ -27,7 +29,14 @@ async function onFormSubmit(e) {
 
   const movies = await createData();
 
-  if (!movies) return;
+  if (!movies.results.length) {
+    loginFormNotify(
+      refs.notifyEl,
+      'Search result not successful. Enter the correct movie name and'
+    );
+    return;
+  }
+
   getMoviesByKeyword();
 }
 

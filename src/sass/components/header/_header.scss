@@ -115,6 +115,7 @@
    margin-top: 20px;
 
    font-size: 14px;
+   font-weight: 400;
    color: $errorTextColor;
 
    opacity: 1;
@@ -165,6 +166,10 @@
 
   @media screen and (min-width: $tablet) {
     width: 336px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 394px;
   }
 }
 
