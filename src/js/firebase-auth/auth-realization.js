@@ -15,9 +15,7 @@ import {
   getUserDataFromDB,
 } from '../firebase-database/database-realization';
 import { firebaseConfig } from './firebase-config';
-import {
-  saveDataToLocalSt,
-} from '../utils/local-st-functions';
+import { saveDataToLocalSt } from '../utils/local-st-functions';
 import {
   loginFormNotify,
   showElements,
@@ -36,9 +34,7 @@ import {
 } from './auth-refs';
 import { Modal } from '../class-modal';
 import { loginModalMarkup, signupModalMarkup } from './login-modal-markup';
-import {
-  homePageInterface,
-} from '../change-page';
+import { homePageInterface } from '../change-page';
 
 const KEY = 'userUID';
 const PAGE_KEY = 'page';
