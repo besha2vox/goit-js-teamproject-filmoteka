@@ -51,7 +51,7 @@ function filmModalOptions() {
 
     if (!event.target.classList.value.includes('button__header--active')) {
       classToggle(event.target, 'add', 'button__header--active');
-      event.target.textContent = 'in your watched list';
+      event.target.textContent = 'in watched list';
 
       addFilmToTheList(filmId, event.target.dataset.list);
       loginFormNotify(notifyEl, 'The movie has been added to your watch list!');
@@ -78,7 +78,7 @@ function filmModalOptions() {
 
     if (!event.target.classList.value.includes('button__header--active')) {
       classToggle(event.target, 'add', 'button__header--active');
-      event.target.textContent = 'in your queue list';
+      event.target.textContent = 'in queue list';
 
       addFilmToTheList(filmId, event.target.dataset.list);
       loginFormNotify(notifyEl, 'The movie has been added to your Queue list!');
@@ -104,12 +104,12 @@ function filmModalOptions() {
 
     if (userData['watched'].includes(filmId)) {
       classToggle(addToWatchedBtn, 'add', 'button__header--active');
-      addToWatchedBtn.textContent = 'in your watched list';
+      addToWatchedBtn.textContent = 'in watched list';
     }
 
     if (userData['queue'].includes(filmId)) {
       classToggle(addToQueuedBtn, 'add', 'button__header--active');
-      addToQueuedBtn.textContent = 'in your queue list';
+      addToQueuedBtn.textContent = 'in queue list';
     }
 
     btnList.style.display = 'flex';
