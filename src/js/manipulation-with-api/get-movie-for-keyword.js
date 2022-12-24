@@ -3,6 +3,7 @@ import { createMovieCardMarkup } from '../create-movie-card';
 import { onMovieClick } from './modal-open';
 import { renderPagination } from '../pagination/pagination';
 import { loginFormNotify } from '../firebase-auth/interface-change';
+import { getCurrentFunc } from '../utils/render-on switch-lang';
 
 const api = new API();
 
@@ -54,7 +55,7 @@ async function getMoviesByKeyword() {
   const template = (await Promise.all(getPromise)).join('');
 
   refs.moviesList.innerHTML = template;
-
+  getCurrentFunc(getMoviesByKeyword);
   renderPagination(movies.total_pages, getMoviesByKeyword, api);
 }
 
