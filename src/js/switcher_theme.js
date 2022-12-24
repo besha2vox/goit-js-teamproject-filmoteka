@@ -19,6 +19,7 @@ function checkLocalStrLanguage() {
         }
     } else {
         document.body.classList.add("light-theme");
+        saveDataToLocalSt("theme", "light");
     }
 }
 

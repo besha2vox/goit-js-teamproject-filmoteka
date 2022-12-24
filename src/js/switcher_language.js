@@ -21,6 +21,7 @@ function checkLocalStrLanguage() {
         } else {
             changeLanguageText("UA"); 
             document.body.classList.add("ua");
+            saveDataToLocalSt("language", "UA");
         }
 }
 
