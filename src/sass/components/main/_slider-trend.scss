@@ -166,11 +166,11 @@ $animationSpeed: 60s;
     background-color: $primeryBackgroundColor;
     overflow: scroll;
     height: 100vh;
-    // padding-top: 48px;
+    padding-top: 48px;
   
     @media screen and (min-width: $tablet) {
       flex-direction: row;
-    //   padding: 40px 36px;
+      padding: 40px 36px;
       column-gap: 68px;
       max-width: 704px;
       align-items: flex-start;
@@ -180,7 +180,7 @@ $animationSpeed: 60s;
     }
   
     @media screen and (min-width: $desktop) {
-    //   padding: 40px 12px;
+      padding: 40px 12px;
       column-gap: 16px;
       max-width: 806px;
     }
