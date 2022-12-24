@@ -14,7 +14,7 @@ const teamCardTpl = () => {
         `
 <li class="team-item">
       <img class="team-img" src="${photo}" alt="${name}" width="100">
-      <a href="${git}" class="team-link"></a>
+      <a href="${git}" class="team-link" target="_blank"></a>
     <div class="team-desc-container">
         <p class="team-name EN">${name}</p>
         <p class="team-name UA">${nameUA}</p>
