@@ -1,15 +1,15 @@
 import { API } from '../api';
 import { createMovieCardMarkup } from '../create-movie-card';
 import { onMovieClick } from './modal-open';
-import { renderPagination } from '../utils/pagination';
+import { renderPagination } from '../pagination/pagination';
 import { loginFormNotify } from '../firebase-auth/interface-change';
+import { getCurrentFunc } from '../utils/render-on switch-lang';
 
 const api = new API();
 
 const refs = {
   form: document.querySelector('.home__form'),
   moviesList: document.querySelector('.movies-grid__list'),
-  pagination: document.querySelector('.pagination-list'),
   notifyEl: document.querySelector('.form__error-notification--for-header'),
 };
 
@@ -29,7 +29,8 @@ async function onFormSubmit(e) {
 
   const movies = await createData();
 
-  if (!movies.results.length) {
+  if (!movies || !movies.results.length) {
+    document.querySelector('.pagination-list').innerHTML = '';
     loginFormNotify(
       refs.notifyEl,
       'Search result not successful. Enter the correct movie name and'
@@ -54,13 +55,8 @@ async function getMoviesByKeyword() {
   const template = (await Promise.all(getPromise)).join('');
 
   refs.moviesList.innerHTML = template;
-
-  renderPagination(
-    movies.total_pages,
-    refs.pagination,
-    getMoviesByKeyword,
-    api
-  );
+  getCurrentFunc(getMoviesByKeyword);
+  renderPagination(movies.total_pages, getMoviesByKeyword, api);
 }
 
 async function getData() {

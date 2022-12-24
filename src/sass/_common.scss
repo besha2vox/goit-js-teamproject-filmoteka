@@ -21,6 +21,25 @@ body {
     font-size: 20px;
     line-height: 1.2;
   }
+  &.dark-theme {
+    background-color: #12181c;
+    color: #ffffff;
+  }
+  &.ua .ua {
+    display: block;
+  }
+
+  &.ua .en {
+    display: none;
+  }
+
+  &.en .en {
+    display: block;
+  }
+
+  &.en .ua {
+    display: none;
+  }
 }
 
 body.modal-open {

@@ -3,17 +3,27 @@
 #scrollTop {
     position: fixed;
     bottom: 150px;
-    right: 70px;
-    font-size: 40px;
+    right: 22px;
+    font-size: 28px;
     z-index: 9999;
     cursor: pointer;
-    color: #FF001B;
+    color: $accentColor;
+    @media screen and (min-width: $tablet) {
+            right: 60px;
+            font-size: 44px;
+        }
+    @media screen and (min-width: $desktop) {
+        right: 100px;
+        font-size: 55px;
+        }
 }
 
 #scrollTop:hover {
-    color: #FF6B08 ;
+    
+    color: $activePageColor;
 
 }
+
 
 
 .isShowBtn {
@@ -26,129 +36,151 @@
 }
 
 // оформлення Loader//
+
+
 .loader {
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: 99999;
-
-    pointer-events: none;
-}
-
-.loader-inner {
-    bottom: 0;
-    height: 60px;
-    left: 0;
-    margin: auto;
     position: absolute;
-    right: 0;
-    top: 0;
-    width: 100px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 140px;
+    height: 70px;
 }
 
-.loader-line-wrap {
-    animation:
-        spin 2000ms cubic-bezier(.175, .885, .32, 1.275) infinite;
-    box-sizing: border-box;
-    height: 50px;
-    left: 0;
-    overflow: hidden;
+#dot1,
+#dot2,
+#dot3,
+#dot4,
+#dot5,
+#dot6,
+#dot7,
+#dot8,
+#dot9,
+#dot10 {
     position: absolute;
-    top: 0;
-    transform-origin: 50% 100%;
-    width: 100px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50px 50px;
+    background: #000;
+    animation: spin 1.5s linear infinite;
+    transform-origin: center center;
 }
 
-.loader-line {
-    border: 4px solid transparent;
-    border-radius: 100%;
-    box-sizing: border-box;
-    height: 100px;
-    left: 0;
-    margin: 0 auto;
+#dot2 {
+    animation: spin 1.5s -0.75s linear infinite;
+}
+
+#dot3 {
+    left: 30px;
+    animation: spin 1.5s -1.3s linear infinite;
+}
+
+#dot4 {
+    left: 30px;
+    animation: spin 1.5s -0.55s linear infinite;
+}
+
+#dot5 {
+    left: 60px;
+    animation: spin 1.5s -1.1s linear infinite;
+}
+
+#dot6 {
+    left: 60px;
+    animation: spin 1.5s -0.35s linear infinite;
+}
+
+#dot7 {
+    left: 90px;
+    animation: spin 1.5s -0.9s linear infinite;
+}
+
+#dot8 {
+    left: 90px;
+    animation: spin 1.5s -0.15s linear infinite;
+}
+
+#dot9 {
+    left: 120px;
+    animation: spin 1.5s -0.7s linear infinite;
+}
+
+#dot10 {
+    left: 120px;
+    animation: spin 1.5s 0.05s linear infinite;
+}
+
+#base1,
+#base2,
+#base3,
+#base4,
+#base5 {
     position: absolute;
-    right: 0;
-    top: 0;
-    width: 100px;
+    top: 30px;
+    left: 5px;
+    width: 1px;
+    height: 10px;
+    background: #000;
+    animation: flex 1.5s linear infinite;
+    transform-origin: center center;
 }
 
-.loader-line-wrap:nth-child(1) {
-    animation-delay: -50ms;
+#base2 {
+    left: 35px;
+    animation: flex 1.5s -1.3s linear infinite;
 }
 
-.loader-line-wrap:nth-child(2) {
-    animation-delay: -100ms;
+#base3 {
+    left: 65px;
+    animation: flex 1.5s -1.1s linear infinite;
 }
 
-.loader-line-wrap:nth-child(3) {
-    animation-delay: -150ms;
+#base4 {
+    left: 95px;
+    animation: flex 1.5s -0.9s linear infinite;
 }
 
-.loader-line-wrap:nth-child(4) {
-    animation-delay: -200ms;
-}
-
-.loader-line-wrap:nth-child(5) {
-    animation-delay: -250ms;
-}
-
-.loader-line-wrap:nth-child(1) .loader-line {
-    border-color: hsl(0, 80%, 60%);
-    height: 90px;
-    width: 90px;
-    top: 7px;
-}
-
-.loader-line-wrap:nth-child(2) .loader-line {
-    border-color: orangered;
-    height: 76px;
-    width: 76px;
-    top: 14px;
-}
-
-.loader-line-wrap:nth-child(3) .loader-line {
-    border-color: black;
-    height: 62px;
-    width: 62px;
-    top: 21px;
-}
-
-.loader-line-wrap:nth-child(4) .loader-line {
-    border-color:orange;
-    height: 48px;
-    width: 48px;
-    top: 28px;
-}
-
-.loader-line-wrap:nth-child(5) .loader-line {
-    border-color:gray;
-    height: 34px;
-    width: 34px;
-    top: 35px;
+#base5 {
+    left: 125px;
+    animation: flex 1.5s -0.7s linear infinite;
 }
 
 @keyframes spin {
 
     0%,
-    15% {
-        transform: rotate(0);
-    }
-
     100% {
-        transform: rotate(360deg);
+        transform: translateY(0px) scale(1);
+    }
+
+    25% {
+        transform: translateY(30px) scale(2);
+    }
+
+    50% {
+        transform: translateY(60px) scale(1);
+    }
+
+    75% {
+        transform: translateY(30px) scale(0.3);
     }
 }
 
+@keyframes flex {
 
-.loader-text {
-    text-align: center;
-    padding-top: 100px;
-    font-family: cursive;
-    font-weight: 700;
-    color: rgba(87, 77, 77, 0.331);
+    0%,
+    100% {
+        transform: scaleY(5);
+    }
 
+    25% {
+        transform: scaleY(1);
+    }
+
+    50% {
+        transform: scaleY(5);
+    }
+
+    75% {
+        transform: scaleY(1);
+    }
 }
-

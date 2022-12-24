@@ -6,7 +6,6 @@ import {
   watchedBtn,
   queueBtn,
   moviesList,
-  pagination,
 } from './firebase-auth/auth-refs';
 import {
   classToggle,
@@ -16,11 +15,15 @@ import {
 import { api } from './manipulation-with-api/modal-open';
 import { getLatestMovies } from './manipulation-with-api/get-latest-movies';
 import { saveDataToLocalSt } from './utils/local-st-functions';
-import { renderPagination } from './utils/pagination';
 import {
   getUserDataFromDB,
   monitorsChangesInDB,
 } from './firebase-database/database-realization';
+import {
+  calculateFilms,
+  resetPagNums,
+} from './pagination/pagination-my-librery';
+import { getCurrentFunc } from './utils/render-on switch-lang';
 
 const PAGE_KEY = 'page';
 const LIST_KEY = 'film-list';
@@ -31,43 +34,89 @@ watchedBtn.addEventListener('click', onWatchedBtnClick);
 queueBtn.addEventListener('click', onQueueBtnClick);
 
 function onWatchedBtnClick(event) {
-  event.preventDefault();
+  if (event) {
+    event.preventDefault();
+    resetPagNums();
+  }
 
   classToggle(watchedBtn, 'add', 'button__header--active');
   classToggle(queueBtn, 'remove', 'button__header--active');
 
-  renderFilmListsFromDB('watched');
+  // renderFilmListsFromDB('watched', onWatchedBtnClick);
 
-  saveDataToLocalSt(LIST_KEY, 'watched');
+  fetchWatched();
+
+  saveDataToLocalSt(LIST_KEY, 'watched', onWatchedBtnClick);
 
   // monitorsChangesInDB('watched');
 }
 
+//!----------------| for pagination |------------------------
+async function fetchWatched() {
+  // libraryPageInterface();
+  const userData = await getUserDataFromDB();
+  const filmsList = await calculateFilms(
+    userData['watched'],
+    onWatchedBtnClick
+  );
+  getCurrentFunc(onQueueBtnClick);
+  renderFilmListsFromDB(filmsList, onQueueBtnClick);
+}
+//!----------------| for pagination |------------------------
+
 function onQueueBtnClick(event) {
-  event.preventDefault();
+  if (event) {
+    event.preventDefault();
+    resetPagNums();
+  }
 
   classToggle(queueBtn, 'add', 'button__header--active');
   classToggle(watchedBtn, 'remove', 'button__header--active');
 
-  renderFilmListsFromDB('queue');
+  // renderFilmListsFromDB('queue', onQueueBtnClick);
+  fetchQueue();
 
   saveDataToLocalSt(LIST_KEY, 'queue');
 
   // monitorsChangesInDB('queue');
 }
 
+//!----------------| for pagination |------------------------
+async function fetchQueue() {
+  // libraryPageInterface();
+  const userData = await getUserDataFromDB();
+  const filmsList = await calculateFilms(userData['queue'], fetchLibrary);
+  getCurrentFunc(onQueueBtnClick);
+  renderFilmListsFromDB(filmsList, onQueueBtnClick);
+}
+//!----------------| for pagination |------------------------
+
 async function onLibraryPage(event) {
-  event.preventDefault();
+  if (event) {
+    event.preventDefault();
+    resetPagNums();
+  }
 
   // monitorsChangesInDB();
 
-  libraryPageInterface();
+  // libraryPageInterface();
 
-  renderFilmListsFromDB('watched');
+  // renderFilmListsFromDB('watched', onLibraryPage);
+  fetchLibrary();
 
   saveDataToLocalSt(PAGE_KEY, 'library');
   saveDataToLocalSt(LIST_KEY, 'watched');
 }
+
+//!----------------| for pagination |------------------------
+async function fetchLibrary() {
+  libraryPageInterface();
+  const userData = await getUserDataFromDB();
+  const filmsList = await calculateFilms(userData['watched'], fetchLibrary);
+  getCurrentFunc(onLibraryPage);
+  renderFilmListsFromDB(filmsList, onLibraryPage);
+}
+//!----------------| for pagination |------------------------
 
 async function renderFilmListsFromDB(list) {
   const userData = await getUserDataFromDB(list);

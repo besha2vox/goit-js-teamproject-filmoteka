@@ -1,3 +1,5 @@
+import { loadDataFromLocalSt } from './utils/local-st-functions';
+
 export class API {
   constructor() {
     this._queryToFetch = '';
@@ -23,16 +25,16 @@ export class API {
   //? ТРЕНДИ
 
   async getTrendingMovies(time) {
-    // const params = new URLSearchParams({
-    //   api_key: this.API_KEY,
-    //   page: this._pageToFetch,
-    //   keyword: this._queryToFetch,
-    //   language: getLanguage(),
-    // });
+    const params = new URLSearchParams({
+      api_key: this.API_KEY,
+      page: this._pageToFetch,
+      keyword: this._queryToFetch,
+      language: getLanguage(),
+    });
 
-    // const url = `${this.BASE_URL}trending/movie/${time}?${params.toString()}`;
+    const url = `${this.BASE_URL}trending/movie/${time}?${params.toString()}`;
 
-    const url = `${this.BASE_URL}/trending/movie/${time}?api_key=${this.API_KEY}`;
+    // const url = `${this.BASE_URL}/trending/movie/${time}?api_key=${this.API_KEY}&page=${this.pageToFetch}`;
 
     return await this.basicFetch(url);
   }
@@ -40,36 +42,45 @@ export class API {
   //? ПОШУК НОВИНОК
 
   async getMovieLatest() {
-    const url = `${this.BASE_URL}movie/now_playing?api_key=${this.API_KEY}&page=${this.pageToFetch}`;
+    const params = new URLSearchParams({
+      api_key: this.API_KEY,
+      language: getLanguage(),
+      page: this.pageToFetch,
+    });
+
+    const url = `${this.BASE_URL}movie/${id}?${params.toString()}`;
+
+    // const url = `${this.BASE_URL}movie/now_playing?api_key=${this.API_KEY}&page=${this.pageToFetch}`;
     return await this.basicFetch(url);
   }
 
   //? ПОШУК ЗА АЙДІ
 
   async getSearchMoviesByID(id) {
-    // const params = new URLSearchParams({
-    //   api_key: this.API_KEY,
-    //   language: getLanguage(),
-    // });
+    const params = new URLSearchParams({
+      api_key: this.API_KEY,
+      language: getLanguage(),
+    });
 
-    // const url = `${this.BASE_URL}movie/${id}?${params.toString()}`;
+    const url = `${this.BASE_URL}movie/${id}?${params.toString()}`;
 
-    const url = `${this.BASE_URL}movie/${id}?api_key=${this.API_KEY}`;
+    // const url = `${this.BASE_URL}movie/${id}?api_key=${this.API_KEY}`;
     return await this.basicFetch(url);
   }
 
   //? ПОШУК ЗА КЛЮЧОВИМ СЛОВОМ
 
   async getMoviesByKeyWord() {
-    // const params = new URLSearchParams({
-    //   api_key: this.API_KEY,
-    //   language: getLanguage(),
-    //   query: (this._queryToFetch = ''),
-    // });
+    const params = new URLSearchParams({
+      api_key: this.API_KEY,
+      language: getLanguage(),
+      query: this._queryToFetch,
+      page: this.pageToFetch,
+    });
 
-    // const url = `${this.BASE_URL}search/movie?${params.toString()}`;
+    const url = `${this.BASE_URL}search/movie?${params.toString()}`;
 
-    const url = `${this.BASE_URL}/search/movie?api_key=${this.API_KEY}&query=${this._queryToFetch}`;
+    // const url = `${this.BASE_URL}/search/movie?api_key=${this.API_KEY}&query=${this._queryToFetch}&page=${this.pageToFetch}`;
     return await this.basicFetch(url);
   }
 
@@ -120,5 +131,7 @@ export class API {
 //? ПЕРЕВІРКА ОБРАНОЇ МОВИ
 
 function getLanguage() {
-  return localStorage.getItem('lang');
+  const lang = loadDataFromLocalSt('language');
+  if (lang === 'UA') return 'uk-UK';
+  return 'en-US';
 }

@@ -1,6 +1,8 @@
 let api = {};
 let fetchCurrentPage = () => {};
 
+export const element = document.querySelector('.pagination-list');
+
 function createPagination(totalPages) {
   let liTag = '';
   let active;
@@ -8,21 +10,21 @@ function createPagination(totalPages) {
   let page = api.pageToFetch;
   let beforePage = page - 2;
   let afterPage = page + 2;
-  if (page > 1) {
+  if (page > 1 && totalPages > 5) {
     liTag += `<li class="btn prev")"><button><</button></li>`;
   }
 
-  if (page > 3) {
+  if (page > 3 && totalPages > 5) {
     liTag += `<li class="first numb" data-num="1" ><button>1</button></li>`;
 
-    if (page > 4) {
+    if (page > 4 && totalPages > 5) {
       liTag += `<li class="dots"><span>...</span></li>`;
     }
   }
 
-  if (page === totalPages) {
+  if (page === totalPages && beforePage - 2 > 0) {
     beforePage = beforePage - 2;
-  } else if (page === totalPages - 1) {
+  } else if (page === totalPages - 1 && beforePage - 1 > 0) {
     beforePage = beforePage - 1;
   }
   if (page === 1) {
@@ -47,8 +49,8 @@ function createPagination(totalPages) {
     liTag += `<li class="numb ${active}" data-num=${plength} ><button>${plength}</button></li>`;
   }
 
-  if (page < totalPages - 2) {
-    if (page < totalPages - 3) {
+  if (page < totalPages - 2 && totalPages > 5) {
+    if (page < totalPages - 3 && totalPages > 5) {
       liTag += `<li class="dots"><button>...</button></li>`;
     }
     liTag += `<li class="last numb" data-num=${totalPages} ><button>${totalPages}</button></li>`;
@@ -61,7 +63,7 @@ function createPagination(totalPages) {
   return liTag;
 }
 
-export function renderPagination(totalPages, element, func, fetchApi) {
+export function renderPagination(totalPages, func, fetchApi) {
   fetchCurrentPage = func;
   api = fetchApi;
   element.innerHTML = createPagination(totalPages);
@@ -69,7 +71,7 @@ export function renderPagination(totalPages, element, func, fetchApi) {
   addListenersBtns(btnRefs);
 }
 
-function getRefs(element) {
+export function getRefs() {
   const prevBtn = element.querySelector('.btn.prev');
   const numberedBtns = element.querySelectorAll('.numb');
   const nextBtn = element.querySelector('.btn.next');
@@ -84,7 +86,6 @@ function onPrevBtnClick(e) {
 
 async function onNextBtnClick(e) {
   api.incrementPage();
-  console.log('api', api);
   fetchCurrentPage();
 }
 
