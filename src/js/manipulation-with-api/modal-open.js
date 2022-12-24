@@ -33,7 +33,8 @@ function filmModalOptions() {
   const addToQueuedBtn = filmModal.querySelector('[data-list="queue"]');
   const btnList = filmModal.querySelector('.buttons-list__film-modal');
   const notifyEl = filmModal.querySelector('.modal-movie__notify');
-  const filmId = addToWatchedBtn.closest('[data-id]').dataset.id;
+  const filmId = Number(addToWatchedBtn.closest('[data-id]').dataset.id);
+  console.log('filmId: ', filmId);
 
   checkDB(filmId);
 
@@ -44,14 +45,14 @@ function filmModalOptions() {
     if (!loadDataFromLocalSt(KEY)) {
       loginFormNotify(
         notifyEl,
-        'Please register or log in to your account to be able to add movies to your playlists.'
+        'Please register or log in to your account to be able to add movies to playlists.'
       );
       return;
     }
 
     if (!event.target.classList.value.includes('button__header--active')) {
       classToggle(event.target, 'add', 'button__header--active');
-      event.target.textContent = 'in your watched list';
+      event.target.textContent = 'in watched list';
 
       addFilmToTheList(filmId, event.target.dataset.list);
       loginFormNotify(notifyEl, 'The movie has been added to your watch list!');
@@ -59,7 +60,7 @@ function filmModalOptions() {
       classToggle(event.target, 'remove', 'button__header--active');
       event.target.textContent = 'add to watched';
 
-      deleteFilmFromList(filmId, event.target.dataset.list);
+      deleteFilmFromList(filmId, 'watched');
       loginFormNotify(
         notifyEl,
         'The movie has been removed from your Watched list!'
@@ -71,14 +72,14 @@ function filmModalOptions() {
     if (!loadDataFromLocalSt(KEY)) {
       loginFormNotify(
         notifyEl,
-        'Please register or log in to your account to be able to add movies to your playlists.'
+        'Please register or log in to your account to be able to add movies to playlists.'
       );
       return;
     }
 
     if (!event.target.classList.value.includes('button__header--active')) {
       classToggle(event.target, 'add', 'button__header--active');
-      event.target.textContent = 'in your queue list';
+      event.target.textContent = 'in queue list';
 
       addFilmToTheList(filmId, event.target.dataset.list);
       loginFormNotify(notifyEl, 'The movie has been added to your Queue list!');
@@ -86,7 +87,7 @@ function filmModalOptions() {
       classToggle(event.target, 'remove', 'button__header--active');
       event.target.textContent = 'add to queue';
 
-      deleteFilmFromList(filmId, event.target.dataset.list);
+      deleteFilmFromList(filmId, 'queue');
       loginFormNotify(
         notifyEl,
         'The movie has been removed from your Queue list!'
@@ -100,16 +101,17 @@ function filmModalOptions() {
       return;
     }
 
-    const userData = await getUserDataFromDB(loadDataFromLocalSt(KEY));
+    const watchedData = await getUserDataFromDB('watched');
+    const queueData = await getUserDataFromDB('queue');
 
-    if (userData['watched'].includes(filmId)) {
+    if (Object.keys(watchedData).includes(String(filmId))) {
       classToggle(addToWatchedBtn, 'add', 'button__header--active');
-      addToWatchedBtn.textContent = 'in your watched list';
+      addToWatchedBtn.textContent = 'in watched list';
     }
 
-    if (userData['queue'].includes(filmId)) {
+    if (Object.keys(queueData).includes(String(filmId))) {
       classToggle(addToQueuedBtn, 'add', 'button__header--active');
-      addToQueuedBtn.textContent = 'in your queue list';
+      addToQueuedBtn.textContent = 'in queue list';
     }
 
     btnList.style.display = 'flex';
