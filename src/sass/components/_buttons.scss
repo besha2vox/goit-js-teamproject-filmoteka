@@ -37,6 +37,7 @@
 //=========== styles ===============
 .buttons-list {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -45,6 +46,13 @@
 
     @media screen and (min-width: $tablet) {
         margin-left: 16px;
+    }
+}
+
+.buttons-list__item:last-child {
+    margin-top: 10px;
+    @media screen and (max-width: $tablet) {
+        margin-top: 0;
     }
 }
 
@@ -60,11 +68,18 @@
     }
 }
 
+.buttons-list__film-modal {
+    display: none;
+}
+
 .button {
     min-width: 110px;
     padding: 13px;
 
     text-transform: uppercase;
+    text-align: center;
+
+    cursor: pointer;
 
     border-radius: $imgBorderRadius;
 
@@ -80,25 +95,10 @@
     }
 }
 
-.button--orange {
-    background-color: $accentColor;
-    color: $secondaryColor;
-
-    border: 1px solid transparent;
-}
-
 .button__modal--orange {
-    @media screen and (min-width: $tablet) {
+    @media screen and (max-width: $tablet) {
         padding: 6px 27px;
     }
-}
-
-.button--orange:focus,
-.button--orange:hover {
-    background-color: transparent;
-    color: $primeryTextColor;
-
-    border: 1px solid $primeryTextColor;
 }
 
 .button--transparent {
@@ -117,6 +117,8 @@
 .button__header {
     min-width: 130px;
     padding: 13px 36px;
+
+    font-size: 12px;
     
     @media screen and (min-width: $tablet) {
         min-width: 152px;

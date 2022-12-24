@@ -7,8 +7,7 @@ export class Modal {
 
   open(markup) {
     const template = modalTemplate(markup);
-    console.log(template);
-    document.body.insertAdjacentHTML('beforeend', template);
+    document.body.insertAdjacentHTML('afterend', template);
     document.body.classList.add('modal-open');
     this.backdrop = document.querySelector('.backdrop');
     this.closeIcon = document.querySelector('.modal__close');
@@ -54,9 +53,9 @@ function modalTemplate(markup) {
   return `<div class="backdrop">
     <div class="modal">
     <button type="button" class="modal__close">
-    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M8 8L22 22" stroke="black" stroke-width="2"/>
-    <path d="M8 22L22 8" stroke="black" stroke-width="2"/>
+    <svg class="icon-close" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 8L22 22" stroke-width="2"/>
+    <path d="M8 22L22 8" stroke-width="2"/>
     </svg>
     </button>
     ${html}

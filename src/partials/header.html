@@ -20,10 +20,16 @@
         <nav class="nav nav__links">
           <ul class="nav__list" id="nav">
             <li class="nav__item">
-              <a class="nav__link home-link active" href="#">HOME</a>
+              <a class="nav__link home-link" href="#"
+                ><span data-ualang="Головна" data-enlang="HOME">HOME</span></a
+              >
             </li>
             <li class="nav__item login-user">
-              <a class="nav__link" id="link__library" href="№">My library</a>
+              <a class="nav__link" id="link__library" href="№"
+                ><span data-ualang="Моя бібліотека" data-enlang="My library"
+                  >My library</span
+                ></a
+              >
             </li>
             <li class="nav__item logout-user">
               <div class="link__enter">
@@ -47,7 +53,7 @@
           </ul>
         </nav>
         <div class="utils">
-          <div class="theme-switch">
+          <div class="theme-switch" data-tooltip="theme-switch">
             <label aria-hidden="true" class="theme-switch__track">
               <input
                 class="theme-switch__toggle"
@@ -61,25 +67,30 @@
                 role="img"
                 aria-label="Іконка сонця"
               >
-                <!-- <use href="/src/images/icons.svg#sun"></use> -->
+                <use href="/src/images/sprite.svg#sun"></use>
               </svg>
               <svg
                 width="20"
                 class="theme-switch__icon theme-switch__icon--dark"
                 aria-label="Іконка місяця"
               >
-                <!-- <use href="/src/images/icons.svg#moon"></use> -->
+                <use href="/src/images/sprite.svg#moon"></use>
               </svg>
             </label>
           </div>
-          <div class="language-switcher">
+          <div class="language-switcher" data-tooltip="language-switch">
             <label class="language-switcher__label">
               <input
                 class="language-switcher__checkbox"
                 name="language"
                 type="checkbox"
               />
-              <span class="language-switcher__lang">UA</span>
+              <span
+                class="language-switcher__lang"
+                data-ualang="UA"
+                data-enlang="EN"
+                >UA</span
+              >
             </label>
           </div>
         </div>
@@ -94,6 +105,8 @@
             name="query"
             type="text"
             placeholder="Movie search"
+            data-ualang="Пошук фильму"
+            data-enlang="Movie search"
           />
           <button class="form__submit" type="submit">
             <!-- <img

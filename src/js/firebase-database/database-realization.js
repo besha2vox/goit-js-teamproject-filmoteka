@@ -1,53 +1,56 @@
 import { initializeApp } from 'firebase/app';
-
 import {
   getFirestore,
   doc,
   setDoc,
   updateDoc,
-  arrayUnion,
-  arrayRemove,
   getDoc,
+  onSnapshot,
+  deleteField,
 } from 'firebase/firestore';
 import { firebaseConfig } from '../firebase-auth/firebase-config';
 import { loadDataFromLocalSt } from '../utils/local-st-functions';
+import {
+  homePageInterface,
+  renderFilmListsFromDB,
+  renderFilmsFromDB,
+} from '../change-page';
 
 const KEY = 'userUID';
+const LIST_KEY = 'film-list';
+const PAGE_KEY = 'page';
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-//========== to delete
-// const addWatched = document.getElementById('ad-watched');
-// const addQueue = document.getElementById('ad-queue');
-// const getWatched = document.getElementById('show-watched');
-// const getQueue = document.getElementById('show-queue');
+// homePageInterface();
 
-// addWatched.addEventListener('click', addFilmToWatchedList);
-// addQueue.addEventListener('click', addFilmToQueueList);
-// getWatched.addEventListener('click', deleteFilmFromList);
-// getQueue.addEventListener('click', getUserDataFromDB);
+// monitorsChangesInDB('queue');
+// monitorsChangesInDB('watched');
 
-// let counter = 9;
+function monitorsChangesInDB(list) {
+  const snapshot = onSnapshot(doc(db, loadDataFromLocalSt(KEY), list), doc => {
+    if (loadDataFromLocalSt(PAGE_KEY) === 'library') {
+      renderFilmListsFromDB(loadDataFromLocalSt(LIST_KEY));
+    }
+  });
+}
 
-async function deleteFilmFromList() {
+async function deleteFilmFromList(data, list) {
   try {
-    await updateDoc(doc(db, 'users', `${loadDataFromLocalSt(KEY)}`), {
-      queue: arrayRemove(counter),
+    await updateDoc(doc(db, loadDataFromLocalSt(KEY), list), {
+      [Number(data)]: deleteField(),
     });
   } catch (error) {
     console.log(error.message);
   }
 }
 
-async function getUserDataFromDB() {
+async function getUserDataFromDB(list) {
   try {
-    const docSnap = await getDoc(
-      doc(db, 'users', `${loadDataFromLocalSt(KEY)}`)
-    );
+    const docSnap = await getDoc(doc(db, loadDataFromLocalSt(KEY), list));
 
     if (docSnap.exists()) {
-      console.log('Document data:', docSnap.data());
       return docSnap.data();
     } else {
       // doc.data() will be undefined in this case
@@ -59,38 +62,36 @@ async function getUserDataFromDB() {
   }
 }
 
-async function addFilmToQueueList() {
+async function addFilmToTheList(data, list) {
   try {
-    await updateDoc(doc(db, 'users', `${loadDataFromLocalSt(KEY)}`), {
-      queue: arrayUnion(counter),
+    await updateDoc(doc(db, loadDataFromLocalSt(KEY), list), {
+      [Number(data)]: [Date.now().toString()],
     });
   } catch (error) {
     console.log(error.message);
   }
-
-  counter += 1;
 }
 
-async function addFilmToWatchedList() {
-  try {
-    await updateDoc(doc(db, 'users', `${loadDataFromLocalSt(KEY)}`), {
-      watched: arrayUnion(counter),
-    });
-  } catch (error) {
-    console.log(error.message);
-  }
+// {
+//       [Date.now()]: arrayUnion(data),
+//     }
 
-  counter += 1;
-}
+// async function createUserDoc(id, name, email) {
+//   try {
+//     await setDoc(doc(db, 'users', id), {
+//       name,
+//       email,
+//       watched: [],
+//       queue: [],
+//     });
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// }
 
-async function createUserDoc(id, name, email) {
+async function createUserDoc(id, list) {
   try {
-    await setDoc(doc(db, 'users', id), {
-      name,
-      email,
-      watched: [],
-      queue: [],
-    });
+    await setDoc(doc(db, id, list), { 1: 1 });
   } catch (error) {
     console.log(error.message);
   }
@@ -98,8 +99,9 @@ async function createUserDoc(id, name, email) {
 
 export {
   createUserDoc,
-  addFilmToWatchedList,
-  addFilmToQueueList,
+  addFilmToTheList,
   deleteFilmFromList,
   getUserDataFromDB,
+  monitorsChangesInDB,
+  db,
 };

@@ -1,28 +1,33 @@
 import { API } from '../api';
 import { createMovieCardMarkup } from '../create-movie-card';
 import { onMovieClick } from './modal-open';
+import { renderPagination } from '../pagination/pagination';
+import { getCurrentFunc } from '../utils/render-on switch-lang';
 
 const api = new API();
 
-const moviesRef = document.querySelector('.movies-grid__list');
+const moviesList = document.querySelector('.movies-grid__list');
 
-moviesRef.addEventListener('click', onMovieClick);
+moviesList.addEventListener('click', onMovieClick);
 
-getLatestMovies();
+// getLatestMovies();
 
 async function getLatestMovies() {
-  const movies = await createData();
-  const getPromise = movies.results.map(createMovieCardMarkup);
-  const template = await (await Promise.all(getPromise)).join('');
+  const movies = await createMovieData();
+  const getPromise = movies.results.map(movie => createMovieCardMarkup(movie));
+  const template = (await Promise.all(getPromise)).join('');
 
-  moviesRef.innerHTML = template;
-  // renderPagination(movies.total_pages, refs.pagination, getTranding, api);
+  moviesList.innerHTML = template;
+  getCurrentFunc(getLatestMovies);
+  renderPagination(movies.total_pages, getLatestMovies, api);
 }
 
-async function createData() {
+async function createMovieData() {
   try {
-    return await api.getMovieLatest('week');
+    return await api.getTrendingMovies('day');
   } catch (error) {
     console.log(error.message);
   }
 }
+
+export { getLatestMovies, moviesList, pagination };

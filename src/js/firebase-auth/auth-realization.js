@@ -18,6 +18,7 @@ import { firebaseConfig } from './firebase-config';
 import {
   saveDataToLocalSt,
   removeDataFromLocalSt,
+  loadDataFromLocalSt,
 } from '../utils/local-st-functions';
 import {
   loginFormNotify,
@@ -34,15 +35,13 @@ import {
   loginLinks,
   logoutLinks,
   homeLink,
-  libraryPage,
-  homePage,
-  watchedBtn,
-  queueBtn,
 } from './auth-refs';
 import { Modal } from '../class-modal';
 import { loginModalMarkup, signupModalMarkup } from './login-modal-markup';
+import { homePageInterface, libraryPageInterface } from '../change-page';
 
 const KEY = 'userUID';
+const PAGE_KEY = 'page';
 
 //app initialization
 const app = initializeApp(firebaseConfig);
@@ -52,6 +51,11 @@ const auth = getAuth(app);
 onAuthStateChanged(auth, user => {
   //change interface
   if (user) {
+    if (loadDataFromLocalSt(PAGE_KEY) === 'library') {
+      libraryPageInterface();
+    } else {
+      homePageInterface();
+    }
     showElements(loginLinks);
     hideElements(logoutLinks);
     classToggle(siteNav, 'add', 'visible');
@@ -59,6 +63,8 @@ onAuthStateChanged(auth, user => {
     greeting.querySelector('.user-name').textContent = `${user.displayName}!`;
     greeting.style.display = 'block';
   } else {
+    homePageInterface();
+    saveDataToLocalSt(PAGE_KEY, 'home');
     showElements(logoutLinks);
     hideElements(loginLinks);
     classToggle(homeLink, 'add', 'active');
@@ -94,13 +100,9 @@ function onLoginLinkClick() {
 async function onLogoutClick(event) {
   event.preventDefault();
 
-  removeDataFromLocalSt(KEY);
-  classToggle(homeLink, 'add', 'active');
-  classToggle(watchedBtn, 'add', 'button__header--active');
-  classToggle(queueBtn, 'remove', 'button__header--active');
+  homePageInterface();
 
-  hideElements(libraryPage);
-  showElements(homePage);
+  // removeDataFromLocalSt(KEY);
 
   //logout the user
   await signOut(auth);
@@ -183,11 +185,14 @@ function onLoginModalShow() {
 
       saveDataToLocalSt(KEY, user.uid);
 
-      getUserDataFromDB().then(data =>
-        !data ? createUserDoc(user.uid, user.displayName, user.email) : false
-      );
+      getUserDataFromDB().then(data => {
+        if (!data) {
+          createUserDoc(user.uid, 'watched');
+          createUserDoc(user.uid, 'queue');
+        }
+      });
 
-      this.close();
+      loginModal.close();
     } catch (error) {
       // Handle Errors here.
       const errorCode = error.code;
@@ -211,9 +216,14 @@ function onLoginModalShow() {
 
       saveDataToLocalSt(KEY, user.uid);
 
-      getUserDataFromDB().then(data =>
-        !data ? createUserDoc(user.uid, user.displayName, user.email) : false
-      );
+      getUserDataFromDB().then(data => {
+        if (!data) {
+          createUserDoc(user.uid, 'watched');
+          createUserDoc(user.uid, 'queue');
+        }
+      });
+
+      loginModal.close();
     } catch (error) {
       // Handle Errors here.
       const errorCode = error.code;
@@ -252,6 +262,8 @@ function onLoginModalShow() {
 
       //clear form
       loginForm.reset();
+
+      loginModal.close();
     } catch (error) {
       if (error.message === 'Firebase: Error (auth/wrong-password).') {
         loginFormNotify(
@@ -307,13 +319,18 @@ function onLoginModalShow() {
       //clear form
       signupForm.reset();
 
-      createUserDoc(user.uid, userName, user.email);
+      // createUserDoc(user.uid, userName, user.email);
+
+      createUserDoc(user.uid, 'watched');
+      createUserDoc(user.uid, 'queue');
 
       if (!user.displayName) {
         await updateProfile(auth.currentUser, {
           displayName: userName,
         });
       }
+
+      loginModal.close();
     } catch (error) {
       if (error.message === 'Firebase: Error (auth/email-already-in-use).') {
         loginFormNotify(
