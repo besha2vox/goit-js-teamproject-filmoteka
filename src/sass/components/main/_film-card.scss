@@ -58,8 +58,11 @@
     }
   }
 
-  &__wrap {
-  }
+  // &__wrap {
+  //   display: inline-flex;
+  //   align-items: center;
+  //   gap: 8px;
+  // }
 
   &__info-wrap {
     color: $accentColor;
