@@ -10,14 +10,16 @@ const refs = {
 const teamCardTpl = () => {
   return teamOfList
     .map(
-      ({ git, photo, name, position }) =>
+      ({ git, photo, name, position,nameUA,positionUA }) =>
         `
 <li class="team-item">
       <img class="team-img" src="${photo}" alt="${name}" width="100">
       <a href="${git}" class="team-link"></a>
     <div class="team-desc-container">
-        <p class="team-name">${name}</p>
-        <p class="team-position">${position}</p>
+        <p class="team-name EN">${name}</p>
+        <p class="team-name UA">${nameUA}</p>
+        <p class="team-position EN">${position}</p>
+        <p class="team-position UA">${positionUA}</p>
     </div>
 </li> `
     )
@@ -40,10 +42,10 @@ refs.teamBtns.forEach(btn => btn.addEventListener('click', markupTeamCards));
 import { loadDataFromLocalSt } from './utils/local-st-functions'; const storageLanguage = loadDataFromLocalSt("language"); 
         if (storageLanguage !== undefined) { 
             if (storageLanguage === "EN") { 
-                // вставка текста англ 
+                '${name}'
             } else { 
-                // вставка текста укр 
+                '${nameUA}'
             } 
         } else { 
-           // вставка текста укр 
+          '${nameUA}'
         }
