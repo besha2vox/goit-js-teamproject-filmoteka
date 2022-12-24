@@ -192,7 +192,7 @@
 
 .form__signup .form__submit-btn:hover,
 .form__signup .form__submit-btn:focus {
-  color: rgb(255, 107, 1);
+  color: $accentColor;
   background-color: rgba(0, 0, 0, 0.8);
 
   transition: all 300ms $cubicBezier;
@@ -374,7 +374,7 @@
 
 .form__login .center .form__submit-btn:hover,
 .form__login .center .form__submit-btn:focus {
-  color: rgb(255, 107, 1);
+  color: $accentColor;
   background-color: rgba(128, 128, 128, 0.4);
   border-radius: 5px;
 }
@@ -533,7 +533,7 @@
 
 .auth-providers__link:hover .auth-providers__icon,
 .auth-providers__link:focus .auth-providers__icon {
-  fill: rgba(255, 107, 1, 0.8);
+  fill: $accentColor;
 }
 
 .modal__close {
