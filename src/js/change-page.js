@@ -48,7 +48,7 @@ function onWatchedBtnClick(event) {
 
   saveDataToLocalSt(LIST_KEY, 'watched', onWatchedBtnClick);
 
-  monitorsChangesInDB();
+  // monitorsChangesInDB('watched');
 }
 
 //!----------------| for pagination |------------------------
@@ -78,7 +78,7 @@ function onQueueBtnClick(event) {
 
   saveDataToLocalSt(LIST_KEY, 'queue');
 
-  monitorsChangesInDB();
+  // monitorsChangesInDB('queue');
 }
 
 //!----------------| for pagination |------------------------
@@ -119,9 +119,9 @@ async function fetchLibrary() {
 //!----------------| for pagination |------------------------
 
 async function renderFilmListsFromDB(list) {
-  // const userData = await getUserDataFromDB();
-  // const getPromisesById = userData[list].map(async id => await createData(id));
-  const getPromisesById = list.map(async id => await createData(id));
+  const userData = await getUserDataFromDB(list);
+  const filmsId = Object.keys(userData).slice(1, userData.length);
+  const getPromisesById = filmsId.map(async id => await createData(id));
   const getDataFromPromises = await Promise.all(getPromisesById);
   // const countOfPages = Math.ceil(getDataFromPromises.length / 9);
   const template = getDataFromPromises.map(createMovieCardMarkup).join('');
@@ -137,6 +137,8 @@ function libraryPageInterface() {
 
   hideElements(homePage);
   showElements(libraryPage);
+
+  renderFilmListsFromDB('watched');
 }
 
 function onHomePage(event) {
@@ -219,4 +221,9 @@ async function renderFilmsFromDB(userData) {
   // );
 }
 
-export { renderFilmsFromDB, homePageInterface, libraryPageInterface };
+export {
+  homePageInterface,
+  libraryPageInterface,
+  renderFilmListsFromDB,
+  renderFilmsFromDB,
+};
