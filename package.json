@@ -20,7 +20,8 @@
   "dependencies": {
     "@swc/helpers": "^0.4.14",
     "firebase": "^9.13.0",
-    "modern-normalize": "^1.1.0"
+    "modern-normalize": "^1.1.0",
+    "regenerator-runtime": "^0.13.11"
   },
   "devDependencies": {
     "@parcel/packager-raw-url": "^2.6.0",
