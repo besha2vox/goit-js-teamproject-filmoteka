@@ -25,9 +25,25 @@ const teamCardTpl = () => {
 };
 
 export const markupTeamCards = data => {
-  const markup = `<h2 class="team-heading">Team "IT Kotiki"</h2>
+  const markup = `<div class="wrapper">
+    <div class="typing-demo">
+      These are our KOTIKI.
+    </div>
+</div>
   <ul class="team-list">${teamCardTpl(data)}</ul>`;
   modal.open(markup);
 };
 
+
 refs.teamBtns.forEach(btn => btn.addEventListener('click', markupTeamCards));
+
+import { loadDataFromLocalSt } from './utils/local-st-functions'; const storageLanguage = loadDataFromLocalSt("language"); 
+        if (storageLanguage !== undefined) { 
+            if (storageLanguage === "EN") { 
+                // вставка текста англ 
+            } else { 
+                // вставка текста укр 
+            } 
+        } else { 
+           // вставка текста укр 
+        }
