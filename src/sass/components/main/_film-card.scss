@@ -20,15 +20,15 @@
 
   &__img {
     border-radius: 5px;
-    // height: 402px;
+    height: 402px;
 
-    // @media screen and (min-width: $tablet) {
-    //   height: 455px;
-    // }
+    @media screen and (min-width: $tablet) {
+      height: 455px;
+    }
 
-    // @media screen and (min-width: $desktop) {
-    //   height: 574px;
-    // }
+    @media screen and (min-width: $desktop) {
+      height: 574px;
+    }
   }
 
   &__info {
