@@ -1,0 +1,30 @@
+footer {
+  padding: 28px 0;
+  background-color: $footerBackgroundColor;
+  color: $footerTextColor;
+}
+
+.copy {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.19;
+
+  text-align: center;
+
+  &__linhk {
+    color: inherit;
+  }
+
+  img {
+    width: 14px;
+    display: inline;
+  }
+}
+
+.heart {
+  // animation: name duration timing-function delay iteration-count direction fill-mode;
+  animation-name: heartScale;
+  animation-duration: 1000ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}

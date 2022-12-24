@@ -1,17 +1,23 @@
 //* Utils
 
 @import './utils/vars';
-@import './utils/container';
 @import './common';
+@import './utils/container';
+@import './utils/animations';
+@import './utils/pagination';
 
 //* Components
 @import './components/buttons';
-
+@import './components/_loader_topScroll';
 
 //* layouts
 @import './components/header/header';
 @import './components/header/nav';
-@import './components/header/header-library';
+// @import './components/header/header-library';
+@import './components/main/slider-trend';
 @import './components/main/main';
-@import './components/modal/modal.scss';
+@import './layouts/footer';
 
+@import './components/modal/modal-team';
+@import './layouts/login-modal';
+@import './components/modal/modal';
