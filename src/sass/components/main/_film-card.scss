@@ -2,6 +2,9 @@
   width: 100%;
   cursor: pointer;
 
+  display: flex;
+  flex-direction: column;
+
   @media screen and (min-width: $tablet) {
     width: calc((100% - 32px) / 2);
   }
@@ -19,18 +22,12 @@
   }
 
   &__img-wrap {
+    display: flex;
+    flex-grow: 1;
   }
   &__img {
     border-radius: 5px;
-    height: 402px;
-
-    @media screen and (min-width: $tablet) {
-      height: 455px;
-    }
-
-    @media screen and (min-width: $desktop) {
-      height: 574px;
-    }
+    flex-grow: 1;
   }
 
   &__info {
