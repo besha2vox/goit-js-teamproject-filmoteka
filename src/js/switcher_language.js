@@ -5,7 +5,7 @@ const refs = {
 };
 let dataLanguage = document.querySelectorAll("[data-enlang]");
 
-removeDataFromLocalSt("language");
+
 checkLocalStrLanguage();
 refs.langSwitcher.addEventListener('change', changeLanguage);
 
