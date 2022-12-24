@@ -33,8 +33,8 @@
   position: relative;
   margin-top: 40px;
   @media screen and (min-width: $tablet) {
-      margin-top: unset;
-    }
+    margin-top: unset;
+  }
 }
 
 .modal-movie__info-weapper {
@@ -47,10 +47,9 @@
   padding-left: 20px;
   padding-right: 20px;
   @media screen and (min-width: $tablet) {
-      padding-left: unset;
-      padding-right: unset;
-    }
-
+    padding-left: unset;
+    padding-right: unset;
+  }
 }
 
 .modal-movie__title {
@@ -133,16 +132,14 @@ body.dark-theme {
   border-radius: 5px;
   max-width: 240px;
   @media screen and (min-width: $tablet) {
-      max-width: 264px;
-    }
-    @media screen and (min-width: $desktop) {
-      max-width: 360px;      
-    }
+    max-width: 264px;
+  }
+  @media screen and (min-width: $desktop) {
+    max-width: 360px;
+  }
 }
 
 .modal-movie__notify {
   // height: 32px;
   text-align: center;
 }
-
-

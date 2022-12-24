@@ -1,0 +1,130 @@
+<header class="header home-header">
+  <div class="container container__header">
+    <div class="posioning-group--header">
+      <div class="header__positioning header__positioning--for-logo">
+        <a class="link logo" href="./index.html" class="logo">
+          <svg width="24" height="24" role="img" aria-label="Logo">
+            <!-- <use href="/src/images/icons.svg#icon-logo"></use> -->
+          </svg>
+          <span class="logo__text">Filmoteka</span>
+        </a>
+      </div>
+
+      <div class="header__positioning header__positioning--for-nav">
+        <div class="greeting__wrapper">
+          <p class="greeting">
+            <span class="hello">Hello, </span><span class="user-name"></span>
+          </p>
+        </div>
+
+        <nav class="nav nav__links">
+          <ul class="nav__list" id="nav">
+            <li class="nav__item">
+              <a class="nav__link home-link" href="#"><span data-ualang="Головна" data-enlang="HOME">HOME</span></a>
+            </li>
+            <li class="nav__item login-user">
+              <a class="nav__link" id="link__library" href="№"><span data-ualang="Моя бібліотека" data-enlang="My library">My library</span></a>
+            </li>
+            <li class="nav__item logout-user">
+              <div class="link__enter">
+                <a
+                  class="naw__login-link link__signup"
+                  href="#"
+                  id="link__signup"
+                  >Sign up</a
+                >
+                <span id="devider">or</span>
+                <a class="naw__login-link link__login" href="#" id="link__login"
+                  >Login</a
+                >
+              </div>
+            </li>
+            <li class="nav__item login-user">
+              <a class="naw__login-link link__logout" href="#" id="link__logout"
+                >Logout</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="utils">
+          <div class="theme-switch" data-tooltip="theme-switch">
+            <label aria-hidden="true" class="theme-switch__track">
+              <input
+                class="theme-switch__toggle"
+                type="checkbox"
+                name="theme"
+                aria-label="Перемкнути між світлою та темною темами"
+              />
+              <svg
+                width="20"
+                class="theme-switch__icon theme-switch__icon--light"
+                role="img"
+                aria-label="Іконка сонця"
+              >
+                <!-- <use href="/src/images/icons.svg#sun"></use> -->
+              </svg>
+              <svg
+                width="20"
+                class="theme-switch__icon theme-switch__icon--dark"
+                aria-label="Іконка місяця"
+              >
+                <!-- <use href="/src/images/icons.svg#moon"></use> -->
+              </svg>
+            </label>
+          </div>
+          <div class="language-switcher" data-tooltip="language-switch">
+            <label class="language-switcher__label">
+              <input
+                class="language-switcher__checkbox"
+                name="language"
+                type="checkbox"
+              />
+              <span class="language-switcher__lang" data-ualang="UA" data-enlang="EN">UA</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="header__positioning header__positioning--for-form">
+      <div class="query__wrapper home">
+        <form class="form home__form">
+          <input
+            class="form_input"
+            name="query"
+            type="text"
+            placeholder="Movie search"
+            data-ualang="Пошук фильму"
+            data-enlang="Movie search"
+          />
+          <button class="form__submit" type="submit">
+            <!-- <img
+              class="icon-search"
+              src="/src/images/icons.svg#search"
+              alt="Іконка пошуку"
+            /> -->
+          </button>
+        </form>
+        <p class="form__error-notification--for-header"></p>
+      </div>
+      <ul class="buttons-list buttons-list__header library">
+        <li class="buttons-list__item buttons-list__item__header">
+          <a
+            class="button button--transparent button__header button__header--transparent button__header--active watched"
+            type="button"
+          >
+            Watched
+          </a>
+        </li>
+        <li class="buttons-list__item buttons-list__item__header">
+          <a
+            class="button button--transparent button__header button__header--transparent queue"
+            type="button"
+          >
+            queue
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>

@@ -35,6 +35,13 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="theme-color" content="#ffffff" />
@@ -44,31 +51,35 @@
   </head>
 
   <body>
-    <!-- * Імпорт ХЕДЕРА -->
-    <include src="./partials/header.html"></include>
+    <div class="wrapper">
+      <!--  * Лоадер і кнопка скролу догори -->
+      <include src="./partials/loader_scrollToTop.html"></include>
 
-    <!-- * MAIN -->
-    <main>
-      <!-- * SLIDER -->
-      <section class="movies-slider">
-        <div class="container"></div>
-      </section>
+      <!-- * Імпорт ХЕДЕРА -->
+      <include src="./partials/header.html"></include>
 
-      <section class="movies-grid">
-        <div class="container">
-          <!-- * СІТКА ФІЛЬМІВ -->
-          <ul class="movies-grid__list">
-              
-              
-          </ul>
+      <!-- * MAIN -->
+      <main>
+        <!-- * SLIDER -->
+        <section class="movies-slider">
+          <div class="container"></div>
+        </section>
 
-          <!-- * ПАГІНАЦІЯ -->
-          <ul class="movies-grid__pagination"></ul>
-        </div>
-      </section>
-    </main>
+        <section class="movies-grid">
+          <div class="container">
+            <!-- * СІТКА ФІЛЬМІВ -->
+            <ul class="movies-grid__list"></ul>
 
-    <!-- * Імпорт ФУТЕРА -->
-    <include src="./partials/footer.html"></include>
+            <!-- * ПАГІНАЦІЯ -->
+            <div class="pagination">
+              <ul class="list pagination-list"></ul>
+            </div>
+          </div>
+        </section>
+      </main>
+      <!-- * Імпорт ФУТЕРА -->
+      <include src="./partials/footer.html"></include>
+    </div>
+    <div class="backdrop__blur"></div>
   </body>
 </html>

@@ -9,6 +9,8 @@
   justify-content: center;
   align-items: center;
 
+  font-family: Roboto, sans-serif;
+
   background-color: $backdropColor;
 
   @media screen and (min-width: $tablet) {
@@ -19,7 +21,6 @@
     column-gap: 16px;
   }
 }
-
 
 .modal__close {
   position: absolute;
