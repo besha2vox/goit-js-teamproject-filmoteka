@@ -102,7 +102,7 @@ async function onLogoutClick(event) {
 
   homePageInterface();
 
-  removeDataFromLocalSt(KEY);
+  // removeDataFromLocalSt(KEY);
 
   //logout the user
   await signOut(auth);
@@ -185,9 +185,12 @@ function onLoginModalShow() {
 
       saveDataToLocalSt(KEY, user.uid);
 
-      getUserDataFromDB().then(data =>
-        !data ? createUserDoc(user.uid, user.displayName, user.email) : false
-      );
+      getUserDataFromDB().then(data => {
+        if (!data) {
+          createUserDoc(user.uid, 'watched');
+          createUserDoc(user.uid, 'queue');
+        }
+      });
 
       loginModal.close();
     } catch (error) {
