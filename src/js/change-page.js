@@ -23,6 +23,7 @@ import {
   calculateFilms,
   resetPagNums,
 } from './pagination/pagination-my-librery';
+import { getCurrentFunc } from './utils/render-on switch-lang';
 
 const PAGE_KEY = 'page';
 const LIST_KEY = 'film-list';
@@ -58,6 +59,7 @@ async function fetchWatched() {
     userData['watched'],
     onWatchedBtnClick
   );
+  getCurrentFunc(onQueueBtnClick);
   renderFilmListsFromDB(filmsList, onQueueBtnClick);
 }
 //!----------------| for pagination |------------------------
@@ -84,6 +86,7 @@ async function fetchQueue() {
   // libraryPageInterface();
   const userData = await getUserDataFromDB();
   const filmsList = await calculateFilms(userData['queue'], fetchLibrary);
+  getCurrentFunc(onQueueBtnClick);
   renderFilmListsFromDB(filmsList, onQueueBtnClick);
 }
 //!----------------| for pagination |------------------------
@@ -110,6 +113,7 @@ async function fetchLibrary() {
   libraryPageInterface();
   const userData = await getUserDataFromDB();
   const filmsList = await calculateFilms(userData['watched'], fetchLibrary);
+  getCurrentFunc(onLibraryPage);
   renderFilmListsFromDB(filmsList, onLibraryPage);
 }
 //!----------------| for pagination |------------------------

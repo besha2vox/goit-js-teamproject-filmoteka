@@ -74,7 +74,7 @@ export class API {
     const params = new URLSearchParams({
       api_key: this.API_KEY,
       language: getLanguage(),
-      query: (this._queryToFetch = ''),
+      query: this._queryToFetch,
       page: this.pageToFetch,
     });
 

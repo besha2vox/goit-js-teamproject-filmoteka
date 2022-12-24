@@ -4,8 +4,7 @@ import './js/create-movie-card';
 import './js/modal-team';
 import './js/manipulation-with-api';
 import './js/change-page';
-import "./js/switcher_theme";
-import  "./js/switcher_language";
-import "./js/tool-tip";
-
-
+import './js/switcher_theme';
+import './js/switcher_language';
+import './js/tool-tip';
+import './js/utils/render-on switch-lang';
