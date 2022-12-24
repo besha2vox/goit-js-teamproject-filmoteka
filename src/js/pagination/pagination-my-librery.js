@@ -85,7 +85,7 @@ function onMyLibNextBtnClick(e) {
 }
 
 function onMyLibNumberedBtnClick(e) {
-  pagNums.page = page = Number(e.target.dataset.num);
+  pagNums.page = Number(e.target.dataset.num);
   console.log('page', page);
 
   setSliceIndxs();
