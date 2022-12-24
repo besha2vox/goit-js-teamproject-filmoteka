@@ -86,7 +86,7 @@
   & img {
     object-fit: cover;
     max-height: 398px;
-    width: auto;
+    max-width: 100%;
 
     @media screen and (min-width: $tablet) {
       max-height: 455px;
