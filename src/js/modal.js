@@ -1,7 +1,7 @@
 import { Modal } from './js/class-modal';
 
 const itemCardEl = document.querySelector('.movie-card');
-
+            
 const modal = new Modal(option);
 
 const url = `https://image.tmdb.org/t/p/original${poster_path}`;
