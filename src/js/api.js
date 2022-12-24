@@ -32,7 +32,7 @@ export class API {
 
     // const url = `${this.BASE_URL}trending/movie/${time}?${params.toString()}`;
 
-    const url = `${this.BASE_URL}/trending/movie/${time}?api_key=${this.API_KEY}`;
+    const url = `${this.BASE_URL}/trending/movie/${time}?api_key=${this.API_KEY}&page=${this.pageToFetch}`;
 
     return await this.basicFetch(url);
   }
@@ -69,7 +69,7 @@ export class API {
 
     // const url = `${this.BASE_URL}search/movie?${params.toString()}`;
 
-    const url = `${this.BASE_URL}/search/movie?api_key=${this.API_KEY}&query=${this._queryToFetch}`;
+    const url = `${this.BASE_URL}/search/movie?api_key=${this.API_KEY}&query=${this._queryToFetch}&page=${this.pageToFetch}`;
     return await this.basicFetch(url);
   }
 

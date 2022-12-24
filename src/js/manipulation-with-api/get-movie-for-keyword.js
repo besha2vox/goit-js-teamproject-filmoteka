@@ -9,7 +9,6 @@ const api = new API();
 const refs = {
   form: document.querySelector('.home__form'),
   moviesList: document.querySelector('.movies-grid__list'),
-  pagination: document.querySelector('.pagination-list'),
   notifyEl: document.querySelector('.form__error-notification--for-header'),
 };
 
@@ -55,12 +54,7 @@ async function getMoviesByKeyword() {
 
   refs.moviesList.innerHTML = template;
 
-  renderPagination(
-    movies.total_pages,
-    refs.pagination,
-    getMoviesByKeyword,
-    api
-  );
+  renderPagination(movies.total_pages, getMoviesByKeyword, api);
 }
 
 async function getData() {
