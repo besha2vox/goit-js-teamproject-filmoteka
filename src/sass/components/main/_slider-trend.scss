@@ -129,8 +129,8 @@ $animationSpeed: 60s;
 		content: "";
 		height: 100%;
 		position: absolute;
-		width: 200px;
-		// z-index: 1;
+		width: 100px;
+		z-index: 1;
 	}
 	
 	&::after {
@@ -150,3 +150,112 @@ $animationSpeed: 60s;
 		width: calc(250px * 14);
 	}
 } 
+
+
+// Модалка кинохи
+
+.cartUpcomingModal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    row-gap: 20px;
+    min-width: 280px;
+  
+    background-color: $primeryBackgroundColor;
+    overflow: scroll;
+    height: 100vh;
+    // padding-top: 48px;
+  
+    @media screen and (min-width: $tablet) {
+      flex-direction: row;
+    //   padding: 40px 36px;
+      column-gap: 68px;
+      max-width: 704px;
+      align-items: flex-start;
+      justify-content: center;
+      height: unset;
+      overflow: unset;
+    }
+  
+    @media screen and (min-width: $desktop) {
+    //   padding: 40px 12px;
+      column-gap: 16px;
+      max-width: 806px;
+    }
+}
+
+.poster {
+    border-radius: 5px;
+    @media screen and (min-width: $tablet) {
+      max-width: 264px;
+    }
+    @media screen and (min-width: $desktop) {
+      max-width: 360px;
+    } 
+  }
+
+  .infoUpcomingModal {
+    display: flex;
+  flex-direction: column;
+  max-width: 55%;
+  row-gap: 20px;
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: 1px;
+  padding-left: 20px;
+  padding-right: 20px;
+  @media screen and (min-width: $tablet) {
+    padding-left: unset;
+    padding-right: unset;
+
+  }
+  }
+
+  .titleUpcomingModal {
+    font-size: 20px;
+  line-height: 1.17;
+  text-transform: uppercase;
+  @media screen and (min-width: $desktop) {
+    font-size: 30px;
+  }
+  }
+
+  .listUpcomingModal {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+  }
+
+  .itemUpcomingModal {
+    display: flex;
+  }
+
+  .keyUpcomingModal {
+    color: $tertiaryTextColor;
+    min-width: 108px;
+  }
+
+  .valueUpcomingModal {
+    &--accent {
+        color: $secondaryColor;
+        background-color: $accentColor;
+        border-radius: 5px;
+        padding: 0 8px;
+      }
+    
+      &--uppercase {
+        text-transform: uppercase;
+      }
+  }
+
+  .wrapperAbout {
+    font-size: 12px;
+    line-height: 1.67;
+  }
+
+  .aboutMovie {
+    text-transform: uppercase;
+    line-height: 1.33;
+    margin-bottom: 8px;
+  }
