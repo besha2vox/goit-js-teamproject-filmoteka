@@ -1,7 +1,6 @@
 import {
   saveDataToLocalSt,
   loadDataFromLocalSt,
-  removeDataFromLocalSt,
 } from './utils/local-st-functions';
 
 import { renderOnSwithLang } from './utils/render-on switch-lang';
@@ -32,7 +31,6 @@ function checkLocalStrLanguage() {
 }
 
 function changeLanguage(evt) {
-  renderOnSwithLang();
   if (document.body.classList.contains('ua')) {
     changeLanguageTextTo('UA');
     changeLanguageLocalStr('UA');
@@ -42,6 +40,7 @@ function changeLanguage(evt) {
     changeLanguageLocalStr('EN');
     changeLanguageClass('en');
   }
+  renderOnSwithLang();
 }
 
 function changeLanguageClass(language) {
