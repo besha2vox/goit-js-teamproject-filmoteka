@@ -5,6 +5,7 @@ const refs = {
 };
 let dataLanguage = document.querySelectorAll("[data-enlang]");
 
+removeDataFromLocalSt("language");
 checkLocalStrLanguage();
 refs.langSwitcher.addEventListener('change', changeLanguage);
 
@@ -12,14 +13,14 @@ function checkLocalStrLanguage() {
     const storageLanguage = loadDataFromLocalSt("language");
         if (storageLanguage !== undefined) {
             if (storageLanguage === "EN") {
-                changeLanguageText("EN"); 
+                changeLanguageTextTo("EN"); 
                 changeLanguageClass("en");
             } else {
-                changeLanguageText("UA");  
+                changeLanguageTextTo("UA");  
                 changeLanguageClass("ua");
             }
         } else {
-            changeLanguageText("UA"); 
+            changeLanguageTextTo("EN"); 
             document.body.classList.add("ua");
             saveDataToLocalSt("language", "UA");
         }
@@ -28,11 +29,11 @@ function checkLocalStrLanguage() {
 
 function changeLanguage(evt) {
     if (document.body.classList.contains("ua")) {
-        changeLanguageText("UA"); 
+        changeLanguageTextTo("UA"); 
         changeLanguageLocalStr("UA");
         changeLanguageClass("ua");
     } else { 
-        changeLanguageText("EN");  
+        changeLanguageTextTo("EN");  
         changeLanguageLocalStr("EN");
         changeLanguageClass("en");
     }
@@ -56,19 +57,19 @@ function changeLanguageLocalStr(language) {
     }
 }
 
-function changeLanguageText(language) {
-    if (language === 'UA') {
+function changeLanguageTextTo(language) {
+    if (language === 'EN') {
         dataLanguage.forEach((data) => {
-        data.textContent = data.dataset.enlang;
+        data.textContent = data.dataset.ualang;
     if (data.hasAttribute("placeholder")) {
-        data.placeholder = data.dataset.enlang;
+        data.placeholder = data.dataset.ualang;
     }
 }); 
 } else { 
     dataLanguage.forEach((data) => {
-    data.textContent = data.dataset.ualang;
+    data.textContent = data.dataset.enlang;
         if (data.hasAttribute("placeholder")) {
-        data.placeholder = data.dataset.ualang;
+        data.placeholder = data.dataset.enlang;
         }
     });
 }
