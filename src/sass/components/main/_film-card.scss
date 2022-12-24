@@ -85,7 +85,15 @@
 
   & img {
     object-fit: cover;
-    max-height: 592px;
+    max-height: 398px;
     width: auto;
+
+    @media screen and (min-width: $tablet) {
+      max-height: 455px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      max-height: 574px;
+    }
   }
 }
