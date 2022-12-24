@@ -39,7 +39,9 @@ function showTip(event) {
         if (currentTheme !== undefined) {
             tip.innerHTML = tipStorage.theme[currentLang][currentTheme];
         } else {
-            tip.innerHTML = tipStorage.theme["UA"]["light"];
+            if (currentLang === 'EN') {
+                tip.innerHTML = tipStorage.theme["EN"]["light"];
+            } tip.innerHTML = tipStorage.theme["UA"]["light"];
         }
     }
     tip.hidden = false;

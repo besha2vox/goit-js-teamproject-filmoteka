@@ -37,6 +37,7 @@
 //=========== styles ===============
 .buttons-list {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -45,6 +46,13 @@
 
     @media screen and (min-width: $tablet) {
         margin-left: 16px;
+    }
+}
+
+.buttons-list__item:last-child {
+    margin-top: 10px;
+    @media screen and (max-width: $tablet) {
+        margin-top: 0;
     }
 }
 
@@ -109,6 +117,8 @@
 .button__header {
     min-width: 130px;
     padding: 13px 36px;
+
+    font-size: 12px;
     
     @media screen and (min-width: $tablet) {
         min-width: 152px;

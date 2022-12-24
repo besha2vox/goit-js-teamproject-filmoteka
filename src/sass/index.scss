@@ -8,14 +8,16 @@
 
 //* Components
 @import './components/buttons';
-@import './components/_loader_topScroll.scss';
+@import './components/_loader_topScroll';
 
 //* layouts
 @import './components/header/header';
 @import './components/header/nav';
+// @import './components/header/header-library';
+@import './components/main/slider-trend';
 @import './components/main/main';
-@import './components/modal/modal';
 @import './layouts/footer';
 
 @import './components/modal/modal-team';
 @import './layouts/login-modal';
+@import './components/modal/modal';
