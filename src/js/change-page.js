@@ -48,6 +48,7 @@ function onWatchedBtnClick(event) {
   renderFilmListsFromDB('watched', onWatchedBtnClick);
 
   // fetchWatched();
+  fetchLibrary(onWatchedBtnClick);
 
   saveDataToLocalSt(LIST_KEY, 'watched');
 
@@ -55,14 +56,14 @@ function onWatchedBtnClick(event) {
 }
 
 //!----------------| for pagination |------------------------
-async function fetchWatched() {
-  // libraryPageInterface();
-  const userData = await getUserDataFromDB('watched');
-  const idsArray = Object.keys(userData).slice(1, userData.length);
-  const filmsList = await calculateFilms(idsArray, onWatchedBtnClick);
-  getCurrentFunc(onQueueBtnClick);
-  renderFilmListsFromDB('watched');
-}
+// async function fetchWatched() {
+//   // libraryPageInterface();
+//   const userData = await getUserDataFromDB('watched');
+//   const idsArray = Object.keys(userData).slice(1, userData.length);
+//   const filmsList = await calculateFilms(idsArray, onWatchedBtnClick);
+//   getCurrentFunc(onQueueBtnClick);
+//   renderFilmListsFromDB('watched');
+// }
 //!----------------| for pagination |------------------------
 
 function onQueueBtnClick(event) {
@@ -76,6 +77,7 @@ function onQueueBtnClick(event) {
 
   renderFilmListsFromDB('queue');
   // fetchQueue();
+  fetchLibrary(onQueueBtnClick);
 
   saveDataToLocalSt(LIST_KEY, 'queue');
 
@@ -104,21 +106,21 @@ async function onLibraryPage(event) {
   libraryPageInterface();
 
   renderFilmListsFromDB('watched');
-  // fetchLibrary();
+  fetchLibrary(onLibraryPage);
 
   saveDataToLocalSt(PAGE_KEY, 'library');
   saveDataToLocalSt(LIST_KEY, 'watched');
 }
 
 // //!----------------| for pagination |------------------------
-// async function fetchLibrary() {
-//   libraryPageInterface();
-//   const userData = await getUserDataFromDB('watched');
-//   const idsArray = Object.keys(userData).slice(1, userData.length);
-//   const filmsList = await calculateFilms(idsArray, fetchLibrary);
-//   getCurrentFunc(onLibraryPage);
-//   renderFilmListsFromDB('watched');
-// }
+async function fetchLibrary(func) {
+  libraryPageInterface();
+  const userData = await getUserDataFromDB('watched');
+  const idsArray = Object.keys(userData).slice(1, userData.length);
+  const filmsList = await calculateFilms(idsArray, func);
+  getCurrentFunc(func);
+  renderFilmListsFromDB('watched');
+}
 //!----------------| for pagination |------------------------
 
 async function renderFilmListsFromDB(list) {
