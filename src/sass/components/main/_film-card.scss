@@ -21,19 +21,6 @@
     transition: box-shadow 0.3s ease-in;
   }
 
-  &__img {
-    border-radius: 5px;
-    height: 402px;
-
-    @media screen and (min-width: $tablet) {
-      height: 455px;
-    }
-
-    @media screen and (min-width: $desktop) {
-      height: 574px;
-    }
-  }
-
   &__info {
     display: flex;
     flex-direction: column;
@@ -89,5 +76,16 @@
       width: 40px;
       height: 20px;
     }
+  }
+}
+
+.movie-card__img-thumb {
+  border-radius: 5px;
+  overflow: hidden;
+
+  & img {
+    object-fit: cover;
+    max-height: 592px;
+    width: auto;
   }
 }

@@ -22,25 +22,27 @@ export async function createMovieCardMarkup({
   const genre = await searchGenres(genre_ids);
   if (genre_ids.length === 0) {
     return await `<li class="movie-card" id="${id}">
+    <div class="movie-card__img-thumb">
     <img src="https://image.tmdb.org/t/p/original${poster_path}" 
         alt="Poster of ${title}" class="movie-card__img" />
+    </div>
+    
           <div class="movie-card__info">
             <p class="movie-card__name">${title}</p>
             <div class="movie-card__wrap">
             <p class="movie-card__info-wrap">
               <span class="movie-card__release">${
                 release_date.split('-')[0]
-              }</span>
-              <span class="movie-card__rating">${vote_average.toFixed(
-                1
-              )}</span></p>
+              }</span></p>
               </div>
           </div>
       </li>`;
   } else if (release_date === 0) {
     return await `<li class="movie-card" id="${id}">
+    <div class="movie-card__img-thumb">
     <img src="https://image.tmdb.org/t/p/original${poster_path}" 
         alt="Poster of ${title}" class="movie-card__img" />
+    </div>
           <div class="movie-card__info">
             <p class="movie-card__name">${title}</p>
             <div class="movie-card__wrap">
@@ -53,32 +55,30 @@ export async function createMovieCardMarkup({
       </li>`;
   } else if (genre_ids.length === 0 && release_date === 0) {
     return await `<li class="movie-card" id="${id}">
+    <div class="movie-card__img-thumb">
     <img src="https://image.tmdb.org/t/p/original${poster_path}" 
         alt="Poster of ${title}" class="movie-card__img" />
+    </div>
           <div class="movie-card__info">
             <p class="movie-card__name">${title}</p>
             <div class="movie-card__wrap">
-            <p class="movie-card__info-wrap">
-              <span class="movie-card__rating">${vote_average.toFixed(
-                1
-              )}</span></p>
+            <p class="movie-card__info-wrap"></p>
               </div>
           </div>
       </li>`;
   } else {
     return await `<li class="movie-card" id="${id}">
+    <div class="movie-card__img-thumb">
     <img src="https://image.tmdb.org/t/p/original${poster_path}" 
         alt="Poster of ${title}" class="movie-card__img" />
+    </div>
           <div class="movie-card__info">
             <p class="movie-card__name">${title}</p>
             <div class="movie-card__wrap">
             <p class="movie-card__info-wrap">
               <span class="movie-card__genre">${genre}</span> | <span class="movie-card__release">${
       release_date.split('-')[0]
-    }</span>
-              <span class="movie-card__rating">${vote_average.toFixed(
-                1
-              )}</span></p>
+    }</span></p>
               </div>
           </div>
       </li>`;
