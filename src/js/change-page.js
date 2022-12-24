@@ -6,7 +6,6 @@ import {
   watchedBtn,
   queueBtn,
   moviesList,
-  pagination,
 } from './firebase-auth/auth-refs';
 import {
   classToggle,
@@ -16,7 +15,6 @@ import {
 import { api } from './manipulation-with-api/modal-open';
 import { getLatestMovies } from './manipulation-with-api/get-latest-movies';
 import { saveDataToLocalSt } from './utils/local-st-functions';
-import { renderPagination } from './pagination/pagination';
 import {
   getUserDataFromDB,
   monitorsChangesInDB,
