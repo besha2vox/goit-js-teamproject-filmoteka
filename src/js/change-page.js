@@ -6,7 +6,6 @@ import {
   watchedBtn,
   queueBtn,
   moviesList,
-  pagination,
 } from './firebase-auth/auth-refs';
 import {
   classToggle,
@@ -16,7 +15,6 @@ import {
 import { api } from './manipulation-with-api/modal-open';
 import { getLatestMovies } from './manipulation-with-api/get-latest-movies';
 import { saveDataToLocalSt } from './utils/local-st-functions';
-import { renderPagination } from './pagination/pagination';
 import {
   getUserDataFromDB,
   monitorsChangesInDB,
@@ -201,4 +199,20 @@ function searchGenres(genres) {
   return genresArr.join(', ');
 }
 
-export { homePageInterface, libraryPageInterface };
+async function renderFilmsFromDB(userData) {
+  const getPromisesById = userData.map(async id => await createData(id));
+
+  const getDataFromPromises = await Promise.all(getPromisesById);
+  const countOfPages = Math.ceil(getDataFromPromises.length / 9);
+  const template = getDataFromPromises.map(createMovieCardMarkup).join('');
+
+  moviesList.innerHTML = template;
+  // renderPagination(
+  //   countOfPages,
+  //   pagination,
+  //   getUserDataFromDB(loadDataFromLocalSt(KEY)),
+  //   api
+  // );
+}
+
+export { renderFilmsFromDB, homePageInterface, libraryPageInterface };
