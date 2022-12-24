@@ -1,6 +1,7 @@
 import {
   saveDataToLocalSt,
   loadDataFromLocalSt,
+  removeDataFromLocalSt,
 } from './utils/local-st-functions';
 
 import { renderOnSwithLang } from './utils/render-on switch-lang';
@@ -17,11 +18,11 @@ function checkLocalStrLanguage() {
   const storageLanguage = loadDataFromLocalSt('language');
   if (storageLanguage !== undefined) {
     if (storageLanguage === 'EN') {
-      changeLanguageTextTo('EN');
-      changeLanguageClass('en');
-    } else {
       changeLanguageTextTo('UA');
-      changeLanguageClass('ua');
+      document.body.classList.add('en');
+    } else {
+      changeLanguageTextTo('EN');
+      document.body.classList.add('ua');
     }
   } else {
     changeLanguageTextTo('EN');
