@@ -6,6 +6,7 @@ import {
   watchedBtn,
   queueBtn,
   moviesList,
+  pagination,
 } from './firebase-auth/auth-refs';
 import {
   classToggle,
@@ -13,21 +14,14 @@ import {
   hideElements,
 } from './firebase-auth/interface-change';
 import { api } from './manipulation-with-api/modal-open';
-import {
-  getLatestMovies,
-  pagination,
-} from './manipulation-with-api/get-latest-movies';
-import {
-  saveDataToLocalSt,
-  removeDataFromLocalSt,
-} from './utils/local-st-functions';
+import { getLatestMovies } from './manipulation-with-api/get-latest-movies';
+import { saveDataToLocalSt } from './utils/local-st-functions';
 import { renderPagination } from './utils/pagination';
 import {
   getUserDataFromDB,
   monitorsChangesInDB,
 } from './firebase-database/database-realization';
 
-const KEY = 'uaerUID';
 const PAGE_KEY = 'page';
 const LIST_KEY = 'film-list';
 
