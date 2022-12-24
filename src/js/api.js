@@ -91,6 +91,20 @@ export class API {
     return await this.basicFetch(url);
   }
 
+  
+
+  // async fetchYoutube() {
+  //   try {
+  //     let { data } = await axios(`${this.BASE_URL}movie/${id}/videos?api_key=${this.API_KEY}`);
+  //     console.log(data.results);
+  //     return data;
+  //   }
+  //   catch (error) {
+  //     console.log(error.message);
+  //   }
+  // }
+
+
   //? ЗАПИТ СПИСКУ ЖАНРІВ
 
   async getGenres() {

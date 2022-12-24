@@ -7,5 +7,5 @@ import './js/change-page';
 import "./js/switcher_theme";
 import  "./js/switcher_language";
 import "./js/tool-tip";
-
+import './js/trailer';
 

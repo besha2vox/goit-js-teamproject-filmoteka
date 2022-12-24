@@ -97,11 +97,6 @@ body.dark-theme {
   }
 }
 
-.trailer {
-  display: block;
-  margin: 0 auto;
-  max-width: 100%;
-}
 
 .poster {
   border-radius: 5px;
@@ -114,3 +109,18 @@ body.dark-theme {
 }
 
 
+.trailer {
+  border-radius: 3%;
+  display: block;
+  margin: 0 auto;
+  max-width: 400px;
+  @media screen and (min-width: $tablet) {
+    width:100%;
+  }
+  min-width: 310px;
+  height: 250px;
+}
+
+iframe {
+  z-index: 3;
+}
