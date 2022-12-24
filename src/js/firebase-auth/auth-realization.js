@@ -18,6 +18,7 @@ import { firebaseConfig } from './firebase-config';
 import {
   saveDataToLocalSt,
   removeDataFromLocalSt,
+  loadDataFromLocalSt,
 } from '../utils/local-st-functions';
 import {
   loginFormNotify,
@@ -37,7 +38,7 @@ import {
 } from './auth-refs';
 import { Modal } from '../class-modal';
 import { loginModalMarkup, signupModalMarkup } from './login-modal-markup';
-import { homePageInterface } from '../change-page';
+import { homePageInterface, libraryPageInterface } from '../change-page';
 
 const KEY = 'userUID';
 const PAGE_KEY = 'page';
@@ -50,6 +51,11 @@ const auth = getAuth(app);
 onAuthStateChanged(auth, user => {
   //change interface
   if (user) {
+    if (loadDataFromLocalSt(PAGE_KEY) === 'library') {
+      libraryPageInterface();
+    } else {
+      homePageInterface();
+    }
     showElements(loginLinks);
     hideElements(logoutLinks);
     classToggle(siteNav, 'add', 'visible');
@@ -57,6 +63,7 @@ onAuthStateChanged(auth, user => {
     greeting.querySelector('.user-name').textContent = `${user.displayName}!`;
     greeting.style.display = 'block';
   } else {
+    homePageInterface();
     saveDataToLocalSt(PAGE_KEY, 'home');
     showElements(logoutLinks);
     hideElements(loginLinks);
@@ -95,7 +102,7 @@ async function onLogoutClick(event) {
 
   homePageInterface();
 
-  removeDataFromLocalSt(KEY);
+  // removeDataFromLocalSt(KEY);
 
   //logout the user
   await signOut(auth);
@@ -178,9 +185,12 @@ function onLoginModalShow() {
 
       saveDataToLocalSt(KEY, user.uid);
 
-      getUserDataFromDB().then(data =>
-        !data ? createUserDoc(user.uid, user.displayName, user.email) : false
-      );
+      getUserDataFromDB().then(data => {
+        if (!data) {
+          createUserDoc(user.uid, 'watched');
+          createUserDoc(user.uid, 'queue');
+        }
+      });
 
       loginModal.close();
     } catch (error) {
@@ -206,9 +216,12 @@ function onLoginModalShow() {
 
       saveDataToLocalSt(KEY, user.uid);
 
-      getUserDataFromDB().then(data =>
-        !data ? createUserDoc(user.uid, user.displayName, user.email) : false
-      );
+      getUserDataFromDB().then(data => {
+        if (!data) {
+          createUserDoc(user.uid, 'watched');
+          createUserDoc(user.uid, 'queue');
+        }
+      });
 
       loginModal.close();
     } catch (error) {
@@ -306,7 +319,10 @@ function onLoginModalShow() {
       //clear form
       signupForm.reset();
 
-      createUserDoc(user.uid, userName, user.email);
+      // createUserDoc(user.uid, userName, user.email);
+
+      createUserDoc(user.uid, 'watched');
+      createUserDoc(user.uid, 'queue');
 
       if (!user.displayName) {
         await updateProfile(auth.currentUser, {

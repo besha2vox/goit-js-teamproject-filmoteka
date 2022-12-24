@@ -2,6 +2,7 @@ import { API } from '../api';
 import { createMovieCardMarkup } from '../create-movie-card';
 import { onMovieClick } from './modal-open';
 import { renderPagination } from '../pagination/pagination';
+import { getCurrentFunc } from '../utils/render-on switch-lang';
 
 const api = new API();
 
@@ -17,6 +18,7 @@ async function getLatestMovies() {
   const template = (await Promise.all(getPromise)).join('');
 
   moviesList.innerHTML = template;
+  getCurrentFunc(getLatestMovies);
   renderPagination(movies.total_pages, getLatestMovies, api);
 }
 

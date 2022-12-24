@@ -39,6 +39,26 @@ export class API {
     return await this.basicFetch(url);
   }
 
+  // Поиск Что сейчас смотрят
+
+  async getNowPlaingMovies() {
+    const url = `${this.BASE_URL}/movie/now_playing?api_key=${this.API_KEY}`;
+
+    return await this.basicFetch(url);
+  }
+
+  // Поиск фильмов, которые скоро выйдут в кинотеатрах
+
+  async getUpcomingMovies() {
+    const params = new URLSearchParams({
+      api_key: this.API_KEY,
+      // language: getLanguage(),
+    });
+
+    const url = `${this.BASE_URL}/movie/upcoming?${params.toString()}`;
+
+    return await this.basicFetch(url);
+  }
   //? ПОШУК НОВИНОК
 
   async getMovieLatest() {
@@ -74,7 +94,7 @@ export class API {
     const params = new URLSearchParams({
       api_key: this.API_KEY,
       language: getLanguage(),
-      query: (this._queryToFetch = ''),
+      query: this._queryToFetch,
       page: this.pageToFetch,
     });
 

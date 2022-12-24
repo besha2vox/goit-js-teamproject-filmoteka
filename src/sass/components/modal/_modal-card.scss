@@ -1,23 +1,39 @@
 .modal-movie {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   margin: 0 auto;
   row-gap: 20px;
-  width: 806px;
+  min-width: 280px;
 
   background-color: $primeryBackgroundColor;
+  overflow: scroll;
+  height: 100vh;
+  padding-top: 48px;
 
   @media screen and (min-width: $tablet) {
     flex-direction: row;
     padding: 40px 36px;
-    column-gap: 64px;
+    column-gap: 68px;
+    max-width: 704px;
+    align-items: flex-start;
+    justify-content: center;
+    height: unset;
+    overflow: unset;
   }
 
   @media screen and (min-width: $desktop) {
     padding: 40px 12px;
     column-gap: 16px;
+    max-width: 806px;
+  }
+}
+
+.modal {
+  position: relative;
+  margin-top: 40px;
+  @media screen and (min-width: $tablet) {
+    margin-top: unset;
   }
 }
 
@@ -28,12 +44,21 @@
   font-size: 12px;
   line-height: 1.33;
   letter-spacing: 1px;
+  padding-left: 20px;
+  padding-right: 20px;
+  @media screen and (min-width: $tablet) {
+    padding-left: unset;
+    padding-right: unset;
+  }
 }
 
 .modal-movie__title {
-  font-size: 30px;
+  font-size: 20px;
   line-height: 1.17;
   text-transform: uppercase;
+  @media screen and (min-width: $desktop) {
+    font-size: 30px;
+  }
 }
 
 .modal-movie__list {
@@ -97,10 +122,15 @@ body.dark-theme {
   }
 }
 
-
 .poster {
   border-radius: 5px;
-  max-width: 375px;
+  max-width: 240px;
+  @media screen and (min-width: $tablet) {
+    max-width: 264px;
+  }
+  @media screen and (min-width: $desktop) {
+    max-width: 360px;
+  }
 }
 
 .modal-movie__notify {
@@ -108,14 +138,13 @@ body.dark-theme {
   text-align: center;
 }
 
-
 .trailer {
   border-radius: 3%;
   display: block;
   margin: 0 auto;
   max-width: 400px;
   @media screen and (min-width: $tablet) {
-    width:100%;
+    width: 100%;
   }
   min-width: 310px;
   height: 250px;
