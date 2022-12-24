@@ -37,6 +37,7 @@
 //=========== styles ===============
 .buttons-list {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -45,6 +46,13 @@
 
     @media screen and (min-width: $tablet) {
         margin-left: 16px;
+    }
+}
+
+.buttons-list__item:last-child {
+    margin-top: 10px;
+    @media screen and (max-width: $tablet) {
+        margin-top: 0;
     }
 }
 

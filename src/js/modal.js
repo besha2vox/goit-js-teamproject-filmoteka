@@ -45,22 +45,28 @@ export const getModalMarkup = ({
       <p class="modal-movie__overview">${overview}</p>
       </div>
       
-      <div class="trailer-wrapper"></div>
+      <div class="trailer-wrapper">
+      </div>
        <ul class="buttons-list buttons-list__film-modal">
      <li class="buttons-list__item">
-         <button class="button button--transparent" type="button" data-list="watched">
+         <button class="button button--transparent" type="button" data-list="watched"  data-id=${id}>
              add to Watched
          </button>
      </li>
      <li class="buttons-list__item">
-         <button class="button button--transparent" type="button" data-list="queue">
+         <button class="button button--transparent" type="button" data-list="queue"  data-id=${id}>
              add to queue
          </button>
      </li>
-
+     <li class="buttons-list__item">
+   </li>
      </ul>
      <p class='modal-movie__notify form__error-notification--for-header'></p>
     </div>
   </div>
 </div>`;
 };
+//  <a class="button button--transparent film__trailer__btn" href="#">
+//        <i class="fa-brands fa-youtube fa-3x"></i>
+//        <p class="film__trailer__text">watch trailer</p>
+//  </a> 
