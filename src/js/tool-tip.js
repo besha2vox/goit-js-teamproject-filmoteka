@@ -17,7 +17,6 @@ tip.className = "tooltip";
 tip.hidden = true;                       
 document.body.append(tip);               
 
-removeDataFromLocalSt("theme");
 document.addEventListener("mouseover", showTip);
 document.addEventListener("mouseout", hideTip)
 
@@ -37,7 +36,7 @@ function showTip(event) {
     }
     
     if (tar.dataset.tooltip === "theme-switch") {
-        if (currentLang !== undefined) {
+        if (currentTheme !== undefined) {
             tip.innerHTML = tipStorage.theme[currentLang][currentTheme];
         } else {
             tip.innerHTML = tipStorage.theme["UA"]["light"];
