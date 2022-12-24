@@ -67,10 +67,11 @@ function changeLanguageTextTo(language) {
 }); 
 } else { 
     dataLanguage.forEach((data) => {
-    data.textContent = data.dataset.enlang;
+    data.textContent = data.dataset.enlang; 
         if (data.hasAttribute("placeholder")) {
         data.placeholder = data.dataset.enlang;
         }
     });
 }
 }
+
