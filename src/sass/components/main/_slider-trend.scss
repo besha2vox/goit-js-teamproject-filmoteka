@@ -1,3 +1,16 @@
+
+@mixin white-gradient {
+	background: linear-gradient(to right,  rgb(233, 231, 228) 0%,rgba(255,255,255,0) 100%);
+}
+
+$animationSpeed: 60s;
+
+// Animation
+@keyframes scroll {
+	0% { transform: translateX(0); }
+	100% { transform: translateX(calc(-250px * 7))}
+}
+
 // Оформление карточки
 
 .movies-slider {
@@ -14,7 +27,6 @@
         padding-top: 30px;
         padding-bottom: 50px;
       }
- 
     background-color: rgb(233, 231, 228);
 }
 
@@ -64,7 +76,7 @@
 .info-trend {
   position: absolute;
     display: flex;
-    // z-index: 1;
+    z-index: 1;
     bottom: 0;
     right: 0;
 }
@@ -102,17 +114,6 @@
 
 // Слайдер
 
-@mixin white-gradient {
-	background: linear-gradient(to right,  rgb(233, 231, 228) 0%,rgba(255,255,255,0) 100%);
-}
-
-$animationSpeed: 60s;
-
-// Animation
-@keyframes scroll {
-	0% { transform: translateX(0); }
-	100% { transform: translateX(calc(-250px * 7))}
-}
 
 
 // Styling
