@@ -22,9 +22,8 @@ export async function createMovieCardMarkup({
   const genre = await searchGenres(genre_ids);
   if (genre_ids.length === 0) {
     return await `<li class="movie-card" id="${id}">
-    <div class="movie-card__img-wrap">
     <img src="https://image.tmdb.org/t/p/original${poster_path}" 
-        alt="Poster of ${title}" class="movie-card__img" /></div>
+        alt="Poster of ${title}" class="movie-card__img" />
           <div class="movie-card__info">
             <p class="movie-card__name">${title}</p>
             <div class="movie-card__wrap">
@@ -40,9 +39,8 @@ export async function createMovieCardMarkup({
       </li>`;
   } else if (release_date === 0) {
     return await `<li class="movie-card" id="${id}">
-    <div class="movie-card__img-wrap">
     <img src="https://image.tmdb.org/t/p/original${poster_path}" 
-        alt="Poster of ${title}" class="movie-card__img" /></div>
+        alt="Poster of ${title}" class="movie-card__img" />
           <div class="movie-card__info">
             <p class="movie-card__name">${title}</p>
             <div class="movie-card__wrap">
@@ -55,9 +53,8 @@ export async function createMovieCardMarkup({
       </li>`;
   } else if (genre_ids.length === 0 && release_date === 0) {
     return await `<li class="movie-card" id="${id}">
-    <div class="movie-card__img-wrap">
     <img src="https://image.tmdb.org/t/p/original${poster_path}" 
-        alt="Poster of ${title}" class="movie-card__img" /></div>
+        alt="Poster of ${title}" class="movie-card__img" />
           <div class="movie-card__info">
             <p class="movie-card__name">${title}</p>
             <div class="movie-card__wrap">
@@ -70,9 +67,8 @@ export async function createMovieCardMarkup({
       </li>`;
   } else {
     return await `<li class="movie-card" id="${id}">
-    <div class="movie-card__img-wrap">
     <img src="https://image.tmdb.org/t/p/original${poster_path}" 
-        alt="Poster of ${title}" class="movie-card__img" /></div>
+        alt="Poster of ${title}" class="movie-card__img" />
           <div class="movie-card__info">
             <p class="movie-card__name">${title}</p>
             <div class="movie-card__wrap">

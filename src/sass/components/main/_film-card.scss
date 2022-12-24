@@ -1,5 +1,5 @@
 .movie-card {
-  width: 100%;
+  width: 280px;
   cursor: pointer;
 
   display: flex;
@@ -21,13 +21,17 @@
     transition: box-shadow 0.3s ease-in;
   }
 
-  &__img-wrap {
-    display: flex;
-    flex-grow: 1;
-  }
   &__img {
     border-radius: 5px;
-    flex-grow: 1;
+    height: 402px;
+
+    @media screen and (min-width: $tablet) {
+      height: 455px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      height: 574px;
+    }
   }
 
   &__info {
