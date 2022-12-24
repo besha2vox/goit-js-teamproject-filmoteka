@@ -34,7 +34,7 @@ const teamCardTplUa = () => {
         ` 
 <li class="team-item"> 
       <img class="team-img" src="${photo}" alt="${nameUA}" width="100"> 
-      <a href="${git}" class="team-link"></a> 
+      <a href="${git}" class="team-link" target="_blank"></a> 
     <div class="team-desc-container"> 
         <p class="team-name">${nameUA}</p> 
         <p class="team-position">${positionUA}</p> 
