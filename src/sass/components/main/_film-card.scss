@@ -18,6 +18,8 @@
     transition: box-shadow 0.3s ease-in;
   }
 
+  &__img-wrap {
+  }
   &__img {
     border-radius: 5px;
     height: 402px;
@@ -57,12 +59,6 @@
       line-height: 1.2;
     }
   }
-
-  // &__wrap {
-  //   display: inline-flex;
-  //   align-items: center;
-  //   gap: 8px;
-  // }
 
   &__info-wrap {
     color: $accentColor;
