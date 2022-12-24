@@ -109,6 +109,8 @@
 .button__header {
     min-width: 130px;
     padding: 13px 36px;
+
+    font-size: 12px;
     
     @media screen and (min-width: $tablet) {
         min-width: 152px;
