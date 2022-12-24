@@ -25,8 +25,8 @@ const db = getFirestore(app);
 
 // homePageInterface();
 
-monitorsChangesInDB('queue');
-monitorsChangesInDB('watched');
+// monitorsChangesInDB('queue');
+// monitorsChangesInDB('watched');
 
 function monitorsChangesInDB(list) {
   const snapshot = onSnapshot(doc(db, loadDataFromLocalSt(KEY), list), doc => {
