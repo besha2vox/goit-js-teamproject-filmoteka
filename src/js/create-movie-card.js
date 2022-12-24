@@ -1,14 +1,13 @@
-import { API } from './api';
+import { loadDataFromLocalSt } from './utils/local-st-functions';
+import { GENRES_STORAGE_KEY } from './manipulation-with-api/get-genres';
 
-const api = new API();
+function searchGenres(ids) {
+  const allGenres = JSON.parse(loadDataFromLocalSt(GENRES_STORAGE_KEY));
+  const genresArr = ids.map(id => allGenres.find(genre => genre.id === id));
 
-async function searchGenres(ids) {
-  const genresObj = await api.getGenres();
-  const genres = genresObj.genres;
-  const genresArr = ids.map(id => genres.find(genre => genre.id === id));
   return genresArr
     .map(({ name }) => name)
-    .slice(0, 4)
+    .slice(0, 3)
     .join(', ');
 }
 
