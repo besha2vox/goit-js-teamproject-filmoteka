@@ -182,7 +182,7 @@ function onLoginModalShow() {
         !data ? createUserDoc(user.uid, user.displayName, user.email) : false
       );
 
-      this.close();
+      loginModal.close();
     } catch (error) {
       // Handle Errors here.
       const errorCode = error.code;
@@ -209,6 +209,8 @@ function onLoginModalShow() {
       getUserDataFromDB().then(data =>
         !data ? createUserDoc(user.uid, user.displayName, user.email) : false
       );
+
+      loginModal.close();
     } catch (error) {
       // Handle Errors here.
       const errorCode = error.code;
@@ -247,6 +249,8 @@ function onLoginModalShow() {
 
       //clear form
       loginForm.reset();
+
+      loginModal.close();
     } catch (error) {
       if (error.message === 'Firebase: Error (auth/wrong-password).') {
         loginFormNotify(
@@ -309,6 +313,8 @@ function onLoginModalShow() {
           displayName: userName,
         });
       }
+
+      loginModal.close();
     } catch (error) {
       if (error.message === 'Firebase: Error (auth/email-already-in-use).') {
         loginFormNotify(

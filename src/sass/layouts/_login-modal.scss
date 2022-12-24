@@ -1,38 +1,24 @@
 .modal__auth {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(35%);
 
-  height: 450px;
-  width: 350px;
+  width: 300px;
+  height: 400px;
+  
 
-  background-color: rgb(168, 168, 168);
-  border-radius: 5px;
+  font-weight: 500;
+  background-color: $primeryBackgroundColor;
 
   overflow: hidden;
 
-  @media screen and (max-width: 767px) {
-    top: 0%;
-    transform: translateX(-50%) translateY(10%);
-
-    width: 300px;
-    height: 400px;
+  @media screen and (max-width: 767px) and (orientation: landscape) {
+      top: 2%;
   }
 
-  @media screen and (min-width: 768px) {
-    top: 0%;
-    transform: translateX(-50%) translateY(50%);
-  }
+  @media screen and (min-width: $tablet) {
+    top: 15%;
 
-  @media screen and (max-width: 1120px) and (orientation: landscape) {
-    top: 0%;
-    transform: translateX(-50%) translateY(35%);
-  }
-
-  @media screen and (min-width: 1280px) {
-    top: 0%;
-    transform: translateX(-50%) translateY(35%);
+    height: 550px;
+    width: 420px;
   }
 }
 
@@ -50,9 +36,7 @@
   background-position: -63% 80%;
   background-size: 140%;
 
-  opacity: 0.8;
-
-  transition: opacity 300ms ease;
+  transition: opacity 300ms $cubicBezier;
 }
 
 .modal__auth.modal__signup--up::after {
@@ -61,7 +45,7 @@
 
 .form__signup {
   position: absolute;
-  top: 45%;
+  top: 48%;
   left: 35%;
   transform: translate(-50%, -50%);
 
@@ -69,14 +53,19 @@
 
   z-index: 5;
 
-  transition: all 300ms ease;
+  transition: all 300ms $cubicBezier;
+
+  @media screen and (min-width: $tablet) {
+    top: 45%;
+      left: 35%;
+    }
 }
 
 .form__signup.slide-up {
   top: 5%;
   transform: translate(-50%, 0%);
 
-  transition: all 300ms ease;
+  transition: all 300ms $cubicBezier;
 }
 
 .form__signup.slide-up .inputs__wrapper,
@@ -91,6 +80,11 @@
   font-weight: 600;
 
   cursor: pointer;
+
+  @media screen and (min-width: $tablet) {
+    font-size: 16px;
+    font-weight: 600;
+  } 
 }
 
 .form__signup.slide-up .form__title span {
@@ -99,37 +93,42 @@
   opacity: 1;
   visibility: visible;
 
-  transition: all 300ms ease;
+  transition: all 300ms $cubicBezier;
 }
 
 .form__signup .form__title {
   font-size: 20px;
   text-align: center;
-  color: #fff;
+  color: $primeryTextColor;
 
-  transition: all 300ms ease;
+  transition: all 300ms $cubicBezier;
+  
+    @media screen and (min-width: $tablet) {
+      font-size: 28px;
+    }
 }
 
 .form__signup .form__title span {
   font-size: 12px;
-  color: #ff6b01;
+  color: $accentColor;
 
   opacity: 0;
   visibility: hidden;
 
-  transition: all 300ms ease;
+  transition: all 300ms $cubicBezier;
 }
 
 .form__signup .inputs__wrapper {
   margin-top: 50px;
 
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px;
 
   overflow: hidden;
   visibility: visible;
 
-  transition: all 300ms ease;
+  transition: all 300ms $cubicBezier;
 }
 
 .form__signup .inputs__wrapper .form__input {
@@ -138,15 +137,20 @@
   background-color: transparent;
 
   width: 100%;
-  height: 30px;
+  height: 26px;
   padding: 8px 15px;
 
   font-size: 12px;
   line-height: 30px;
 
   border: 0;
-  border-bottom: 1px solid rgba(238, 238, 238, 0.45);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   outline: none;
+
+  @media screen and (min-width: $tablet) {
+      font-size: 14px;
+        height: 30px;
+    }
 }
 
 .form__signup .inputs__wrapper .form__input:last-child {
@@ -161,10 +165,11 @@
   display: block;
 
   width: 100%;
-  margin-top: 15px;
-  padding: 15px 45px;
+  margin-top: 12px;
+  padding: 12px 45px;
 
-  font-size: 13px;
+  font-size: 12px;
+  font-weight: 500;
   color: rgba(255, 255, 255, 0.7);
 
   background-color: rgba(0, 0, 0, 0.5);
@@ -175,7 +180,14 @@
   opacity: 1;
   visibility: visible;
 
-  transition: all 300ms ease;
+  transition: all 300ms $cubicBezier;
+
+  @media screen and (min-width: $tablet) {
+      margin-top: 15px;
+      padding: 15px 45px;
+  
+      font-size: 14px;
+    }
 }
 
 .form__signup .form__submit-btn:hover,
@@ -183,12 +195,12 @@
   color: rgb(255, 107, 1);
   background-color: rgba(0, 0, 0, 0.8);
 
-  transition: all 300ms ease;
+  transition: all 300ms $cubicBezier;
 }
 
 .form__login {
   position: relative;
-  top: 20%;
+  top: 15%;
   left: 0;
   right: 0;
   bottom: 0;
@@ -196,32 +208,32 @@
   width: 100%;
   height: 100%;
 
-  background-color: #fff;
+  background-color: $primeryTextColor;
 
   z-index: 5;
 
-  transition: all 300ms ease;
+  transition: all 300ms $cubicBezier;
 }
 
 .form__login::after {
   content: '';
 
   position: absolute;
-  top: 0;
+  top: -8%;
   right: 0;
   bottom: 0;
   left: 0;
 
   background-repeat: no-repeat;
-  background-size: 480px;
+  background-size: 550px;
   background-image: url('../images/cat.webp');
-  background-position: 175%;
+  background-position: 200%;
 
   z-index: 5;
 
-  opacity: 0.8;
+  // opacity: 0.8;
 
-  transition: opacity 300ms ease;
+  transition: opacity 300ms $cubicBezier;
 
   @media screen and (max-width: 767px) {
     background-position: 190%;
@@ -244,12 +256,12 @@
   width: 200%;
   height: 250px;
 
-  background-color: #fff;
+  background-color: $primeryTextColor;
 
   border-radius: 50%;
   z-index: 4;
 
-  transition: transform 300ms ease;
+  transition: transform 300ms $cubicBezier;
 }
 
 .form__login .center {
@@ -262,43 +274,52 @@
 
   z-index: 6;
 
-  transition: all 300ms ease;
+  transition: all 300ms $cubicBezier;
+
+  @media screen and (min-width: $tablet) {
+      top: 35%;
+        left: 65%;
+    }
 }
 
 .form__login .center .form__title {
   font-size: 20px;
   text-align: center;
-  color: #000;
+  color: $secondaryColor;
+
+  @media screen and (min-width: $tablet) {
+      font-size: 28px;
+    }
 }
 
 .form__login .center .form__title span {
   font-size: 12px;
-  color: #ff6b01;
+  color: $accentColor;
 
   opacity: 0;
   visibility: hidden;
 
-  transition: all 300ms ease;
+  transition: all 300ms $cubicBezier;
 }
 
 .form__login .center .inputs__wrapper {
   margin-top: 50px;
 
-  background-color: rgba(255, 255, 255, 0.45);
-  border: 1px solid #eee;
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: 5px;
 
   overflow: hidden;
   visibility: visible;
 
-  transition: all 300ms ease;
+  transition: all 300ms $cubicBezier;
 }
 
 .form__login .center .inputs__wrapper .form__input {
   display: block;
 
   width: 100%;
-  height: 30px;
+  height: 26px;
   padding: 8px 15px;
 
   font-size: 12px;
@@ -306,8 +327,13 @@
 
   background-color: transparent;
   border: 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
   outline: none;
+
+  @media screen and (min-width: $tablet) {
+      font-size: 14px;
+      height: 30px;
+    }
 }
 
 .form__login .center .inputs__wrapper .form__input:last-child {
@@ -322,10 +348,11 @@
   display: block;
 
   width: 100%;
-  margin-top: 15px;
-  padding: 15px 45px;
+  margin-top: 12px;
+  padding: 12px 45px;
 
-  font-size: 13px;
+  font-size: 12px;
+  font-weight: 500;
   color: rgba(255, 255, 255, 0.7);
 
   background-color: rgba(128, 128, 128, 0.8);
@@ -335,27 +362,34 @@
 
   visibility: visible;
 
-  transition: all 300ms ease;
+  transition: all 300ms $cubicBezier;
+
+  @media screen and (min-width: $tablet) {
+      margin-top: 15px;
+        padding: 15px 45px;
+
+        font-size: 14px;
+    }
 }
 
 .form__login .center .form__submit-btn:hover,
 .form__login .center .form__submit-btn:focus {
   color: rgb(255, 107, 1);
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(128, 128, 128, 0.4);
   border-radius: 5px;
 }
 
 .form__login.slide-up {
   top: 90%;
 
-  transition: all 300ms ease;
+  transition: all 300ms $cubicBezier;
 }
 
 .form__login.slide-up .center {
-  top: 0;
+  top: 1%;
   transform: translate(-50%, 0%);
 
-  transition: all 300ms ease;
+  transition: all 300ms $cubicBezier;
 }
 
 .form__login.slide-up .inputs__wrapper,
@@ -363,7 +397,7 @@
   opacity: 0;
   visibility: hidden;
 
-  transition: all 300ms ease;
+  transition: all 300ms $cubicBezier;
 }
 
 .form__login.slide-up .form__title {
@@ -371,11 +405,15 @@
   padding: 0;
 
   font-size: 12px;
-  font-weight: 600;
 
   cursor: pointer;
 
-  transition: all 300ms ease;
+  transition: all 300ms $cubicBezier;
+
+
+    @media screen and (min-width: $tablet) {
+      font-size: 16px;
+    }
 }
 
 .form__login.slide-up .form__title span {
@@ -384,7 +422,7 @@
   opacity: 1;
   visibility: visible;
 
-  transition: all 300ms ease;
+  transition: all 300ms $cubicBezier;
 }
 
 .show {
@@ -424,8 +462,8 @@
   height: 21px;
   margin-top: 20px;
 
-  font-size: 9px;
-  color: #ff001b;
+  font-size: 12px;
+  color: $errorTextColor;
 
   opacity: 0;
 }
@@ -465,7 +503,7 @@
 
   background-color: rgba(0, 0, 0, 0.5);
 
-  transition: background-color 300ms ease;
+  transition: background-color 300ms $cubicBezier;
 }
 
 .auth-providers__link--login {
@@ -473,7 +511,15 @@
 }
 
 .auth-providers__link--login:hover,
-.auth-providers__link--login:focus,
+.auth-providers__link--login:focus {
+  background-color: rgba(128, 128, 128, 0.4);
+}
+
+.auth-providers__link--signup,
+.auth-providers__link--signup {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .auth-providers__link--signup:hover,
 .auth-providers__link--signup:focus {
   background-color: rgba(0, 0, 0, 0.8);
@@ -482,7 +528,7 @@
 .auth-providers__icon {
   fill: rgba(255, 255, 255, 0.7);
 
-  transition: fill 300ms ease;
+  transition: fill 300ms $cubicBezier;
 }
 
 .auth-providers__link:hover .auth-providers__icon,
@@ -498,6 +544,16 @@
 
   border: none;
   background-color: transparent;
+}
+
+.icon-close {
+  stroke: $primeryTextColor;
+
+  transition: stroke 300ms $cubicBezier;
+}
+
+.icon-close:hover, .icon-close:focus {
+  stroke: $accentColor;
 }
 
 @keyframes show {
