@@ -51,7 +51,6 @@ function checkViewportWidth() {
 }
 
 export function resetPagNums() {
-  page = 1;
   pagNums.start = 0;
   pagNums.page = 1;
   checkViewportWidth();
@@ -73,7 +72,6 @@ function addListenersMyLibBtns({ prevBtn, numberedBtns, nextBtn }) {
 
 function onMyLibPrevBtnClick(e) {
   pagNums.page -= 1;
-  page -= 1;
   setSliceIndxs();
   getCurrentPage();
   console.log('pagNums.page', pagNums.page);
@@ -81,7 +79,6 @@ function onMyLibPrevBtnClick(e) {
 
 function onMyLibNextBtnClick(e) {
   pagNums.page += 1;
-  page += 1;
   setSliceIndxs();
   getCurrentPage();
   console.log('pagNums.page', pagNums.page);
@@ -108,7 +105,7 @@ function createMyLibPagination(totalPages) {
   let liTag = '';
   let active;
   let plength = 0;
-  let page = pagNums.page;
+  page = pagNums.page;
   let beforePage = page - 2;
   let afterPage = page + 2;
   if (page > 1) {
