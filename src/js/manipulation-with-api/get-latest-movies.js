@@ -1,7 +1,7 @@
 import { API } from '../api';
 import { createMovieCardMarkup } from '../create-movie-card';
 import { onMovieClick } from './modal-open';
-import { renderPagination } from '../utils/pagination';
+import { renderPagination } from '../pagination/pagination';
 
 const api = new API();
 
