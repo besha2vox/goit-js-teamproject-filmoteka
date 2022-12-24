@@ -39,7 +39,6 @@ export class API {
     return await this.basicFetch(url);
   }
 
-
   // Поиск Что сейчас смотрят
 
   async getNowPlaingMovies() {
@@ -51,10 +50,15 @@ export class API {
   // Поиск фильмов, которые скоро выйдут в кинотеатрах
 
   async getUpcomingMovies() {
-    const url = `${this.BASE_URL}/movie/upcoming?api_key=${this.API_KEY}`;
+    const params = new URLSearchParams({
+      api_key: this.API_KEY,
+      // language: getLanguage(),
+    });
+
+    const url = `${this.BASE_URL}/movie/upcoming?${params.toString()}`;
 
     return await this.basicFetch(url);
-    
+  }
   //? ПОШУК НОВИНОК
 
   async getMovieLatest() {

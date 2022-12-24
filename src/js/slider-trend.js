@@ -1,5 +1,7 @@
 import { API } from './api';
 import { Modal } from './class-modal';
+import { searchGenres } from './create-movie-card';
+
 const api = new API();
 const modalUpcoming = new Modal();
 const sliderContainer = document.querySelector('.trending-list');
@@ -29,11 +31,13 @@ const modalClic = document.querySelector('.trending-list');
 modalClic.addEventListener('click', renderModalTemplete);
 
 function renderModalTemplete(e) {
- 
   if (!e.target.closest('li')) {
     return;
   }
   const parrent = e.target.closest('.img-div');
+  const genreIds = parrent.dataset.genre.split(',').map(genre => Number(genre));
+  const genres = searchGenres(genreIds);
+
   const markup = `<div class="cartUpcomingModal">
   <div class="imgUpcomingModal"><img src="${parrent.dataset.poster}" alt="${parrent.dataset.alt}" class="poster"></div>
   <div class="infoUpcomingModal">
@@ -64,7 +68,7 @@ function renderModalTemplete(e) {
 
   <li class="itemUpcomingModal">
   <p class="keyUpcomingModal">Genre</p>
-  <p class="valueUpcomingModal">${parrent.dataset.genre}</p>
+  <p class="valueUpcomingModal">${genres}</p>
   </li>
   </ul>
 
