@@ -28,7 +28,8 @@ async function onFormSubmit(e) {
 
   const movies = await createData();
 
-  if (!movies.results.length) {
+  if (!movies || !movies.results.length) {
+    document.querySelector('.pagination-list').innerHTML = '';
     loginFormNotify(
       refs.notifyEl,
       'Search result not successful. Enter the correct movie name and'
