@@ -1,0 +1,88 @@
+.lib-header {
+    position: relative;
+    padding: 40px 0 44px;
+ 
+    
+    background-color: $headerBackgroundColor;
+    
+    background-image: url('/src/images/library/header-library-bg-mobile-1x.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    color: #ffffff;
+    @media (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url('/src/images/library/header-library-bg-mobile-2x.jpg');
+    }
+    
+    @media screen and (min-width: $tablet) {
+        background-image: url('/src/images/library/header-library-bg-tablet-1x.jpg');
+    
+        @media (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url('/src/images/library/header-library-bg-tablet-2x.jpg');
+        }
+    }
+    
+    @media screen and (min-width: $desktop) {
+        margin-right: auto;
+        margin-left: auto;
+    
+        background-image: url('/src/images/library/header-library-bg-desktop-1x.jpg');
+    
+        @media (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url('/src/images/library/header-library-bg-desktop-2x.jpg');
+        }
+    }
+    }
+    
+
+
+    .library-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        padding-top: 66px;
+        @media screen and (min-width: $tablet) {
+            gap: 32px; 
+        }
+        @media screen and (min-width: $desktop) {
+            gap: 16px; 
+        }
+
+        }
+      
+      .library-btn {
+      width: 129.53px;
+      height: 44px;
+    //   background: $activeBtnColor;
+      border-radius: 5px;
+      border: 1px solid $secondaryColor;
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      color: $secondaryColor;
+
+      background-image: none; 
+  background: transparent;
+    background-color: transparent;
+      }
+
+      .library-btn:focus, 
+      .library-btn:hover {
+        background: $activeBtnColor;
+        border: 1px solid transparent;
+      }
+
+      
