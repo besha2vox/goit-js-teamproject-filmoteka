@@ -105,7 +105,7 @@ function createMyLibPagination(totalPages) {
   let liTag = '';
   let active;
   let plength = 0;
-  page = pagNums.page;
+  let page = pagNums.page;
   let beforePage = page - 2;
   let afterPage = page + 2;
   if (page > 1) {
