@@ -6,6 +6,8 @@ import {
   watchedBtn,
   queueBtn,
   moviesList,
+  logo,
+  slider,
 } from './firebase-auth/auth-refs';
 import {
   classToggle,
@@ -25,8 +27,11 @@ import {
 import {
   calculateFilms,
   resetPagNums,
+  onMyLibPrevBtnClick,
 } from './pagination/pagination-my-librery';
+import { createMovieCardMarkup } from './create-movie-card';
 import { getCurrentFunc } from './utils/render-on switch-lang';
+import { fakePoster } from './utils/fake-poster';
 import { async } from 'regenerator-runtime';
 
 const PAGE_KEY = 'page';
@@ -34,6 +39,7 @@ const LIST_KEY = 'film-list';
 
 libraryLink.addEventListener('click', onLibraryPage);
 homeLink.addEventListener('click', onHomePage);
+logo.addEventListener('click', onHomePage);
 watchedBtn.addEventListener('click', onWatchedBtnClick);
 queueBtn.addEventListener('click', onQueueBtnClick);
 
@@ -75,6 +81,8 @@ async function onLibraryPage(event) {
     resetPagNums();
   }
 
+  slider.style.display = 'none';
+
   libraryPageInterface();
 
   fetchLibrary();
@@ -108,8 +116,11 @@ async function getDataArray(type, func) {
 async function renderFilmLists(ids) {
   const getPromisesById = ids.map(async id => await createData(id));
   const getDataFromPromises = await Promise.all(getPromisesById);
-  const template = getDataFromPromises.map(createMovieCardMarkup).join('');
-  moviesList.innerHTML = template;
+  const template = await getDataFromPromises.map(
+    async movie => await createMovieCardMarkup(movie)
+  );
+  const templatePromise = (await Promise.all(template)).join('');
+  moviesList.innerHTML = await templatePromise;
 }
 //!----------------| for pagination |------------------------
 
@@ -119,15 +130,21 @@ async function renderFilmListsFromDB(list) {
 
   // const currentIds = filmsId.filter(id => arrayIds.includes(id));
   const currentIds = await calculateFilms(filmsId);
+  if (currentIds.length < 1) {
+    onMyLibPrevBtnClick();
+    return;
+  }
 
   const getPromisesById = currentIds.map(async id => {
     return await createData(id);
   });
   const getDataFromPromises = await Promise.all(getPromisesById);
-  const countOfPages = Math.ceil(getDataFromPromises.length / 9);
-  const template = getDataFromPromises.map(createMovieCardMarkup).join('');
-
-  moviesList.innerHTML = template;
+  // const countOfPages = Math.ceil(getDataFromPromises.length / 9);
+  const template = await getDataFromPromises.map(
+    async movie => await createMovieCardMarkup(movie)
+  );
+  const templatePromise = (await Promise.all(template)).join('');
+  moviesList.innerHTML = await templatePromise;
 }
 
 function libraryPageInterface() {
@@ -145,6 +162,7 @@ function libraryPageInterface() {
 function onHomePage(event) {
   event.preventDefault();
 
+  slider.style.display = 'block';
   saveDataToLocalSt(PAGE_KEY, 'home');
 
   classToggle(homeLink, 'add', 'active');
@@ -172,70 +190,6 @@ async function createData(id) {
     return await api.getSearchMoviesByID(id);
   } catch (error) {
     console.log(error.message);
-  }
-}
-
-function createMovieCardMarkup({
-  genres,
-  id,
-  title,
-  poster_path,
-  vote_average,
-  release_date,
-}) {
-  const genresStr = searchGenres(genres);
-
-  if (genres.length < 1) {
-    return `<li class="movie-card" id="${id}">
-    <img src="https://image.tmdb.org/t/p/original${poster_path}" 
-        alt="Poster of ${title}" class="movie-card__img" />
-          <div class="movie-card__info">
-            <p class="movie-card__name">${title}</p>
-            <div class="movie-card__wrap">
-            <p class="movie-card__info-wrap">
-              <span class="movie-card__release">${
-                release_date.split('-')[0]
-              }</span></p>
-              </div>
-          </div>
-      </li>`;
-  } else if (!release_date) {
-    return `<li class="movie-card" id="${id}">
-    <img src="https://image.tmdb.org/t/p/original${poster_path}" 
-        alt="Poster of ${title}" class="movie-card__img" />
-          <div class="movie-card__info">
-            <p class="movie-card__name">${title}</p>
-            <div class="movie-card__wrap">
-            <p class="movie-card__info-wrap">
-              <span class="movie-card__genre">${genresStr}</span></p>
-              </div>
-          </div>
-      </li>`;
-  } else if (genres.length < 1 && !release_date) {
-    return `<li class="movie-card" id="${id}">
-    <img src="https://image.tmdb.org/t/p/original${poster_path}" 
-        alt="Poster of ${title}" class="movie-card__img" />
-          <div class="movie-card__info">
-            <p class="movie-card__name">${title}</p>
-            <div class="movie-card__wrap">
-            <p class="movie-card__info-wrap"></p>
-              </div>
-          </div>
-      </li>`;
-  } else {
-    return `<li class="movie-card" id="${id}">
-    <img src="https://image.tmdb.org/t/p/original${poster_path}" 
-        alt="Poster of ${title}" class="movie-card__img" />
-          <div class="movie-card__info">
-            <p class="movie-card__name">${title}</p>
-            <div class="movie-card__wrap">
-            <p class="movie-card__info-wrap">
-              <span class="movie-card__genre">${genresStr}</span> | <span class="movie-card__release">${
-      release_date.split('-')[0]
-    }</span></p>
-              </div>
-          </div>
-      </li>`;
   }
 }
 
