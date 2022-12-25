@@ -11,6 +11,8 @@
 }
 
 .header__home {
+
+  background-image: url('/src/images/home/home_mobile_1x.jpg');
   @media (min-device-pixel-ratio: 2),
     (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -68,10 +70,10 @@
 }
 
 .header__library {
-  background-image: url('/src/images/library/header-library-bg-mobile-1x.jpg');
+  background-image: linear-gradient($headerBackgroundColor, $headerBackgroundColor), url('/src/images/library/header-library-bg-mobile-1x.jpg');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: linear-gradient($headerBackgroundColor, $headerBackgroundColor), 100%;
+    background-size:  100%;
   
     @media (min-device-pixel-ratio: 2),
     (-webkit-min-device-pixel-ratio: 2),
