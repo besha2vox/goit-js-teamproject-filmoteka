@@ -8,6 +8,7 @@ import './js/switcher_theme';
 import './js/switcher_language';
 import './js/tool-tip';
 import './js/utils/render-on switch-lang';
+import './js/burger-mobile';
 
 // ?
 import './js/trailer';
