@@ -9,6 +9,8 @@ import {
 } from '../firebase-database/database-realization';
 import { loadDataFromLocalSt } from '../utils/local-st-functions';
 import { loginFormNotify } from '../firebase-auth/interface-change';
+import { renderTrailer } from '../trailer';
+import { iframeRender } from '../trailer';
 
 const KEY = 'userUID';
 const modalOptions = {
@@ -25,6 +27,7 @@ async function onMovieClick(e) {
 
   const markup = getModalMarkup(movie);
   modal.open(markup);
+  renderTrailer(article.id);
 }
 
 function filmModalOptions() {
@@ -33,13 +36,15 @@ function filmModalOptions() {
   const addToQueuedBtn = filmModal.querySelector('[data-list="queue"]');
   const btnList = filmModal.querySelector('.buttons-list__film-modal');
   const notifyEl = filmModal.querySelector('.modal-movie__notify');
-  const filmId = Number(addToWatchedBtn.closest('[data-id]').dataset.id);
-  console.log('filmId: ', filmId);
+  const filmId = addToWatchedBtn.closest('[data-id]').dataset.id;
+  const youtubeBtn = document.querySelector('.film__trailer__btn');
+  // const filmId = Number(addToWatchedBtn.closest('[data-id]').dataset.id);
 
   checkDB(filmId);
 
   addToWatchedBtn.addEventListener('click', onWotchedBtnClick);
   addToQueuedBtn.addEventListener('click', onQueueBtnClick);
+  // youtubeBtn.addEventListener('click', iframeRender);
 
   async function onWotchedBtnClick(event) {
     if (!loadDataFromLocalSt(KEY)) {

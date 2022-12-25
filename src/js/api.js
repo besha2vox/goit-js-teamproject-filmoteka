@@ -114,7 +114,11 @@ export class API {
   //? ЗАПИТ СПИСКУ ЖАНРІВ
 
   async getGenres() {
-    const url = `${this.BASE_URL}genre/movie/list?api_key=${this.API_KEY}`;
+    const params = new URLSearchParams({
+      api_key: this.API_KEY,
+      language: getLanguage(),
+    });
+    const url = `${this.BASE_URL}genre/movie/list?${params.toString()}`;
     return await this.basicFetch(url);
   }
 

@@ -1,22 +1,14 @@
-<header class="header home-header">
+<header class="header header__home">
   <div class="container container__header">
     <div class="posioning-group--header">
       <div class="header__positioning header__positioning--for-logo">
         <a class="link logo" href="./index.html" class="logo">
-          <svg width="24" height="24" role="img" aria-label="Logo">
-            <!-- <use href="/src/images/icons.svg#icon-logo"></use> -->
+          <svg width="24" height="24">
+            <use href="/src/images/icons.svg#logo"></use>
           </svg>
           <span class="logo__text">Filmoteka</span>
         </a>
       </div>
-
-      <div class="header__positioning header__positioning--for-nav">
-        <div class="greeting__wrapper">
-          <p class="greeting">
-            <span class="hello">Hello, </span><span class="user-name"></span>
-          </p>
-        </div>
-
         <nav class="nav nav__links">
           <ul class="nav__list" id="nav">
             <li class="nav__item">
@@ -52,50 +44,62 @@
             </li>
           </ul>
         </nav>
-        <div class="utils">
-          <div class="theme-switch" data-tooltip="theme-switch">
-            <label aria-hidden="true" class="theme-switch__track">
-              <input
-                class="theme-switch__toggle"
-                type="checkbox"
-                name="theme"
-                aria-label="Перемкнути між світлою та темною темами"
-              />
-              <svg
-                width="20"
-                class="theme-switch__icon theme-switch__icon--light"
-                role="img"
-                aria-label="Іконка сонця"
-              >
-                <use href="/src/images/sprite.svg#sun"></use>
-              </svg>
-              <svg
-                width="20"
-                class="theme-switch__icon theme-switch__icon--dark"
-                aria-label="Іконка місяця"
-              >
-                <use href="/src/images/sprite.svg#moon"></use>
-              </svg>
-            </label>
+        
+            <div class="posioning-group--header posioning-group--second">
+                <div class="greeting__wrapper header__positioning">
+                   <p class="greeting">
+                    <span class="hello">of </span><span class="user-name"></span>
+                    </p>
+                </div>
+               <div class="utils header__positioning wrapper-mobile">
+                  <div class="icon nav-icon-mob">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                  <div class="utils-mob">
+                    <div class="theme-switch" data-tooltip="theme-switch">
+                       <label aria-hidden="true" class="theme-switch__track">
+                      <input
+                        class="theme-switch__toggle"
+                        type="checkbox"
+                        name="theme"
+                        aria-label="Перемкнути між світлою та темною темами"
+                      />
+                      <svg
+                        width="20"
+                        class="theme-switch__icon theme-switch__icon--light"
+                        role="img"
+                        aria-label="Іконка сонця"
+                      >
+                  <use href="/src/images/sprite.svg#sun"></use>
+                </svg>
+                <svg
+                  width="20"
+                  class="theme-switch__icon theme-switch__icon--dark"
+                  aria-label="Іконка місяця"
+                >
+                  <use href="/src/images/sprite.svg#moon"></use>
+                </svg>
+              </label>
+            </div>
+            <div class="language-switcher" data-tooltip="language-switch">
+              <label class="language-switcher__label">
+                <input
+                  class="language-switcher__checkbox"
+                  name="language"
+                  type="checkbox"
+                />
+                <span
+                  class="language-switcher__lang"
+                  data-ualang="UA"
+                  data-enlang="EN"
+                  >UA</span
+                >
+              </label>
+            </div>
           </div>
-          <div class="language-switcher" data-tooltip="language-switch">
-            <label class="language-switcher__label">
-              <input
-                class="language-switcher__checkbox"
-                name="language"
-                type="checkbox"
-              />
-              <span
-                class="language-switcher__lang"
-                data-ualang="UA"
-                data-enlang="EN"
-                >UA</span
-              >
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>
+ 
 
     <div class="header__positioning header__positioning--for-form">
       <div class="query__wrapper home">
@@ -108,12 +112,10 @@
             data-ualang="Пошук фильму"
             data-enlang="Movie search"
           />
-          <button class="form__submit" type="submit">
-            <!-- <img
-              class="icon-search"
-              src="/src/images/icons.svg#search"
-              alt="Іконка пошуку"
-            /> -->
+          <button class="form__submit form__submit--search" type="submit">
+            <svg class="search-icon" width="12" height="12">
+              <use href="/src/images/icons.svg#search"></use>
+            </svg>
           </button>
         </form>
         <p class="form__error-notification--for-header"></p>

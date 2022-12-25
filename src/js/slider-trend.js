@@ -24,8 +24,6 @@ async function renderUpcoming() {
 
     .join('');
   sliderContainer.innerHTML = markup;
-
-  console.log(upcoming);
 }
 
 const modalClic = document.querySelector('.trending-list');

@@ -6,6 +6,8 @@ import {
   watchedBtn,
   queueBtn,
   moviesList,
+  logo,
+  slider,
 } from './firebase-auth/auth-refs';
 import {
   classToggle,
@@ -13,11 +15,11 @@ import {
   hideElements,
 } from './firebase-auth/interface-change';
 import { api } from './manipulation-with-api/modal-open';
-import { getLatestMovies } from './manipulation-with-api/get-latest-movies';
 import {
-  saveDataToLocalSt,
-  loadDataFromLocalSt,
-} from './utils/local-st-functions';
+  getLatestMovies,
+  resetApiPage,
+} from './manipulation-with-api/get-latest-movies';
+import { saveDataToLocalSt } from './utils/local-st-functions';
 import {
   getUserDataFromDB,
   monitorsChangesInDB,
@@ -25,14 +27,18 @@ import {
 import {
   calculateFilms,
   resetPagNums,
+  onMyLibPrevBtnClick,
 } from './pagination/pagination-my-librery';
 import { getCurrentFunc } from './utils/render-on switch-lang';
+import { fakePoster } from './utils/fake-poster';
+import { async } from 'regenerator-runtime';
 
 const PAGE_KEY = 'page';
 const LIST_KEY = 'film-list';
 
 libraryLink.addEventListener('click', onLibraryPage);
 homeLink.addEventListener('click', onHomePage);
+logo.addEventListener('click', onHomePage);
 watchedBtn.addEventListener('click', onWatchedBtnClick);
 queueBtn.addEventListener('click', onQueueBtnClick);
 
@@ -45,25 +51,12 @@ function onWatchedBtnClick(event) {
   classToggle(watchedBtn, 'add', 'button__header--active');
   classToggle(queueBtn, 'remove', 'button__header--active');
 
-  renderFilmListsFromDB('watched', onWatchedBtnClick);
-
-  // fetchWatched();
+  fetchWatched();
 
   saveDataToLocalSt(LIST_KEY, 'watched');
 
   monitorsChangesInDB('watched');
 }
-
-//!----------------| for pagination |------------------------
-async function fetchWatched() {
-  // libraryPageInterface();
-  const userData = await getUserDataFromDB('watched');
-  const idsArray = Object.keys(userData).slice(1, userData.length);
-  const filmsList = await calculateFilms(idsArray, onWatchedBtnClick);
-  getCurrentFunc(onQueueBtnClick);
-  renderFilmListsFromDB('watched');
-}
-//!----------------| for pagination |------------------------
 
 function onQueueBtnClick(event) {
   if (event) {
@@ -74,24 +67,12 @@ function onQueueBtnClick(event) {
   classToggle(queueBtn, 'add', 'button__header--active');
   classToggle(watchedBtn, 'remove', 'button__header--active');
 
-  renderFilmListsFromDB('queue');
-  // fetchQueue();
+  fetchQueue();
 
   saveDataToLocalSt(LIST_KEY, 'queue');
 
   monitorsChangesInDB('queue');
 }
-
-//!----------------| for pagination |------------------------
-// async function fetchQueue() {
-//   // libraryPageInterface();
-//   const userData = await getUserDataFromDB('queue');
-//   const idsArray = Object.keys(userData).slice(1, userData.length);
-//   const filmsList = await calculateFilms(idsArray, fetchLibrary);
-//   getCurrentFunc(onQueueBtnClick);
-//   renderFilmListsFromDB('queue');
-// }
-//!----------------| for pagination |------------------------
 
 async function onLibraryPage(event) {
   if (event) {
@@ -99,34 +80,62 @@ async function onLibraryPage(event) {
     resetPagNums();
   }
 
-  // monitorsChangesInDB();
+  slider.style.display = 'none';
 
   libraryPageInterface();
 
-  renderFilmListsFromDB('watched');
-  // fetchLibrary();
+  fetchLibrary();
 
   saveDataToLocalSt(PAGE_KEY, 'library');
   saveDataToLocalSt(LIST_KEY, 'watched');
 }
 
-// //!----------------| for pagination |------------------------
-// async function fetchLibrary() {
-//   libraryPageInterface();
-//   const userData = await getUserDataFromDB('watched');
-//   const idsArray = Object.keys(userData).slice(1, userData.length);
-//   const filmsList = await calculateFilms(idsArray, fetchLibrary);
-//   getCurrentFunc(onLibraryPage);
-//   renderFilmListsFromDB('watched');
-// }
+//!----------------| for pagination |------------------------
+
+async function fetchWatched() {
+  getDataArray('watched', fetchWatched);
+}
+
+async function fetchQueue() {
+  getDataArray('queue', fetchQueue);
+}
+
+async function fetchLibrary() {
+  getDataArray('watched', fetchLibrary);
+}
+
+async function getDataArray(type, func) {
+  const userData = await getUserDataFromDB(type);
+  const idsArray = Object.keys(userData).slice(1, userData.length);
+  const arrayIds = await calculateFilms(idsArray, func);
+  getCurrentFunc(onWatchedBtnClick);
+  renderFilmLists(arrayIds);
+}
+
+async function renderFilmLists(ids) {
+  const getPromisesById = ids.map(async id => await createData(id));
+  const getDataFromPromises = await Promise.all(getPromisesById);
+  const template = getDataFromPromises.map(createMovieCardMarkup).join('');
+  moviesList.innerHTML = template;
+}
 //!----------------| for pagination |------------------------
 
 async function renderFilmListsFromDB(list) {
   const userData = await getUserDataFromDB(list);
   const filmsId = Object.keys(userData).slice(1, userData.length);
-  const getPromisesById = filmsId.map(async id => await createData(id));
+
+  // const currentIds = filmsId.filter(id => arrayIds.includes(id));
+  const currentIds = await calculateFilms(filmsId);
+  if (currentIds.length < 1) {
+    onMyLibPrevBtnClick();
+    return;
+  }
+
+  const getPromisesById = currentIds.map(async id => {
+    return await createData(id);
+  });
   const getDataFromPromises = await Promise.all(getPromisesById);
-  // const countOfPages = Math.ceil(getDataFromPromises.length / 9);
+  const countOfPages = Math.ceil(getDataFromPromises.length / 9);
   const template = getDataFromPromises.map(createMovieCardMarkup).join('');
 
   moviesList.innerHTML = template;
@@ -147,6 +156,7 @@ function libraryPageInterface() {
 function onHomePage(event) {
   event.preventDefault();
 
+  slider.style.display = 'block';
   saveDataToLocalSt(PAGE_KEY, 'home');
 
   classToggle(homeLink, 'add', 'active');
@@ -155,6 +165,7 @@ function onHomePage(event) {
   hideElements(libraryPage);
   showElements(homePage);
 
+  resetApiPage();
   getLatestMovies();
 }
 
@@ -185,10 +196,12 @@ function createMovieCardMarkup({
   release_date,
 }) {
   const genresStr = searchGenres(genres);
+  const url = `https://image.tmdb.org/t/p/original${poster_path}`;
+  const poster = poster_path ? url : fakePoster;
 
   return `<li class="movie-card" id="${id}">
         <img 
-        src="https://image.tmdb.org/t/p/original${poster_path}" 
+        src=${poster} 
         alt="Poster of ${title}" class="movie-card__img" />
         
           <div class="movie-card__info">
@@ -197,7 +210,7 @@ function createMovieCardMarkup({
               <p class="movie-card__genre">${genresStr} | ${
     release_date.split('-')[0]
   }</p>
-              <span class="movie-card__rating">${vote_average.toFixed(1)}</span>
+             
               </div>
           </div>
       </li>`;
@@ -229,4 +242,6 @@ export {
   libraryPageInterface,
   renderFilmListsFromDB,
   renderFilmsFromDB,
+  fetchWatched,
+  fetchQueue,
 };

@@ -1,7 +1,7 @@
 {
   "name": "goit-js-teamproject-filmoteka",
   "version": "2.0.0",
-  "description": "",
+  "description": "Спробую зрозуміло описати.",
   "homepage": "https://besha2vox.github.io/goit-js-teamproject-filmoteka",
   "scripts": {
     "start": "parcel src/*.html",
@@ -18,13 +18,16 @@
     "url": "https://github.com/besha2vox/goit-js-teamproject-filmoteka/issues"
   },
   "dependencies": {
+    "@swc/helpers": "^0.4.14",
     "firebase": "^9.13.0",
-    "modern-normalize": "^1.1.0"
+    "modern-normalize": "^1.1.0",
+    "regenerator-runtime": "^0.13.11"
   },
   "devDependencies": {
     "@parcel/packager-raw-url": "^2.6.0",
     "@parcel/transformer-sass": "^2.6.0",
     "@parcel/transformer-webmanifest": "^2.6.0",
+    "buffer": "^6.0.3",
     "parcel": "^2.6.0",
     "parcel-reporter-clean-dist": "^1.0.4",
     "posthtml-include": "^1.7.4",
