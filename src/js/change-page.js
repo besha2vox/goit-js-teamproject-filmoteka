@@ -27,6 +27,7 @@ import {
   resetPagNums,
 } from './pagination/pagination-my-librery';
 import { getCurrentFunc } from './utils/render-on switch-lang';
+import { fakePoster } from './utils/fake-poster';
 import { async } from 'regenerator-runtime';
 
 const PAGE_KEY = 'page';
@@ -184,10 +185,12 @@ function createMovieCardMarkup({
   release_date,
 }) {
   const genresStr = searchGenres(genres);
+  const url = `https://image.tmdb.org/t/p/original${poster_path}`;
+  const poster = poster_path ? url : fakePoster;
 
   return `<li class="movie-card" id="${id}">
         <img 
-        src="https://image.tmdb.org/t/p/original${poster_path}" 
+        src=${poster} 
         alt="Poster of ${title}" class="movie-card__img" />
         
           <div class="movie-card__info">
@@ -196,7 +199,7 @@ function createMovieCardMarkup({
               <p class="movie-card__genre">${genresStr} | ${
     release_date.split('-')[0]
   }</p>
-              <span class="movie-card__rating">${vote_average.toFixed(1)}</span>
+             
               </div>
           </div>
       </li>`;

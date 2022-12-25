@@ -1,9 +1,9 @@
 import { loadDataFromLocalSt } from './utils/local-st-functions';
 import { GENRES_STORAGE_KEY } from './manipulation-with-api/get-genres';
+import { fakePoster } from './utils/fake-poster';
 
 export function searchGenres(ids) {
   const allGenres = JSON.parse(loadDataFromLocalSt(GENRES_STORAGE_KEY));
-  console.log('allGenres', allGenres);
   const genresArr = ids.map(id => allGenres.find(genre => genre.id === id));
 
   return genresArr
@@ -20,11 +20,15 @@ export async function createMovieCardMarkup({
   vote_average,
   release_date,
 }) {
+  console.log('poster_path', poster_path);
   const genre = await searchGenres(genre_ids);
+
+  const url = `https://image.tmdb.org/t/p/original${poster_path}`;
+  const poster = poster_path ? url : fakePoster;
 
   if (genre_ids.length < 1) {
     return await `<li class="movie-card" id="${id}">
-    <img src="https://image.tmdb.org/t/p/original${poster_path}" 
+    <img src=${poster} 
         alt="Poster of ${title}" class="movie-card__img" />
           <div class="movie-card__info">
             <p class="movie-card__name">${title}</p>
@@ -38,7 +42,7 @@ export async function createMovieCardMarkup({
       </li>`;
   } else if (!release_date) {
     return await `<li class="movie-card" id="${id}">
-    <img src="https://image.tmdb.org/t/p/original${poster_path}" 
+    <img src=${poster} 
         alt="Poster of ${title}" class="movie-card__img" />
           <div class="movie-card__info">
             <p class="movie-card__name">${title}</p>
@@ -50,7 +54,7 @@ export async function createMovieCardMarkup({
       </li>`;
   } else if (genre_ids.length < 1 && !release_date) {
     return await `<li class="movie-card" id="${id}">
-    <img src="https://image.tmdb.org/t/p/original${poster_path}" 
+    <img src=${poster} 
         alt="Poster of ${title}" class="movie-card__img" />
           <div class="movie-card__info">
             <p class="movie-card__name">${title}</p>
@@ -61,7 +65,7 @@ export async function createMovieCardMarkup({
       </li>`;
   } else {
     return await `<li class="movie-card" id="${id}">
-    <img src="https://image.tmdb.org/t/p/original${poster_path}" 
+    <img src=${poster} 
         alt="Poster of ${title}" class="movie-card__img" />
           <div class="movie-card__info">
             <p class="movie-card__name">${title}</p>
