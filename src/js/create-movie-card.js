@@ -3,6 +3,7 @@ import { GENRES_STORAGE_KEY } from './manipulation-with-api/get-genres';
 
 export function searchGenres(ids) {
   const allGenres = JSON.parse(loadDataFromLocalSt(GENRES_STORAGE_KEY));
+  console.log('allGenres', allGenres);
   const genresArr = ids.map(id => allGenres.find(genre => genre.id === id));
 
   return genresArr
