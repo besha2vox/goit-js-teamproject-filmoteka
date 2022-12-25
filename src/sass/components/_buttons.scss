@@ -39,6 +39,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
 }
 
 .buttons-list__item:not(:first-child) {
@@ -50,7 +51,6 @@
 }
 
 .buttons-list__item:last-child {
-    margin-top: 10px;
     @media screen and (max-width: $tablet) {
         margin-top: 0;
     }
