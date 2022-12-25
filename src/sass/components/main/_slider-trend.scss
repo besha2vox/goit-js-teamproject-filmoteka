@@ -1,3 +1,20 @@
+
+@mixin white-gradient {
+	background: linear-gradient(to right,  rgb(233, 231, 228) 0%,rgba(255,255,255,0) 100%);
+}
+
+@mixin red-gradient {
+	background: linear-gradient(to right,  #970413 0%,rgba(255,255,255,0) 100%);
+}
+
+$animationSpeed: 60s;
+
+// Animation
+@keyframes scroll {
+	0% { transform: translateX(0); }
+	100% { transform: translateX(calc(-250px * 7))}
+}
+
 // Оформление карточки
 
 .movies-slider {
@@ -14,13 +31,24 @@
         padding-top: 30px;
         padding-bottom: 50px;
       }
- 
     background-color: rgb(233, 231, 228);
 }
 
+body.dark-theme main .movies-slider {
+  background-color: #970413;
+}
+
+
 .trending-title {
     text-align: center;
-    margin-bottom: 10px;
+
+    @media screen and (min-width: $tablet) {
+      margin-bottom: 20px;
+      margin-top: 10px;
+  }
+  @media screen and (min-width: $desktop) {
+    margin-bottom: 35px;
+  }
 }
 
 .trending-list {
@@ -64,7 +92,7 @@
 .info-trend {
   position: absolute;
     display: flex;
-    // z-index: 1;
+    z-index: 1;
     bottom: 0;
     right: 0;
 }
@@ -88,41 +116,39 @@
 }
 
 .relise-date {
-    padding: 3px 5px;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 10px;
+
     color: white;
     background-color: rgb(248, 164, 7);
     border-radius: 4px;
     margin-right: auto;
+
+    @media screen and (min-width: $tablet) {
+      padding: 3px 5px;
+      font-size: 7px;
+    }
+    @media screen and (min-width: $desktop) {
+      padding: 3px 5px;
+      font-size: 10px;
+    }
 }
 
 
 // Слайдер
 
-@mixin white-gradient {
-	background: linear-gradient(to right,  rgb(233, 231, 228) 0%,rgba(255,255,255,0) 100%);
-}
-
-$animationSpeed: 60s;
-
-// Animation
-@keyframes scroll {
-	0% { transform: translateX(0); }
-	100% { transform: translateX(calc(-250px * 7))}
-}
 
 
 // Styling
 .slider {
-    background-color: rgb(233, 231, 228);
+    background-color: rgba(0, 0, 0, 0);
 	margin: auto;
 	overflow:hidden;
 	position: relative;
 
-	
+
 	&::before,
 	&::after {
 		@include white-gradient;
@@ -132,7 +158,7 @@ $animationSpeed: 60s;
 		width: 100px;
 		z-index: 1;
 	}
-	
+
 	&::after {
 		right: 0;
 		top: 0;
@@ -143,7 +169,7 @@ $animationSpeed: 60s;
 		left: 0;
 		top: 0;
 	}
-	
+
 	.slide-track {
 		animation: scroll $animationSpeed linear infinite;
 		display: flex;
@@ -151,6 +177,11 @@ $animationSpeed: 60s;
 	}
 } 
 
+  
+body.dark-theme main .slider::before,
+body.dark-theme main .slider::after {
+@include red-gradient;
+}
 
 // Модалка кинохи
 
@@ -165,11 +196,11 @@ $animationSpeed: 60s;
     background-color: $primeryBackgroundColor;
     overflow: scroll;
     height: 100vh;
-    // padding-top: 48px;
+    padding-top: 48px;
   
     @media screen and (min-width: $tablet) {
       flex-direction: row;
-    //   padding: 40px 36px;
+      padding: 40px 36px;
       column-gap: 68px;
       max-width: 704px;
       align-items: flex-start;
@@ -179,7 +210,7 @@ $animationSpeed: 60s;
     }
   
     @media screen and (min-width: $desktop) {
-    //   padding: 40px 12px;
+      padding: 40px 12px;
       column-gap: 16px;
       max-width: 806px;
     }
