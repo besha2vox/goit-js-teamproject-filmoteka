@@ -109,14 +109,20 @@
   }
 }
 // These are our KOTIKI
+.wrapper {
+  padding-bottom: 30px;
+  /*This part is important for centering*/
+  display: grid;
+  place-items: center;
+}
 
-.typing-demo {
+.typing-team {
   width: 22ch;
   animation: typing 2s steps(22), blink .5s step-end infinite alternate;
   white-space: nowrap;
   overflow: hidden;
   border-right: 3px solid;
-  font-family: monospace;
+  font-family: Comic;
   font-size: 5em;
   color: aliceblue;
 }
