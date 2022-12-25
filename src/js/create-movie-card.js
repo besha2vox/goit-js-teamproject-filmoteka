@@ -19,14 +19,14 @@ export async function createMovieCardMarkup({
   poster_path,
   vote_average,
   release_date,
+  genres,
 }) {
-  console.log('poster_path', poster_path);
-  const genre = await searchGenres(genre_ids);
+  const genre = await getGenres(genre_ids, genres);
 
   const url = `https://image.tmdb.org/t/p/original${poster_path}`;
   const poster = poster_path ? url : fakePoster;
 
-  if (genre_ids.length < 1) {
+  if (genre.length < 1) {
     return await `<li class="movie-card" id="${id}">
     <img src=${poster} 
         alt="Poster of ${title}" class="movie-card__img" />
@@ -52,7 +52,7 @@ export async function createMovieCardMarkup({
               </div>
           </div>
       </li>`;
-  } else if (genre_ids.length < 1 && !release_date) {
+  } else if (genre.length < 1 && !release_date) {
     return await `<li class="movie-card" id="${id}">
     <img src=${poster} 
         alt="Poster of ${title}" class="movie-card__img" />
@@ -78,4 +78,10 @@ export async function createMovieCardMarkup({
           </div>
       </li>`;
   }
+}
+
+async function getGenres(genreIds, genres) {
+  if (genreIds) return await searchGenres(genre_ids);
+
+  return await genres.map(genre => genre.name).join(', ');
 }
