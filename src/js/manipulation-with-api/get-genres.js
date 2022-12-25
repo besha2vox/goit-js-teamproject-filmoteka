@@ -20,3 +20,5 @@ async function createGenreData() {
 }
 
 fetchGenres();
+
+export { fetchGenres };

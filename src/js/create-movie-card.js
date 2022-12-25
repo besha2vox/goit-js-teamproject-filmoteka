@@ -3,6 +3,7 @@ import { GENRES_STORAGE_KEY } from './manipulation-with-api/get-genres';
 
 export function searchGenres(ids) {
   const allGenres = JSON.parse(loadDataFromLocalSt(GENRES_STORAGE_KEY));
+  console.log('allGenres', allGenres);
   const genresArr = ids.map(id => allGenres.find(genre => genre.id === id));
 
   return genresArr
@@ -20,13 +21,11 @@ export async function createMovieCardMarkup({
   release_date,
 }) {
   const genre = await searchGenres(genre_ids);
-  if (genre_ids.length === 0) {
+
+  if (genre_ids.length < 1) {
     return await `<li class="movie-card" id="${id}">
-    <div class="movie-card__img-thumb">
     <img src="https://image.tmdb.org/t/p/original${poster_path}" 
         alt="Poster of ${title}" class="movie-card__img" />
-    </div>
-    
           <div class="movie-card__info">
             <p class="movie-card__name">${title}</p>
             <div class="movie-card__wrap">
@@ -37,28 +36,22 @@ export async function createMovieCardMarkup({
               </div>
           </div>
       </li>`;
-  } else if (release_date === 0) {
+  } else if (!release_date) {
     return await `<li class="movie-card" id="${id}">
-    <div class="movie-card__img-thumb">
     <img src="https://image.tmdb.org/t/p/original${poster_path}" 
         alt="Poster of ${title}" class="movie-card__img" />
-    </div>
           <div class="movie-card__info">
             <p class="movie-card__name">${title}</p>
             <div class="movie-card__wrap">
             <p class="movie-card__info-wrap">
-              <span class="movie-card__genre">${genre}</span> <span class="movie-card__rating">${vote_average.toFixed(
-      1
-    )}</span></p>
+              <span class="movie-card__genre">${genre}</span></p>
               </div>
           </div>
       </li>`;
-  } else if (genre_ids.length === 0 && release_date === 0) {
+  } else if (genre_ids.length < 1 && !release_date) {
     return await `<li class="movie-card" id="${id}">
-    <div class="movie-card__img-thumb">
     <img src="https://image.tmdb.org/t/p/original${poster_path}" 
         alt="Poster of ${title}" class="movie-card__img" />
-    </div>
           <div class="movie-card__info">
             <p class="movie-card__name">${title}</p>
             <div class="movie-card__wrap">
@@ -68,10 +61,8 @@ export async function createMovieCardMarkup({
       </li>`;
   } else {
     return await `<li class="movie-card" id="${id}">
-    <div class="movie-card__img-thumb">
     <img src="https://image.tmdb.org/t/p/original${poster_path}" 
         alt="Poster of ${title}" class="movie-card__img" />
-    </div>
           <div class="movie-card__info">
             <p class="movie-card__name">${title}</p>
             <div class="movie-card__wrap">

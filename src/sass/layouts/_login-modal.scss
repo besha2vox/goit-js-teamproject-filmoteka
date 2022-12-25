@@ -1,6 +1,6 @@
 .modal__auth {
   position: absolute;
-
+  top: -7%;
   width: 300px;
   height: 400px;
   
@@ -10,12 +10,13 @@
 
   overflow: hidden;
 
-  @media screen and (max-width: 767px) and (orientation: landscape) {
-      top: 2%;
+  @media screen and (orientation: landscape) {
+      top: -6%;
+      height: 350;
   }
 
   @media screen and (min-width: $tablet) {
-    top: 15%;
+    top: -10%;
 
     height: 550px;
     width: 420px;
@@ -236,7 +237,7 @@
   transition: opacity 300ms $cubicBezier;
 
   @media screen and (max-width: 767px) {
-    background-position: 190%;
+    background-position: 158%;
     background-size: 400px;
   }
 }
@@ -437,14 +438,17 @@
 
 .greeting__wrapper {
   height: 20px;
-  margin-bottom: 5px;
+
+    @media screen and (max-width: $mobile) {
+        display: none;
+      }
 }
 
 .greeting {
   display: none;
 
-  font-size: 14px;
-  text-align: right;
+  font-size: 12px;
+  font-weight: 400;
 }
 
 .greeting .hello {

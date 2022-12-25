@@ -111,24 +111,14 @@ export class API {
     return await this.basicFetch(url);
   }
 
-  
-
-  // async fetchYoutube() {
-  //   try {
-  //     let { data } = await axios(`${this.BASE_URL}movie/${id}/videos?api_key=${this.API_KEY}`);
-  //     console.log(data.results);
-  //     return data;
-  //   }
-  //   catch (error) {
-  //     console.log(error.message);
-  //   }
-  // }
-
-
   //? ЗАПИТ СПИСКУ ЖАНРІВ
 
   async getGenres() {
-    const url = `${this.BASE_URL}genre/movie/list?api_key=${this.API_KEY}`;
+    const params = new URLSearchParams({
+      api_key: this.API_KEY,
+      language: getLanguage(),
+    });
+    const url = `${this.BASE_URL}genre/movie/list?${params.toString()}`;
     return await this.basicFetch(url);
   }
 

@@ -60,7 +60,7 @@ onAuthStateChanged(auth, user => {
     hideElements(logoutLinks);
     classToggle(siteNav, 'add', 'visible');
     // classToggle(greeting, 'add', 'visible');
-    greeting.querySelector('.user-name').textContent = `${user.displayName}!`;
+    greeting.querySelector('.user-name').textContent = `${user.displayName}`;
     greeting.style.display = 'block';
   } else {
     homePageInterface();
@@ -258,7 +258,7 @@ function onLoginModalShow() {
 
       saveDataToLocalSt(KEY, user.uid);
 
-      greeting.querySelector('.user-name').textContent = `${user.displayName}!`;
+      greeting.querySelector('.user-name').textContent = `${user.displayName}`;
 
       //clear form
       loginForm.reset();
@@ -313,7 +313,7 @@ function onLoginModalShow() {
 
       saveDataToLocalSt(KEY, user.uid);
 
-      greeting.querySelector('.user-name').textContent = `${userName}!`;
+      greeting.querySelector('.user-name').textContent = `${userName}`;
       greeting.style.display = 'block';
 
       //clear form
