@@ -29,3 +29,36 @@ footer {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
+
+.content-wrapper {
+  min-height: calc(100% - 100px);
+  
+  @media screen and (min-width: $tablet) {
+    min-height: calc(100% - 79px);
+  }
+
+    @media screen and (min-width: $desktop) {
+      min-height: calc(100% - 77px);
+    }
+}
+
+.content-wrapper::after {
+  content: '';
+  display: block;
+}
+
+footer, .content-wrapper::after {
+  min-height: 100px;
+
+    @media screen and (min-width: $tablet) {
+    min-height: 79px;
+  }
+
+    @media screen and (min-width: $desktop) {
+      min-height: 77px;
+    }
+}
+
+
+
+
