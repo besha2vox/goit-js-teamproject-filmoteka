@@ -185,21 +185,58 @@ function createMovieCardMarkup({
 }) {
   const genresStr = searchGenres(genres);
 
-  return `<li class="movie-card" id="${id}">
-        <img 
-        src="https://image.tmdb.org/t/p/original${poster_path}" 
+  if (genres.length < 1) {
+    return `<li class="movie-card" id="${id}">
+    <img src="https://image.tmdb.org/t/p/original${poster_path}" 
         alt="Poster of ${title}" class="movie-card__img" />
-        
           <div class="movie-card__info">
             <p class="movie-card__name">${title}</p>
             <div class="movie-card__wrap">
-              <p class="movie-card__genre">${genresStr} | ${
-    release_date.split('-')[0]
-  }</p>
-              <span class="movie-card__rating">${vote_average.toFixed(1)}</span>
+            <p class="movie-card__info-wrap">
+              <span class="movie-card__release">${
+                release_date.split('-')[0]
+              }</span></p>
               </div>
           </div>
       </li>`;
+  } else if (!release_date) {
+    return `<li class="movie-card" id="${id}">
+    <img src="https://image.tmdb.org/t/p/original${poster_path}" 
+        alt="Poster of ${title}" class="movie-card__img" />
+          <div class="movie-card__info">
+            <p class="movie-card__name">${title}</p>
+            <div class="movie-card__wrap">
+            <p class="movie-card__info-wrap">
+              <span class="movie-card__genre">${genresStr}</span></p>
+              </div>
+          </div>
+      </li>`;
+  } else if (genres.length < 1 && !release_date) {
+    return `<li class="movie-card" id="${id}">
+    <img src="https://image.tmdb.org/t/p/original${poster_path}" 
+        alt="Poster of ${title}" class="movie-card__img" />
+          <div class="movie-card__info">
+            <p class="movie-card__name">${title}</p>
+            <div class="movie-card__wrap">
+            <p class="movie-card__info-wrap"></p>
+              </div>
+          </div>
+      </li>`;
+  } else {
+    return `<li class="movie-card" id="${id}">
+    <img src="https://image.tmdb.org/t/p/original${poster_path}" 
+        alt="Poster of ${title}" class="movie-card__img" />
+          <div class="movie-card__info">
+            <p class="movie-card__name">${title}</p>
+            <div class="movie-card__wrap">
+            <p class="movie-card__info-wrap">
+              <span class="movie-card__genre">${genresStr}</span> | <span class="movie-card__release">${
+      release_date.split('-')[0]
+    }</span></p>
+              </div>
+          </div>
+      </li>`;
+  }
 }
 
 function searchGenres(genres) {
