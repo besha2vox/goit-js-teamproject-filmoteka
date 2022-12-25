@@ -21,7 +21,7 @@ export async function createMovieCardMarkup({
 }) {
   const genre = await searchGenres(genre_ids);
 
-  if (genre_ids.length === 0) {
+  if (genre_ids.length < 1) {
     return await `<li class="movie-card" id="${id}">
     <img src="https://image.tmdb.org/t/p/original${poster_path}" 
         alt="Poster of ${title}" class="movie-card__img" />
@@ -47,7 +47,7 @@ export async function createMovieCardMarkup({
               </div>
           </div>
       </li>`;
-  } else if (genre_ids.length === 0 && release_date === 0) {
+  } else if (genre_ids.length < 1 && !release_date) {
     return await `<li class="movie-card" id="${id}">
     <img src="https://image.tmdb.org/t/p/original${poster_path}" 
         alt="Poster of ${title}" class="movie-card__img" />
