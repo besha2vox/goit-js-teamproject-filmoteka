@@ -116,7 +116,6 @@ async function renderFilmListsFromDB(list) {
 
   // const currentIds = filmsId.filter(id => arrayIds.includes(id));
   const currentIds = await calculateFilms(filmsId);
-  console.log('currentIds', currentIds);
 
   const getPromisesById = currentIds.map(async id => {
     return await createData(id);
