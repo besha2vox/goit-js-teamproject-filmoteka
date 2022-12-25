@@ -81,7 +81,7 @@ export async function createMovieCardMarkup({
 }
 
 async function getGenres(genreIds, genres) {
-  if (genreIds) return await searchGenres(genre_ids);
+  if (genreIds) return await searchGenres(genreIds);
 
   return await genres.map(genre => genre.name).join(', ');
 }
