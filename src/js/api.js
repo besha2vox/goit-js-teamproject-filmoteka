@@ -39,6 +39,26 @@ export class API {
     return await this.basicFetch(url);
   }
 
+  // Поиск Что сейчас смотрят
+
+  async getNowPlaingMovies() {
+    const url = `${this.BASE_URL}/movie/now_playing?api_key=${this.API_KEY}`;
+
+    return await this.basicFetch(url);
+  }
+
+  // Поиск фильмов, которые скоро выйдут в кинотеатрах
+
+  async getUpcomingMovies() {
+    const params = new URLSearchParams({
+      api_key: this.API_KEY,
+      // language: getLanguage(),
+    });
+
+    const url = `${this.BASE_URL}/movie/upcoming?${params.toString()}`;
+
+    return await this.basicFetch(url);
+  }
   //? ПОШУК НОВИНОК
 
   async getMovieLatest() {
@@ -90,6 +110,20 @@ export class API {
     const url = `${this.BASE_URL}movie/${id}/videos?api_key=${this.API_KEY}`;
     return await this.basicFetch(url);
   }
+
+  
+
+  // async fetchYoutube() {
+  //   try {
+  //     let { data } = await axios(`${this.BASE_URL}movie/${id}/videos?api_key=${this.API_KEY}`);
+  //     console.log(data.results);
+  //     return data;
+  //   }
+  //   catch (error) {
+  //     console.log(error.message);
+  //   }
+  // }
+
 
   //? ЗАПИТ СПИСКУ ЖАНРІВ
 

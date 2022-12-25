@@ -1,7 +1,7 @@
 import { loadDataFromLocalSt } from './utils/local-st-functions';
 import { GENRES_STORAGE_KEY } from './manipulation-with-api/get-genres';
 
-function searchGenres(ids) {
+export function searchGenres(ids) {
   const allGenres = JSON.parse(loadDataFromLocalSt(GENRES_STORAGE_KEY));
   const genresArr = ids.map(id => allGenres.find(genre => genre.id === id));
 
