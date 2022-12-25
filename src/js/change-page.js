@@ -6,6 +6,7 @@ import {
   watchedBtn,
   queueBtn,
   moviesList,
+  logo,
 } from './firebase-auth/auth-refs';
 import {
   classToggle,
@@ -36,6 +37,7 @@ const LIST_KEY = 'film-list';
 
 libraryLink.addEventListener('click', onLibraryPage);
 homeLink.addEventListener('click', onHomePage);
+logo.addEventListener('click', onHomePage);
 watchedBtn.addEventListener('click', onWatchedBtnClick);
 queueBtn.addEventListener('click', onQueueBtnClick);
 
