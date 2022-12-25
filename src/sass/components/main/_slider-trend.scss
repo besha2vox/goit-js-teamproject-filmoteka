@@ -3,6 +3,10 @@
 	background: linear-gradient(to right,  rgb(233, 231, 228) 0%,rgba(255,255,255,0) 100%);
 }
 
+@mixin red-gradient {
+	background: linear-gradient(to right,  #970413 0%,rgba(255,255,255,0) 100%);
+}
+
 $animationSpeed: 60s;
 
 // Animation
@@ -28,11 +32,16 @@ $animationSpeed: 60s;
         padding-bottom: 50px;
       }
     background-color: rgb(233, 231, 228);
+
+    &.dark-theme {
+      background-color: #970413;
+    }
+
 }
 
 .trending-title {
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 35px;
 }
 
 .trending-list {
@@ -118,12 +127,12 @@ $animationSpeed: 60s;
 
 // Styling
 .slider {
-    background-color: rgb(233, 231, 228);
+    background-color: rgba(0, 0, 0, 0);
 	margin: auto;
 	overflow:hidden;
 	position: relative;
 
-	
+
 	&::before,
 	&::after {
 		@include white-gradient;
@@ -133,6 +142,14 @@ $animationSpeed: 60s;
 		width: 100px;
 		z-index: 1;
 	}
+  
+  &.dark-theme {
+    &::before,
+    &::after {
+      @include red-gradient;
+    }
+ 
+  }
 	
 	&::after {
 		right: 0;
@@ -144,7 +161,7 @@ $animationSpeed: 60s;
 		left: 0;
 		top: 0;
 	}
-	
+
 	.slide-track {
 		animation: scroll $animationSpeed linear infinite;
 		display: flex;
