@@ -241,7 +241,7 @@ function createMovieCardMarkup({
 
 function searchGenres(genres) {
   const genresArr = genres.map(genre => genre.name);
-  return genresArr.join(', ');
+  return genresArr.slice(0, 3).join(', ');
 }
 
 async function renderFilmsFromDB(userData) {
