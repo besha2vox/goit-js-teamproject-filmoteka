@@ -438,12 +438,16 @@
 
 .greeting__wrapper {
   height: 20px;
+
+    @media screen and (max-width: $mobile) {
+        display: none;
+      }
 }
 
 .greeting {
   display: none;
 
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 400;
 }
 

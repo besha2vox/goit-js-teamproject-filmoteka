@@ -1,14 +1,16 @@
 .header {
   position: relative;
-
+  
   width: 100vw;
 
   background-color: $headerBackgroundColor;
-  
+
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
+}
 
+.header__home {
   @media (min-device-pixel-ratio: 2),
     (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -135,6 +137,12 @@
 
 .posioning-group--second {
   margin-top: 10px;
+  padding-left: 25px;
+  justify-content: space-between;
+
+  @media screen and (max-width: $mobile) {
+      justify-content: end;
+    }
 
   @media screen and (min-width: $tablet) {
     margin-top: 5px;
