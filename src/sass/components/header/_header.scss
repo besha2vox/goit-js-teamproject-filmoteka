@@ -452,3 +452,14 @@ body.dark-theme {
 .language-switcher__lang {
   color: $secondaryColor;
 }
+
+.search-icon {
+  stroke: $secondaryColor;
+
+  transition: stroke 300ms $cubicBezier;
+}
+
+.form__submit--search:hover .search-icon,
+.form__submit--search:focus .search-icon {
+  stroke: $accentColor;
+}
