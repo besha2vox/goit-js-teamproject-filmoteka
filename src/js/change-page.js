@@ -13,7 +13,10 @@ import {
   hideElements,
 } from './firebase-auth/interface-change';
 import { api } from './manipulation-with-api/modal-open';
-import { getLatestMovies } from './manipulation-with-api/get-latest-movies';
+import {
+  getLatestMovies,
+  resetApiPage,
+} from './manipulation-with-api/get-latest-movies';
 import { saveDataToLocalSt } from './utils/local-st-functions';
 import {
   getUserDataFromDB,
@@ -150,6 +153,7 @@ function onHomePage(event) {
   hideElements(libraryPage);
   showElements(homePage);
 
+  resetApiPage();
   getLatestMovies();
 }
 
