@@ -1,6 +1,6 @@
 .header {
   position: relative;
-  
+
   width: 100vw;
 
   background-color: $headerBackgroundColor;
@@ -69,65 +69,101 @@
 }
 
 .header__library {
-  background-image: linear-gradient($headerBackgroundColor, $headerBackgroundColor), url('/src/images/library/header-library-bg-mobile-1x.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size:  100%;
-  
-    @media (min-device-pixel-ratio: 2),
+  background-image: linear-gradient(
+      $headerBackgroundColor,
+      $headerBackgroundColor
+    ),
+    url('/src/images/library/header-library-bg-mobile-1x.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  @media (min-device-pixel-ratio: 2),
     (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-      background-image: linear-gradient($headerBackgroundColor, $headerBackgroundColor), url('/src/images/library/header-library-bg-mobile-2x.jpg');
-    }
-  
-    @media (min-device-pixel-ratio: 3),
+    background-image: linear-gradient(
+        $headerBackgroundColor,
+        $headerBackgroundColor
+      ),
+      url('/src/images/library/header-library-bg-mobile-2x.jpg');
+  }
+
+  @media (min-device-pixel-ratio: 3),
     (-webkit-min-device-pixel-ratio: 3),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-      background-image: linear-gradient($headerBackgroundColor, $headerBackgroundColor), url('/src/images/library/header-library-bg-mobile-3x.jpg');
-    }
-  
-    @media screen and (min-width: $tablet) {
-      background-image: linear-gradient($headerBackgroundColor, $headerBackgroundColor), url('/src/images/library/header-library-bg-tablet-1x.jpg');
-  
-      @media (min-device-pixel-ratio: 2),
+    background-image: linear-gradient(
+        $headerBackgroundColor,
+        $headerBackgroundColor
+      ),
+      url('/src/images/library/header-library-bg-mobile-3x.jpg');
+  }
+
+  @media screen and (min-width: $tablet) {
+    background-image: linear-gradient(
+        $headerBackgroundColor,
+        $headerBackgroundColor
+      ),
+      url('/src/images/library/header-library-bg-tablet-1x.jpg');
+
+    @media (min-device-pixel-ratio: 2),
       (-webkit-min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-        background-image: linear-gradient($headerBackgroundColor, $headerBackgroundColor), url('/src/images/library/header-library-bg-tablet-2x.jpg');
-      }
-  
-      @media (min-device-pixel-ratio: 3),
+      background-image: linear-gradient(
+          $headerBackgroundColor,
+          $headerBackgroundColor
+        ),
+        url('/src/images/library/header-library-bg-tablet-2x.jpg');
+    }
+
+    @media (min-device-pixel-ratio: 3),
       (-webkit-min-device-pixel-ratio: 3),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-        background-image: linear-gradient($headerBackgroundColor, $headerBackgroundColor), url('/src/images/library/header-library-bg-tablet-3x.jpg');
-      }
+      background-image: linear-gradient(
+          $headerBackgroundColor,
+          $headerBackgroundColor
+        ),
+        url('/src/images/library/header-library-bg-tablet-3x.jpg');
     }
-  
-    @media screen and (min-width: $desktop) {
-      margin-right: auto;
-      margin-left: auto;
-      // gap: 40px;
-      // text-transform: uppercase;
-  
-      background-image: linear-gradient($headerBackgroundColor, $headerBackgroundColor), url('/src/images/library/header-library-bg-desktop-1x.jpg');
-  
-      @media (min-device-pixel-ratio: 2),
+  }
+
+  @media screen and (min-width: $desktop) {
+    margin-right: auto;
+    margin-left: auto;
+    // gap: 40px;
+    // text-transform: uppercase;
+
+    background-image: linear-gradient(
+        $headerBackgroundColor,
+        $headerBackgroundColor
+      ),
+      url('/src/images/library/header-library-bg-desktop-1x.jpg');
+
+    @media (min-device-pixel-ratio: 2),
       (-webkit-min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-        background-image: linear-gradient($headerBackgroundColor, $headerBackgroundColor), url('/src/images/library/header-library-bg-desktop-2x.jpg');
-      }
-  
-      @media (min-device-pixel-ratio: 3),
+      background-image: linear-gradient(
+          $headerBackgroundColor,
+          $headerBackgroundColor
+        ),
+        url('/src/images/library/header-library-bg-desktop-2x.jpg');
+    }
+
+    @media (min-device-pixel-ratio: 3),
       (-webkit-min-device-pixel-ratio: 3),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-        background-image: linear-gradient($headerBackgroundColor, $headerBackgroundColor), url('/src/images/library/header-library-bg-desktop-3x.jpg');
-      }
+      background-image: linear-gradient(
+          $headerBackgroundColor,
+          $headerBackgroundColor
+        ),
+        url('/src/images/library/header-library-bg-desktop-3x.jpg');
     }
+  }
 }
 
 .posioning-group--header {
@@ -141,9 +177,9 @@
   padding-left: 25px;
   justify-content: space-between;
 
-  @media screen and (max-width: $mobile) {
-      justify-content: end;
-    }
+  @media screen and (max-width: 767px) {
+    justify-content: end;
+  }
 
   @media screen and (min-width: $tablet) {
     margin-top: 5px;
@@ -165,12 +201,12 @@
   margin-top: 21px;
 
   @media screen and (min-width: $tablet) {
-      margin-top: 12px;
-    }
+    margin-top: 12px;
+  }
 
-        @media screen and (min-width: $desktop) {
-          margin-top: 8px;
-        }
+  @media screen and (min-width: $desktop) {
+    margin-top: 8px;
+  }
 }
 
 .header__positioning--for-nav {
@@ -193,7 +229,7 @@
   font-size: 30px;
   line-height: 35px;
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 767px) {
     display: none;
   }
 }
@@ -219,8 +255,8 @@
   justify-content: center;
 
   @media screen and (min-width: $desktop) {
-      padding-bottom: 15px;
-    }
+    padding-bottom: 15px;
+  }
 }
 
 .buttons-list__header {
@@ -230,12 +266,12 @@
   padding-bottom: 18px;
 
   @media screen and (min-width: $tablet) {
-      padding-top: 2px;
-      padding-bottom: 31px;
-    }
-        @media screen and (min-width: $desktop) {
-          padding-top: 6px;
-        }
+    padding-top: 2px;
+    padding-bottom: 31px;
+  }
+  @media screen and (min-width: $desktop) {
+    padding-top: 6px;
+  }
 }
 
 // nav
@@ -247,12 +283,12 @@
 
 .utils {
   position: relative;
-//   @media screen and (min-width: $tablet) {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   gap: 10px;
-// }
+  //   @media screen and (min-width: $tablet) {
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   gap: 10px;
+  // }
 }
 
 .utils__wrapper {
@@ -262,24 +298,24 @@
   gap: 10px;
   transition: opacity 300ms $cubicBezier;
 
-    @media screen and (max-width: $tablet) {
-      position: absolute;
-      top: 24px;
-      left: -4px;
+  @media screen and (max-width: $tablet) {
+    position: absolute;
+    top: 24px;
+    left: -4px;
 
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-      min-width: 28px;
-      gap: 10px;
-      opacity: 0;
+    min-width: 28px;
+    gap: 10px;
+    opacity: 0;
 
-      background-color: $activeBtnColor;
-      padding: 3px;
-      pointer-events: none;
-    }
+    background-color: $activeBtnColor;
+    padding: 3px;
+    pointer-events: none;
+  }
 }
 
 // form
@@ -313,8 +349,8 @@
   width: 100%;
 
   @media screen and (min-width: $desktop) {
-      padding-top: 0;
-    }
+    padding-top: 0;
+  }
 }
 
 .form__submit {
@@ -484,11 +520,11 @@ body.dark-theme {
   color: $secondaryColor;
 }
 
-.wrapper-mobile{
+.wrapper-mobile {
   position: relative;
-  top:30%;
-  left:50%;
-  transform:translate(-50%, -20%);
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -20%);
   padding-top: 20px;
   // z-index: 100;
 
@@ -502,7 +538,7 @@ body.dark-theme {
   pointer-events: all;
 }
 
-.nav-icon-mob{
+.nav-icon-mob {
   width: 18px;
   height: 18px;
   // margin: 10px 10px;
@@ -514,45 +550,45 @@ body.dark-theme {
     display: none;
   }
 }
-.nav-icon-mob span{
-  background-color:#fff;
+.nav-icon-mob span {
+  background-color: #fff;
   position: absolute;
   border-radius: 2px;
-  transition: .3s cubic-bezier(.8, .5, .2, 1.4);
+  transition: 0.3s cubic-bezier(0.8, 0.5, 0.2, 1.4);
   width: 100%;
   height: 2px;
-  transition-duration: 500ms
+  transition-duration: 500ms;
 }
-.nav-icon-mob span:nth-child(1){
+.nav-icon-mob span:nth-child(1) {
   top: 0px;
   left: 0px;
 }
-.nav-icon-mob span:nth-child(2){
+.nav-icon-mob span:nth-child(2) {
   top: 8px;
   left: 0px;
   opacity: 1;
 }
-.nav-icon-mob span:nth-child(3){
+.nav-icon-mob span:nth-child(3) {
   bottom: 0px;
   left: 0px;
 }
-.nav-icon-mob:not(.open):hover span:nth-child(1){
+.nav-icon-mob:not(.open):hover span:nth-child(1) {
   transform: rotate(-3deg) scaleY(1.1);
 }
-.nav-icon-mob:not(.open):hover span:nth-child(2){
+.nav-icon-mob:not(.open):hover span:nth-child(2) {
   transform: rotate(3deg) scaleY(1.1);
 }
-.nav-icon-mob:not(.open):hover span:nth-child(3){
+.nav-icon-mob:not(.open):hover span:nth-child(3) {
   transform: rotate(-4deg) scaleY(1.1);
 }
-.nav-icon-mob.open span:nth-child(1){
+.nav-icon-mob.open span:nth-child(1) {
   transform: rotate(45deg);
   top: 13px;
 }
-.nav-icon-mob.open span:nth-child(2){
-  opacity:0;
+.nav-icon-mob.open span:nth-child(2) {
+  opacity: 0;
 }
-.nav-icon-mob.open span:nth-child(3){
+.nav-icon-mob.open span:nth-child(3) {
   transform: rotate(-45deg);
   top: 13px;
 }
