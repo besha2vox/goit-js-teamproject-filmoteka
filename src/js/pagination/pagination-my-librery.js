@@ -24,7 +24,7 @@ let getCurrentPage = () => {};
 resetPagNums();
 
 export async function calculateFilms(filmsList, func) {
-  getCurrentPage = func;
+  if (func) getCurrentPage = func;
   const pageCount = Math.ceil(filmsList.length / pagNums.count);
   const partOfFilms = filmsList.slice(pagNums.start, pagNums.end);
   renderMyLibPagination(pageCount);
