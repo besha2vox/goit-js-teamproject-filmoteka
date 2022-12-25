@@ -18,8 +18,10 @@
     "url": "https://github.com/besha2vox/goit-js-teamproject-filmoteka/issues"
   },
   "dependencies": {
+    "@swc/helpers": "^0.4.14",
     "firebase": "^9.13.0",
-    "modern-normalize": "^1.1.0"
+    "modern-normalize": "^1.1.0",
+    "regenerator-runtime": "^0.13.11"
   },
   "devDependencies": {
     "@parcel/packager-raw-url": "^2.6.0",
@@ -31,6 +33,5 @@
     "posthtml-include": "^1.7.4",
     "process": "^0.11.10"
   },
-  "browserslist": "> 0.5%, last 2 versions, not dead",
-  "main": "index.js"
+  "browserslist": "> 0.5%, last 2 versions, not dead"
 }

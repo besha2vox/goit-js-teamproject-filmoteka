@@ -2,6 +2,8 @@
   width: 280px;
   cursor: pointer;
 
+  border-radius: 5px;
+
   display: flex;
   flex-direction: column;
 
@@ -13,12 +15,24 @@
     width: calc((100% - 32px) / 3);
   }
 
-  border-radius: 5px;
-
   &:hover,
   &:focus {
     box-shadow: 1px 8px 20px grey;
     transition: box-shadow 0.3s ease-in;
+  }
+
+  &__img {
+    height: 398px;
+    border-radius: 5px;
+    // max-width: 100%;
+
+    @media screen and (min-width: $tablet) {
+      height: 455px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      height: 574px;
+    }
   }
 
   &__info {
@@ -57,43 +71,24 @@
     display: flex;
   }
 
-  &__rating {
-    width: 36px;
-    height: 16px;
-    background: $accentColor;
-    border-radius: 5px;
+  // &__rating {
+  //   width: 36px;
+  //   height: 16px;
+  //   background: $accentColor;
+  //   border-radius: 5px;
 
-    font-size: 12px;
+  //   font-size: 12px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-transform: uppercase;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   text-transform: uppercase;
 
-    color: $secondaryColor;
+  //   color: $secondaryColor;
 
-    @media screen and (min-width: $desktop) {
-      width: 40px;
-      height: 20px;
-    }
-  }
-}
-
-.movie-card__img-thumb {
-  border-radius: 5px;
-  overflow: hidden;
-
-  & img {
-    object-fit: cover;
-    max-height: 398px;
-    max-width: 100%;
-
-    @media screen and (min-width: $tablet) {
-      max-height: 455px;
-    }
-
-    @media screen and (min-width: $desktop) {
-      max-height: 574px;
-    }
-  }
+  //   @media screen and (min-width: $desktop) {
+  //     width: 40px;
+  //     height: 20px;
+  //   }
+  // }
 }

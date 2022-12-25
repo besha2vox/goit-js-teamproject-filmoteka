@@ -10,8 +10,6 @@ const moviesList = document.querySelector('.movies-grid__list');
 
 moviesList.addEventListener('click', onMovieClick);
 
-// getLatestMovies();
-
 async function getLatestMovies() {
   const movies = await createMovieData();
   const getPromise = movies.results.map(movie => createMovieCardMarkup(movie));
@@ -30,4 +28,8 @@ async function createMovieData() {
   }
 }
 
-export { getLatestMovies, moviesList, pagination };
+function resetApiPage() {
+  api.pageToFetch = 1;
+}
+
+export { getLatestMovies, moviesList, pagination, resetApiPage };
