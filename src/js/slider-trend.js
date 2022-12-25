@@ -1,6 +1,8 @@
 import { API } from './api';
 import { Modal } from './class-modal';
 import { searchGenres } from './create-movie-card';
+import { slider } from './firebase-auth/auth-refs';
+import { loadDataFromLocalSt } from './utils/local-st-functions';
 
 const api = new API();
 const modalUpcoming = new Modal();
@@ -86,3 +88,10 @@ function renderModalTemplete(e) {
 
   modalUpcoming.open(markup);
 }
+
+function checkPageForSlider() {
+  const currentPageOnRefresh = loadDataFromLocalSt('page');
+  if (currentPageOnRefresh === 'library') slider.style.display = 'none';
+}
+
+checkPageForSlider();
