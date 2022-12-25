@@ -1,4 +1,5 @@
 export function createPagination(totalPages, currentPage) {
+  if (totalPages < 2) return `<li></li>`;
   let liTag = '';
   let active;
   let plength = 0;
