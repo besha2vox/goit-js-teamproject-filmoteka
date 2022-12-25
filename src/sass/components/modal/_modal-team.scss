@@ -138,3 +138,26 @@
     border-color: transparent
   }
 }
+// modal-team name 
+.team-name {
+  // color: #000;
+  position: relative;
+  text-decoration: none;
+}
+
+.team-name::before {
+  background: hsl(45 100% 70%);
+  content: "";
+  inset: 0;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s ease-in-out;
+  z-index: -1;
+}
+
+.team-name:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+  color: #000;
+}
