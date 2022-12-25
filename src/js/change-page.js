@@ -7,6 +7,7 @@ import {
   queueBtn,
   moviesList,
   logo,
+  slider,
 } from './firebase-auth/auth-refs';
 import {
   classToggle,
@@ -78,6 +79,8 @@ async function onLibraryPage(event) {
     event.preventDefault();
     resetPagNums();
   }
+
+  slider.style.display = 'none';
 
   libraryPageInterface();
 
@@ -153,6 +156,7 @@ function libraryPageInterface() {
 function onHomePage(event) {
   event.preventDefault();
 
+  slider.style.display = 'block';
   saveDataToLocalSt(PAGE_KEY, 'home');
 
   classToggle(homeLink, 'add', 'active');
