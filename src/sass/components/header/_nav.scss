@@ -13,6 +13,9 @@
 
 .nav__item:not(:first-child) {
   margin-left: 40px;
+  @media screen and (max-width: 370px) {
+    margin-left: 20px;
+  }
 }
 
 .nav__link,
