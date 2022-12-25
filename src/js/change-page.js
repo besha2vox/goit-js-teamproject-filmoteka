@@ -25,6 +25,7 @@ import {
 import {
   calculateFilms,
   resetPagNums,
+  onMyLibPrevBtnClick,
 } from './pagination/pagination-my-librery';
 import { getCurrentFunc } from './utils/render-on switch-lang';
 import { fakePoster } from './utils/fake-poster';
@@ -120,6 +121,10 @@ async function renderFilmListsFromDB(list) {
 
   // const currentIds = filmsId.filter(id => arrayIds.includes(id));
   const currentIds = await calculateFilms(filmsId);
+  if (currentIds.length < 1) {
+    onMyLibPrevBtnClick();
+    return;
+  }
 
   const getPromisesById = currentIds.map(async id => {
     return await createData(id);

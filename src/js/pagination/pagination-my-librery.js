@@ -71,18 +71,16 @@ function addListenersMyLibBtns({ prevBtn, numberedBtns, nextBtn }) {
   );
 }
 
-function onMyLibPrevBtnClick(e) {
+export function onMyLibPrevBtnClick(e) {
   pagNums.page -= 1;
   setSliceIndxs();
   getCurrentPage();
-  console.log('pagNums.page', pagNums.page);
 }
 
 function onMyLibNextBtnClick(e) {
   pagNums.page += 1;
   setSliceIndxs();
   getCurrentPage();
-  console.log('pagNums.page', pagNums.page);
 }
 
 function onMyLibNumberedBtnClick(e) {
@@ -90,7 +88,6 @@ function onMyLibNumberedBtnClick(e) {
 
   setSliceIndxs();
   getCurrentPage();
-  console.log('pagNums.page', pagNums.page);
 }
 
 function setSliceIndxs() {
