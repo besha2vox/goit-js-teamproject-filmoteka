@@ -34,7 +34,6 @@ function filmModalOptions() {
   const btnList = filmModal.querySelector('.buttons-list__film-modal');
   const notifyEl = filmModal.querySelector('.modal-movie__notify');
   const filmId = Number(addToWatchedBtn.closest('[data-id]').dataset.id);
-  console.log('filmId: ', filmId);
 
   checkDB(filmId);
 
