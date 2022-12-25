@@ -33,11 +33,16 @@ $animationSpeed: 60s;
       }
     background-color: rgb(233, 231, 228);
 
-    &.dark-theme {
-      background-color: #970413;
-    }
+    // &.dark-theme {
+    //   background-color: #970413;
+    // }
 
 }
+
+body.dark-theme main .movies-slider {
+  background-color: #970413;
+}
+
 
 .trending-title {
     text-align: center;
@@ -109,15 +114,24 @@ $animationSpeed: 60s;
 }
 
 .relise-date {
-    padding: 3px 5px;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 10px;
+
     color: white;
     background-color: rgb(248, 164, 7);
     border-radius: 4px;
     margin-right: auto;
+
+    @media screen and (min-width: $tablet) {
+      padding: 3px 5px;
+      font-size: 7px;
+    }
+    @media screen and (min-width: $desktop) {
+      padding: 3px 5px;
+      font-size: 10px;
+    }
 }
 
 
@@ -142,15 +156,7 @@ $animationSpeed: 60s;
 		width: 100px;
 		z-index: 1;
 	}
-  
-  &.dark-theme {
-    &::before,
-    &::after {
-      @include red-gradient;
-    }
- 
-  }
-	
+
 	&::after {
 		right: 0;
 		top: 0;
@@ -169,6 +175,11 @@ $animationSpeed: 60s;
 	}
 } 
 
+  
+body.dark-theme main .slider::before,
+body.dark-theme main .slider::after {
+@include red-gradient;
+}
 
 // Модалка кинохи
 
