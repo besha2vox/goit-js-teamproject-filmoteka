@@ -71,24 +71,24 @@
     display: flex;
   }
 
-  &__rating {
-    width: 36px;
-    height: 16px;
-    background: $accentColor;
-    border-radius: 5px;
+  // &__rating {
+  //   width: 36px;
+  //   height: 16px;
+  //   background: $accentColor;
+  //   border-radius: 5px;
 
-    font-size: 12px;
+  //   font-size: 12px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-transform: uppercase;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   text-transform: uppercase;
 
-    color: $secondaryColor;
+  //   color: $secondaryColor;
 
-    @media screen and (min-width: $desktop) {
-      width: 40px;
-      height: 20px;
-    }
-  }
+  //   @media screen and (min-width: $desktop) {
+  //     width: 40px;
+  //     height: 20px;
+  //   }
+  // }
 }
