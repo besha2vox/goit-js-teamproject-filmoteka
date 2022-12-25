@@ -32,11 +32,6 @@ $animationSpeed: 60s;
         padding-bottom: 50px;
       }
     background-color: rgb(233, 231, 228);
-
-    // &.dark-theme {
-    //   background-color: #970413;
-    // }
-
 }
 
 body.dark-theme main .movies-slider {
@@ -46,7 +41,14 @@ body.dark-theme main .movies-slider {
 
 .trending-title {
     text-align: center;
+
+    @media screen and (min-width: $tablet) {
+      margin-bottom: 20px;
+      margin-top: 10px;
+  }
+  @media screen and (min-width: $desktop) {
     margin-bottom: 35px;
+  }
 }
 
 .trending-list {
