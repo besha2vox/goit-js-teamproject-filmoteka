@@ -46,7 +46,7 @@ export const getModalMarkup = ({
     </li>
     <li class="modal-movie__item">
     <p class="modal-movie__key">${
-      isUkrainian ? 'Оригінальна назва' : 'Original Title'
+      isUkrainian ? 'Офіційна назва' : 'Original Title'
     }</p>
      <p class="modal-movie__value modal-movie__value--uppercase">
      ${original_title}</p>

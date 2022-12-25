@@ -1,6 +1,8 @@
 import { API } from './api';
 import { Modal } from './class-modal';
 import { searchGenres } from './create-movie-card';
+import { slider } from './firebase-auth/auth-refs';
+import { loadDataFromLocalSt } from './utils/local-st-functions';
 
 const api = new API();
 const modalUpcoming = new Modal();
@@ -12,7 +14,7 @@ async function renderUpcoming() {
   const upcoming = await api.getUpcomingMovies();
   const markup = upcoming.results
     .map(upcomin => {
-      return `<li class="trending-card movie-card">
+      return `<li class="trending-card">
         <div class="img-div" data-genre="${upcomin.genre_ids}" data-ortitle="${upcomin.original_title}" data-popularity="${upcomin.popularity}" data-count="${upcomin.vote_count}" data-title="${upcomin.title}" data-overview="${upcomin.overview}" data-poster="https://image.tmdb.org/t/p/original/${upcomin.poster_path}" data-alt="${upcomin.original_title}" data-vote="${upcomin.vote_average}" data-relise="${upcomin.release_date}">
         <div><img  class="img-trend" src="https://image.tmdb.org/t/p/original/${upcomin.poster_path}" alt=""></div>
         <div class="info-trend">
@@ -21,6 +23,7 @@ async function renderUpcoming() {
         </div>
       </li>`;
     })
+
     .join('');
   sliderContainer.innerHTML = markup;
 }
@@ -85,3 +88,10 @@ function renderModalTemplete(e) {
 
   modalUpcoming.open(markup);
 }
+
+function checkPageForSlider() {
+  const currentPageOnRefresh = loadDataFromLocalSt('page');
+  if (currentPageOnRefresh === 'library') slider.style.display = 'none';
+}
+
+checkPageForSlider();
