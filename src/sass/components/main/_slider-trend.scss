@@ -1,0 +1,292 @@
+
+@mixin white-gradient {
+	background: linear-gradient(to right,  rgb(233, 231, 228) 0%,rgba(255,255,255,0) 100%);
+}
+
+@mixin red-gradient {
+	background: linear-gradient(to right,  #970413 0%,rgba(255,255,255,0) 100%);
+}
+
+$animationSpeed: 60s;
+
+// Animation
+@keyframes scroll {
+	0% { transform: translateX(0); }
+	100% { transform: translateX(calc(-250px * 7))}
+}
+
+// Оформление карточки
+
+.movies-slider {
+    @media screen and (max-width: 767px) {
+        display: none;
+      }
+      @media screen and (min-width: $tablet) {
+        display: block;
+        padding-top: 10px;
+        padding-bottom: 25px;
+      }  
+
+      @media screen and (min-width: $desktop) {
+        padding-top: 30px;
+        padding-bottom: 50px;
+      }
+    background-color: rgb(233, 231, 228);
+}
+
+body.dark-theme main .movies-slider {
+  background-color: #970413;
+}
+
+
+.trending-title {
+    text-align: center;
+
+    @media screen and (min-width: $tablet) {
+      margin-bottom: 20px;
+      margin-top: 10px;
+  }
+  @media screen and (min-width: $desktop) {
+    margin-bottom: 35px;
+  }
+}
+
+.trending-list {
+    display: flex;
+    @media screen and (min-width: $tablet) {
+        gap: 20px;
+    }
+    @media screen and (min-width: $desktop) {
+        gap: 30px;
+    }
+
+    overflow: hidden;
+    width: 100%;
+}
+
+.trending-card {
+    position: relative;
+    cursor: pointer;
+    @media screen and (min-width: $tablet) {
+        width: 120px;
+    }
+ 
+    @media screen and (min-width: $desktop) {
+        width: 170px;
+    }
+    
+}
+
+.img-trend {
+    border-radius: 4%;
+    @media screen and (min-width: $tablet) {
+        width: 120px;
+    }
+    @media screen and (min-width: $desktop) {
+        width: 170px;
+    }
+}
+
+
+
+.info-trend {
+  position: absolute;
+    display: flex;
+    z-index: 1;
+    bottom: 0;
+    right: 0;
+}
+
+.vote-average-trend {
+ 
+    bottom: 0;
+    right: 0;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 18px;
+    line-height: 1.1;
+    color: white;
+    background-color: rgb(248, 164, 7);
+    border-radius: 5px;
+    font-size: 10px;
+}
+
+.relise-date {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    background-color: rgb(248, 164, 7);
+    border-radius: 4px;
+    margin-right: auto;
+
+    @media screen and (min-width: $tablet) {
+      padding: 3px 5px;
+      font-size: 7px;
+    }
+    @media screen and (min-width: $desktop) {
+      padding: 3px 5px;
+      font-size: 10px;
+    }
+}
+
+
+// Слайдер
+
+
+
+// Styling
+.slider {
+    background-color: rgba(0, 0, 0, 0);
+	margin: auto;
+	overflow:hidden;
+	position: relative;
+
+
+	&::before,
+	&::after {
+		@include white-gradient;
+		content: "";
+		height: 100%;
+		position: absolute;
+		width: 100px;
+		z-index: 1;
+	}
+
+	&::after {
+		right: 0;
+		top: 0;
+		transform: rotateZ(180deg);
+	}
+
+	&::before {
+		left: 0;
+		top: 0;
+	}
+
+	.slide-track {
+		animation: scroll $animationSpeed linear infinite;
+		display: flex;
+		width: calc(250px * 14);
+	}
+} 
+
+  
+body.dark-theme main .slider::before,
+body.dark-theme main .slider::after {
+@include red-gradient;
+}
+
+// Модалка кинохи
+
+.cartUpcomingModal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    row-gap: 20px;
+    min-width: 280px;
+  
+    background-color: $primeryBackgroundColor;
+    overflow: scroll;
+    height: 100vh;
+    padding-top: 48px;
+  
+    @media screen and (min-width: $tablet) {
+      flex-direction: row;
+      padding: 40px 36px;
+      column-gap: 68px;
+      max-width: 704px;
+      align-items: flex-start;
+      justify-content: center;
+      height: unset;
+      overflow: unset;
+    }
+  
+    @media screen and (min-width: $desktop) {
+      padding: 40px 12px;
+      column-gap: 16px;
+      max-width: 806px;
+    }
+}
+
+.poster {
+    border-radius: 5px;
+    @media screen and (min-width: $tablet) {
+      max-width: 264px;
+    }
+    @media screen and (min-width: $desktop) {
+      max-width: 360px;
+    } 
+  }
+
+  .infoUpcomingModal {
+    display: flex;
+  flex-direction: column;
+  max-width: 55%;
+  row-gap: 20px;
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: 1px;
+  padding-left: 20px;
+  padding-right: 20px;
+  @media screen and (min-width: $tablet) {
+    padding-left: unset;
+    padding-right: unset;
+
+  }
+  }
+
+  .titleUpcomingModal {
+    font-size: 20px;
+  line-height: 1.17;
+  text-transform: uppercase;
+  @media screen and (min-width: $desktop) {
+    font-size: 30px;
+  }
+  }
+
+  .listUpcomingModal {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+  }
+
+  .itemUpcomingModal {
+    display: flex;
+  }
+
+  .keyUpcomingModal {
+    color: $tertiaryTextColor;
+    min-width: 108px;
+  }
+
+  .valueUpcomingModal {
+    &--accent {
+        color: $secondaryColor;
+        background-color: $accentColor;
+        border-radius: 5px;
+        padding: 0 8px;
+      }
+    
+      &--uppercase {
+        text-transform: uppercase;
+      }
+  }
+
+  .wrapperAbout {
+    font-size: 12px;
+    line-height: 1.67;
+  }
+
+  .aboutMovie {
+    text-transform: uppercase;
+    line-height: 1.33;
+    margin-bottom: 8px;
+  }

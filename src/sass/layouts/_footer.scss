@@ -1,0 +1,64 @@
+footer {
+  width: 100vw;
+  padding: 28px 0;
+  background-color: $footerBackgroundColor;
+  color: $footerTextColor;
+}
+
+.copy {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.19;
+
+  text-align: center;
+
+  &__linhk {
+    color: inherit;
+  }
+
+  img {
+    width: 14px;
+    display: inline;
+  }
+}
+
+.heart {
+  // animation: name duration timing-function delay iteration-count direction fill-mode;
+  animation-name: heartScale;
+  animation-duration: 1000ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.content-wrapper {
+  min-height: calc(100% - 100px);
+  
+  @media screen and (min-width: $tablet) {
+    min-height: calc(100% - 79px);
+  }
+
+    @media screen and (min-width: $desktop) {
+      min-height: calc(100% - 77px);
+    }
+}
+
+.content-wrapper::after {
+  content: '';
+  display: block;
+}
+
+footer, .content-wrapper::after {
+  min-height: 100px;
+
+    @media screen and (min-width: $tablet) {
+    min-height: 79px;
+  }
+
+    @media screen and (min-width: $desktop) {
+      min-height: 77px;
+    }
+}
+
+
+
+

@@ -12,3 +12,16 @@
     width: $desktop;
   }
 }
+
+.container__header {
+  display: flex;
+  flex-direction: column;
+
+  // height: 216px;
+  padding-top: 40px;
+  padding-bottom: 44px;
+
+  @media screen and (min-width: $tablet) {
+    padding-bottom: 29px;
+    }
+}
