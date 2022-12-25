@@ -5,6 +5,7 @@
   margin: 0 auto;
   row-gap: 20px;
   min-width: 280px;
+  position: relative;
 
   background-color: $primeryBackgroundColor;
   overflow: scroll;
@@ -28,6 +29,7 @@
     max-width: 806px;
   }
 }
+
 
 .modal {
   position: relative;
@@ -133,22 +135,134 @@ body.dark-theme {
   }
 }
 
+// trailer
+
+.poster-wrap {
+  position: relative;
+}
+
+
+
+
+.trailer-wrapper {
+  @media screen and (max-width: 767px) {
+    width: 30px;
+    height: 30px;
+  };
+  @media screen and (min-width: $tablet) {
+    width: 40px;
+    min-height: 40px;
+    top: 10px;
+    left: 10px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 50px;
+    min-height: 50px;
+    top: 15px;
+    left: 15px;
+  }
+  position: absolute;
+  width: 50px;
+  height: 35px;
+  
+  background-color: transparent;
+  top: 20px;
+  left: 20px;
+  // background-image: url('https://www.freepnglogos.com/uploads/youtube-play-red-logo-png-transparent-background-6.png');
+  // background-size: 50px;
+  // background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+
+.backdrop-iframe {
+  width: 100vw;
+  height: 100vw;
+  background-color: rgb(0, 0, 0);
+  z-index: 2;
+  position: absolute;
+}
+
+
+.youpoop {
+  transition: opacity 300ms;
+}
+
+.youpoop:hover,
+.youpoop:focus {
+  opacity: 80%;
+  
+}
+
+
+
 .modal-movie__notify {
   // height: 32px;
   text-align: center;
 }
 
+
+
 .trailer {
-  border-radius: 3%;
+  position: relative;
   display: block;
-  margin: 0 auto;
-  max-width: 400px;
+  border-radius: 3%;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  @media screen and (max-width: 767px) {
+    width: 200px;
+    min-height: 230px;
+  };
   @media screen and (min-width: $tablet) {
-    width: 100%;
+    width: 400px;
+    min-height: 250px;
   }
+
+  @media screen and (min-width: $desktop) {
+    width: 700px;
+    min-height: 400px;
+  }
+  width: 600px;
   min-width: 310px;
-  height: 250px;
+  height: auto;
+  min-height: 400px;
 }
+
+.poobox {
+  position: absolute;
+  min-width: 700px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.poop-close {
+  position: absolute;
+  left: 50%;
+  top: 100px;
+  transition: color 300ms;
+  transform: translate(-50%, 0);
+  width: 50px;
+  height: 50px;
+  z-index: 3;
+  font-size: xx-large;
+  color: #ffffff;
+  border: none;
+  background-color: transparent;
+  @media screen and (max-width: 767px) {
+    top: 150px;
+  }
+  @media screen and (min-width: $tablet) {
+    top: 40px;
+  }
+}
+.poop-close:hover {
+  color: #fb8e2f;
+}
+
 
 iframe {
   z-index: 3;

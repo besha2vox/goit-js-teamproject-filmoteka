@@ -13,7 +13,14 @@ export const getModalMarkup = ({
   const genresNames = genres.map(genre => genre.name).join(', ');
 
   return `<div class="modal-movie" data-id='${id}'>
+      <div class="poster-wrap">
+      <div class="trailer-wrapper">
+      <a class="movie-poop">
+      <img class="youpoop" width="50" height="35" src="https://www.freepnglogos.com/uploads/youtube-play-red-logo-png-transparent-background-6.png" alt="eat my poop" />
+      </a>
+          </div>
   <img class="poster" width="375" src="${url}" alt="${title}" />
+  </div>
   <div class="modal-movie__descr">   
     
     <div class="modal-movie__info-weapper">
@@ -45,8 +52,7 @@ export const getModalMarkup = ({
       <p class="modal-movie__overview">${overview}</p>
       </div>
       
-      <div class="trailer-wrapper">
-      </div>
+      
        <ul class="buttons-list buttons-list__film-modal">
      <li class="buttons-list__item">
          <button class="button button--transparent" type="button" data-list="watched"  data-id=${id}>

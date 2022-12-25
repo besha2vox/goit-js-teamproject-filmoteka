@@ -10,7 +10,7 @@ import {
 import { loadDataFromLocalSt } from '../utils/local-st-functions';
 import { loginFormNotify } from '../firebase-auth/interface-change';
 import { renderTrailer } from '../trailer';
-import { iframeRender } from '../trailer';
+import { searchTrailer } from '../trailer';
 
 const KEY = 'userUID';
 const modalOptions = {
@@ -26,9 +26,12 @@ async function onMovieClick(e) {
   const movie = await api.getSearchMoviesByID(article.id);
 
   const markup = getModalMarkup(movie);
-  modal.open(markup);
-  renderTrailer(article.id);
-}
+  modal.open(markup)
+
+  // searchTrailer(article.id);
+};
+
+
 
 function filmModalOptions() {
   const filmModal = document.querySelector('.modal-movie');
@@ -37,14 +40,22 @@ function filmModalOptions() {
   const btnList = filmModal.querySelector('.buttons-list__film-modal');
   const notifyEl = filmModal.querySelector('.modal-movie__notify');
   const filmId = addToWatchedBtn.closest('[data-id]').dataset.id;
-  const youtubeBtn = document.querySelector('.film__trailer__btn');
+  const poop = document.querySelector('.movie-poop');
+  poop.addEventListener('click',() => {
+    const poopClose = document.querySelector('.poop-close');
+    searchTrailer(filmId)
+    .then(result => {document.querySelector('.backdrop').insertAdjacentHTML('beforeend', result)
+  })
+    .then(poopClose.removeAttribute('style'))
+    // .then(document.querySelector('.modal__close').)
+    // .then(document.querySelector('.poop-close').addEventListener('click', document.querySelector('.backdrop-iframe').setAttribute('display', 'none')))
+    });
   // const filmId = Number(addToWatchedBtn.closest('[data-id]').dataset.id);
 
   checkDB(filmId);
-
+  // poopBtn.addEventListener('click', renderTrailer);
   addToWatchedBtn.addEventListener('click', onWotchedBtnClick);
   addToQueuedBtn.addEventListener('click', onQueueBtnClick);
-  // youtubeBtn.addEventListener('click', iframeRender);
 
   async function onWotchedBtnClick(event) {
     if (!loadDataFromLocalSt(KEY)) {
@@ -123,4 +134,4 @@ function filmModalOptions() {
   }
 }
 
-export { onMovieClick, modalOptions, modal, api };
+export { onMovieClick, modalOptions, modal, api, onPoopClick };
