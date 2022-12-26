@@ -26,12 +26,10 @@ async function onMovieClick(e) {
   const movie = await api.getSearchMoviesByID(article.id);
 
   const markup = getModalMarkup(movie);
-  modal.open(markup)
+  modal.open(markup);
 
   // searchTrailer(article.id);
-};
-
-
+}
 
 function filmModalOptions() {
   const filmModal = document.querySelector('.modal-movie');
@@ -41,16 +39,22 @@ function filmModalOptions() {
   const notifyEl = filmModal.querySelector('.modal-movie__notify');
   const filmId = addToWatchedBtn.closest('[data-id]').dataset.id;
   const poop = document.querySelector('.movie-poop');
-  poop.addEventListener('click',() => {
+  poop.addEventListener('click', async () => {
     const poopClose = document.querySelector('.poop-close');
-    searchTrailer(filmId)
-    .then(result => {document.querySelector('.backdrop').insertAdjacentHTML('beforeend', result)
-  })
-    .then(poopClose.removeAttribute('style'))
-    // .then(document.querySelector('.modal__close').)
-    // .then(document.querySelector('.poop-close').addEventListener('click', document.querySelector('.backdrop-iframe').setAttribute('display', 'none')))
+    await searchTrailer(filmId).then(result => {
+      document
+        .querySelector('.backdrop')
+        .insertAdjacentHTML('beforeend', result);
     });
-  // const filmId = Number(addToWatchedBtn.closest('[data-id]').dataset.id);
+    poopClose.style.display = 'block';
+    const poopBackdrop = document.querySelector('.backdrop-iframe');
+    poopBackdrop.addEventListener('click', e => {
+      if (e.target === poopBackdrop) {
+        poopBackdrop.remove();
+        poopClose.remove();
+      }
+    });
+  });
 
   checkDB(filmId);
   // poopBtn.addEventListener('click', renderTrailer);
