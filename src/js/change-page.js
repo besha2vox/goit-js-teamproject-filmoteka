@@ -33,6 +33,7 @@ import { createMovieCardMarkup } from './create-movie-card';
 import { getCurrentFunc } from './utils/render-on switch-lang';
 import { fakePoster } from './utils/fake-poster';
 import { async } from 'regenerator-runtime';
+import { scrollOnClick } from './pagination/scroll';
 
 const PAGE_KEY = 'page';
 const LIST_KEY = 'film-list';
