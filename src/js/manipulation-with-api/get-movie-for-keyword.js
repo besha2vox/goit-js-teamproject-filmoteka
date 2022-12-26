@@ -4,6 +4,8 @@ import { onMovieClick } from './modal-open';
 import { renderPagination } from '../pagination/pagination';
 import { loginFormNotify } from '../firebase-auth/interface-change';
 import { getCurrentFunc } from '../utils/render-on switch-lang';
+import { loadDataFromLocalSt } from '../utils/local-st-functions';
+import { getLatestMovies } from './get-latest-movies';
 
 const api = new API();
 
@@ -22,21 +24,22 @@ async function onFormSubmit(e) {
   const query = e.target.query.value;
   if (query === api.queryToFetch && api.pageToFetch === 1) return;
 
-  refs.moviesList.innerHTML = '';
-
   api.queryToFetch = query;
   api.pageToFetch = 1;
 
   const movies = await createData();
 
   if (!movies || !movies.results.length) {
-    document.querySelector('.pagination-list').innerHTML = '';
-    loginFormNotify(
-      refs.notifyEl,
-      'Search result not successful. Enter the correct movie name and'
-    );
+    const errorText =
+      loadDataFromLocalSt('language') === 'UA'
+        ? 'Результат пошуку хибний. Введіть вірну назву фільму та повторіть спробу.'
+        : 'Search result not successful. Enter the correct movie name and try again.';
+    // document.querySelector('.pagination-list').innerHTML = '';
+    // getLatestMovies();
+    loginFormNotify(refs.notifyEl, errorText);
     return;
   }
+  refs.moviesList.innerHTML = '';
 
   getMoviesByKeyword();
 }

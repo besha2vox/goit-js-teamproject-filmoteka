@@ -26,17 +26,14 @@ export async function searchTrailer(id) {
 
   const trailer = trailers.results.find(video => video.type === 'Trailer');
   // console.log(trailer)
-  console.log(trailer.key);
-// 
+  //
   // const element = document.querySelector('.poster-wrap');
   let template = trailerTemplate(trailer.key);
   // console.log(template)
 
   // console.log(poop)
   // console.log(element)
-// const poop = document.querySelector('.movie-poop');
+  // const poop = document.querySelector('.movie-poop');
 
   return template;
-
 }
-

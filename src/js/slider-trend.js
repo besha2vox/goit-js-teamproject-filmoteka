@@ -11,6 +11,8 @@ const sliderContainer = document.querySelector('.trending-list');
 // Рендер фильмов, которые скоро покажут в кинотеатрах
 renderUpcoming();
 async function renderUpcoming() {
+  const viewportWidth = window.viewportWidth;
+  if (viewportWidth < 768) return;
   const upcoming = await api.getUpcomingMovies();
   const markup = upcoming.results
     .map(upcomin => {
