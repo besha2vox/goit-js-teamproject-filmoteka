@@ -20,9 +20,10 @@ refs.form.addEventListener('submit', onFormSubmit);
 
 async function onFormSubmit(e) {
   e.preventDefault();
-  e.currentTarget.reset();
 
   const query = e.target.query.value;
+
+  e.currentTarget.reset();
   if (query === api.queryToFetch && api.pageToFetch === 1) return;
 
   api.queryToFetch = query;
@@ -41,7 +42,6 @@ async function onFormSubmit(e) {
     return;
   }
   refs.moviesList.innerHTML = '';
-
   getMoviesByKeyword();
 }
 
