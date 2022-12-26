@@ -253,22 +253,22 @@ body.dark-theme {
 
 // Scroll-bar start
 .modal-movie__overview {
-  height: 236px;
+  max-height: 236px;
   width: 240px;
   overflow-y: scroll;
 
   @media screen and (min-width: $mobile) {
-    height: 236px;
+    max-height: 236px;
     width: 240px;
   }
 
   @media screen and (min-width: $mobile) and (min-width: $tablet) {
-    height: 236px;
+    max-height: 236px;
     width: 264px;
   }
 
   @media screen and (min-width: $desktop) {
-    height: 160px;
+    max-height: 160px;
     width: 391px;
   }
 }
