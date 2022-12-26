@@ -52,14 +52,16 @@ export const getModalMarkup = async ({
       isUkrainian ? 'Оцінка/Оцінок' : 'Vote / Votes'
     }</p>
      <p class="modal-movie__value">
-       <span class="modal-movie__value--accent">${vote_average}</span> / ${vote_count}
+       <span class="modal-movie__value--accent">${vote_average.toFixed(
+         1
+       )}</span> / ${vote_count}
      </p>
     </li>
     <li class="modal-movie__item">
      <p class="modal-movie__key">${
        isUkrainian ? 'Популярність' : 'Popularity'
      }</p>
-     <p class="modal-movie__value">${popularity}</p>
+     <p class="modal-movie__value">${popularity.toFixed(1)}</p>
     </li>
     <li class="modal-movie__item">
     <p class="modal-movie__key">${
