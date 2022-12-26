@@ -7,7 +7,12 @@ export function createPagination(totalPages, currentPage) {
   let beforePage = page - 2;
   let afterPage = page + 2;
   if (page > 1) {
-    liTag += `<li class="btn prev")"><button><</button></li>`;
+    liTag += `<li class="btn prev")"><button>
+    <svg class="pag-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.6666 8H3.33325" style="stroke:var(--color, black)" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M7.99992 12.6667L3.33325 8.00004L7.99992 3.33337" style="stroke:var(--color, black)" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+    </button></li>`;
   }
 
   if (page > 3 && totalPages > 5) {
@@ -53,7 +58,12 @@ export function createPagination(totalPages, currentPage) {
   }
 
   if (page < totalPages) {
-    liTag += `<li class="btn next"><button>></button></li>`;
+    liTag += `<li class="btn next"><button>
+    <svg class="pag-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.33341 8H12.6667" style="stroke:var(--color, black)" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M8.00008 12.6667L12.6667 8.00004L8.00008 3.33337" style="stroke:var(--color, black)" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+    </button></li>`;
   }
 
   return liTag;
