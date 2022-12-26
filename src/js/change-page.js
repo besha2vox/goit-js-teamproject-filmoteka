@@ -19,7 +19,10 @@ import {
   getLatestMovies,
   resetApiPage,
 } from './manipulation-with-api/get-latest-movies';
-import { saveDataToLocalSt } from './utils/local-st-functions';
+import {
+  loadDataFromLocalSt,
+  saveDataToLocalSt,
+} from './utils/local-st-functions';
 import {
   getUserDataFromDB,
   monitorsChangesInDB,
@@ -33,10 +36,11 @@ import { createMovieCardMarkup } from './create-movie-card';
 import { getCurrentFunc } from './utils/render-on switch-lang';
 import { fakePoster } from './utils/fake-poster';
 import { async } from 'regenerator-runtime';
-import { scrollOnClick } from './pagination/scroll';
+import { emptyLib } from './utils/fake-poster';
 
 const PAGE_KEY = 'page';
 const LIST_KEY = 'film-list';
+// const emptyImage = 'https://cdn-icons-png.flaticon.com/512/745/745752.png ';
 
 libraryLink.addEventListener('click', onLibraryPage);
 homeLink.addEventListener('click', onHomePage);
@@ -121,6 +125,18 @@ async function renderFilmLists(ids) {
     async movie => await createMovieCardMarkup(movie)
   );
   const templatePromise = (await Promise.all(template)).join('');
+
+  if (!templatePromise || templatePromise.length < 1) {
+    const isUcrainian = loadDataFromLocalSt('language') === 'UA';
+    const localText = isUcrainian
+      ? 'Наразі Ваша бібліотека пуста!'
+      : 'Your library is currently empty!';
+    document.querySelector('.movies-grid').innerHTML =
+      await `<div class="empty-lib"><p>${localText}</p>
+      ${emptyLib}
+    </div>`;
+    return;
+  }
   moviesList.innerHTML = await templatePromise;
 }
 //!----------------| for pagination |------------------------

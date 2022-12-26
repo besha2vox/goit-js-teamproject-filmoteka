@@ -1,0 +1,29 @@
+.empty-lib {
+  margin: 0 auto;
+  height: fit-content;
+  text-align: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-25deg);
+    font-size: 50px;
+    width: 100%;
+    text-shadow: 5px 4px 4px #000000, -5px -4px -4px #000000;
+    opacity: 0.9;
+
+    @media screen and (max-width: 767px) {
+      font-size: 30px;
+    }
+  }
+
+  svg {
+    opacity: 0.3;
+    width: 100%;
+  }
+}
