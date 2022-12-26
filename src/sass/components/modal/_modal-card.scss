@@ -173,7 +173,7 @@ body.dark-theme {
 
 .backdrop-iframe {
   width: 100vw;
-  height: 100vw;
+  height: 100vh;
   background-color: rgb(0, 0, 0);
   z-index: 2;
   position: absolute;
@@ -295,4 +295,13 @@ body.dark-theme {
 // Scroll-bar finish
 iframe {
   z-index: 3;
+}
+
+.icon-poop-close {
+  stroke: #ffffff;
+  transition: stroke 300ms $cubicBezier;
+
+  &:hover {
+    stroke: $accentColor;
+  }
 }

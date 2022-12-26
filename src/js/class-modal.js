@@ -15,7 +15,10 @@ export class Modal {
 
     this.backdrop.addEventListener('click', this.onbackDropClose);
     this.closeIcon.addEventListener('click', this.onCloseClick);
-    this.closePoop.addEventListener('click', this.onCloseClick);
+    this.closePoop.addEventListener('click', () => {
+      document.querySelector('.backdrop-iframe').remove();
+      this.closePoop.remove();
+    });
     window.addEventListener('keyup', this.onEscClose);
 
     if (this.onShow) this.onShow();
@@ -55,7 +58,10 @@ function modalTemplate(markup) {
   const html = markup ? markup : sadCat;
   return `<div class="backdrop">
   <button type="button" class="poop-close" style="display:none">
-  x
+  <svg class="icon-poop-close" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 8L22 22" stroke-width="2"/>
+    <path d="M8 22L22 8" stroke-width="2"/>
+    </svg>
   </button>
     <div class="modal">
     <button type="button" class="modal__close">
