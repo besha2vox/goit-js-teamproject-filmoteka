@@ -3,7 +3,7 @@ export default [
     name: 'Serhii Revva',
     nameUA: 'Сергій Ревва',
     photo:
-      'https://lh3.google.com/u/0/d/1D8KMxy6g5avFkJJ5t9icYaIqLJ_4xov1=w903-h948-iv1',
+      'https://lh3.google.com/u/0/d/1be4MGnbFl4S29ZgkiDWlkwQ2CKi30Cfy=w1354-h948-iv1',
     position: 'Team Lead',
     positionUA: 'Керівник',
     git: 'https://github.com/besha2vox',
@@ -48,7 +48,7 @@ export default [
     name: 'Oleksandr Romanchuk',
     nameUA: 'Олександр Романчук',
     photo:
-      'https://lh3.google.com/u/0/d/1g_xxDp1jAumW9QFcBCBt_JjocFpUbYMN=w903-h948-iv1',
+      'https://lh3.google.com/u/0/d/1Nd--AXOp0LBlm4j1tFG6bXMKWU84X8x7=w1920-h948-iv1',
     position: 'Developer',
     positionUA: 'Роботяга',
     git: 'https://github.com/OleksandrRomanchuk',
