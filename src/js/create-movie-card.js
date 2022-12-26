@@ -40,7 +40,7 @@ export async function createMovieCardMarkup({
               </div>
           </div>
       </li>`;
-  } else if (!release_date) {
+  } else if (!release_date && genre.length > 0) {
     return await `<li class="movie-card" id="${id}">
     <img src=${poster} 
         alt="Poster of ${title}" class="movie-card__img" />
@@ -83,5 +83,8 @@ export async function createMovieCardMarkup({
 async function getGenres(genreIds, genres) {
   if (genreIds) return await searchGenres(genreIds);
 
-  return await genres.map(genre => genre.name).join(', ');
+  return await genres
+    .map(genre => genre.name)
+    .slice(0, 3)
+    .join(', ');
 }
