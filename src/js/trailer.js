@@ -37,3 +37,9 @@ export async function searchTrailer(id) {
 
   return template;
 }
+
+export async function checkTrailer(id) {
+  const trailers = await api.getMovieTreiler(id);
+  if (!trailers || !trailers.results[0]) return false;
+  return true;
+}
