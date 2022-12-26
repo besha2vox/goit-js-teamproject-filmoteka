@@ -51,22 +51,25 @@
   </head>
 
   <body>
-    <div class="wrapper">
+    <div class="content-wrapper">
       <!--  * Лоадер і кнопка скролу догори -->
       <include src="./partials/loader_scrollToTop.html"></include>
 
       <!-- * Імпорт ХЕДЕРА -->
       <include src="./partials/header.html"></include>
 
-      <!-- * MAIN -->
-      <main>
-        <!-- * SLIDER -->
-        <section class="movies-slider">
-          <div class="container slider">
-            <h3 class="trending-title">Upcoming Movies</h3>
-            <div class="slide-track">
-              <ul class="trending-list"></ul>
-            </div>
+
+    <!-- * MAIN -->
+    <main>
+      <!-- * SLIDER -->
+      <section class="movies-slider">
+        <div class="container slider">
+          <h3 class="trending-title">
+            <span class="en">UPCOMING MOVIES</span>
+            <span class="ua">АНОНСОВАНІ ФІЛЬМИ</span>
+          </h3>
+          <div class="slide-track">
+            <ul class="trending-list"></ul>
           </div>
         </section>
 
@@ -83,8 +86,8 @@
         </section>
       </main>
       <!-- * Імпорт ФУТЕРА -->
-      <include src="./partials/footer.html"></include>
     </div>
+    <include src="./partials/footer.html"></include>
     <div class="backdrop__blur"></div>
   </body>
 </html>

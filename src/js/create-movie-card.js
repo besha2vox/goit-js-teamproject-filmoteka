@@ -1,5 +1,6 @@
 import { loadDataFromLocalSt } from './utils/local-st-functions';
 import { GENRES_STORAGE_KEY } from './manipulation-with-api/get-genres';
+import { fakePoster } from './utils/fake-poster';
 
 export function searchGenres(ids) {
   const allGenres = JSON.parse(loadDataFromLocalSt(GENRES_STORAGE_KEY));
@@ -18,15 +19,17 @@ export async function createMovieCardMarkup({
   poster_path,
   vote_average,
   release_date,
+  genres,
 }) {
-  const genre = await searchGenres(genre_ids);
-  if (genre_ids.length === 0) {
+  const genre = await getGenres(genre_ids, genres);
+
+  const url = `https://image.tmdb.org/t/p/original${poster_path}`;
+  const poster = poster_path ? url : fakePoster;
+
+  if (genre.length < 1) {
     return await `<li class="movie-card" id="${id}">
-    <div class="movie-card__img-thumb">
-    <img src="https://image.tmdb.org/t/p/original${poster_path}" 
+    <img src=${poster} 
         alt="Poster of ${title}" class="movie-card__img" />
-    </div>
-    
           <div class="movie-card__info">
             <p class="movie-card__name">${title}</p>
             <div class="movie-card__wrap">
@@ -37,28 +40,22 @@ export async function createMovieCardMarkup({
               </div>
           </div>
       </li>`;
-  } else if (release_date === 0) {
+  } else if (!release_date) {
     return await `<li class="movie-card" id="${id}">
-    <div class="movie-card__img-thumb">
-    <img src="https://image.tmdb.org/t/p/original${poster_path}" 
+    <img src=${poster} 
         alt="Poster of ${title}" class="movie-card__img" />
-    </div>
           <div class="movie-card__info">
             <p class="movie-card__name">${title}</p>
             <div class="movie-card__wrap">
             <p class="movie-card__info-wrap">
-              <span class="movie-card__genre">${genre}</span> <span class="movie-card__rating">${vote_average.toFixed(
-      1
-    )}</span></p>
+              <span class="movie-card__genre">${genre}</span></p>
               </div>
           </div>
       </li>`;
-  } else if (genre_ids.length === 0 && release_date === 0) {
+  } else if (genre.length < 1 && !release_date) {
     return await `<li class="movie-card" id="${id}">
-    <div class="movie-card__img-thumb">
-    <img src="https://image.tmdb.org/t/p/original${poster_path}" 
+    <img src=${poster} 
         alt="Poster of ${title}" class="movie-card__img" />
-    </div>
           <div class="movie-card__info">
             <p class="movie-card__name">${title}</p>
             <div class="movie-card__wrap">
@@ -68,10 +65,8 @@ export async function createMovieCardMarkup({
       </li>`;
   } else {
     return await `<li class="movie-card" id="${id}">
-    <div class="movie-card__img-thumb">
-    <img src="https://image.tmdb.org/t/p/original${poster_path}" 
+    <img src=${poster} 
         alt="Poster of ${title}" class="movie-card__img" />
-    </div>
           <div class="movie-card__info">
             <p class="movie-card__name">${title}</p>
             <div class="movie-card__wrap">
@@ -83,4 +78,10 @@ export async function createMovieCardMarkup({
           </div>
       </li>`;
   }
+}
+
+async function getGenres(genreIds, genres) {
+  if (genreIds) return await searchGenres(genreIds);
+
+  return await genres.map(genre => genre.name).join(', ');
 }

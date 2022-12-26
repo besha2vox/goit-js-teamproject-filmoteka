@@ -2,6 +2,7 @@ import {
   saveDataToLocalSt,
   loadDataFromLocalSt,
 } from './utils/local-st-functions';
+import { fetchGenres } from './manipulation-with-api/get-genres';
 
 import { renderOnSwithLang } from './utils/render-on switch-lang';
 
@@ -40,6 +41,7 @@ function changeLanguage(evt) {
     changeLanguageLocalStr('EN');
     changeLanguageClass('en');
   }
+  fetchGenres();
   renderOnSwithLang();
 }
 
@@ -78,3 +80,4 @@ function changeLanguageTextTo(language) {
     });
   }
 }
+

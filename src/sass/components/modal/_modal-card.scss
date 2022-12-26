@@ -30,7 +30,6 @@
   }
 }
 
-
 .modal {
   position: relative;
   margin-top: 40px;
@@ -141,14 +140,11 @@ body.dark-theme {
   position: relative;
 }
 
-
-
-
 .trailer-wrapper {
   @media screen and (max-width: 767px) {
     width: 30px;
     height: 30px;
-  };
+  }
   @media screen and (min-width: $tablet) {
     width: 40px;
     min-height: 40px;
@@ -165,7 +161,7 @@ body.dark-theme {
   position: absolute;
   width: 50px;
   height: 35px;
-  
+
   background-color: transparent;
   top: 20px;
   left: 20px;
@@ -175,7 +171,6 @@ body.dark-theme {
   cursor: pointer;
 }
 
-
 .backdrop-iframe {
   width: 100vw;
   height: 100vw;
@@ -184,7 +179,6 @@ body.dark-theme {
   position: absolute;
 }
 
-
 .youpoop {
   transition: opacity 300ms;
 }
@@ -192,17 +186,12 @@ body.dark-theme {
 .youpoop:hover,
 .youpoop:focus {
   opacity: 80%;
-  
 }
-
-
 
 .modal-movie__notify {
   // height: 32px;
   text-align: center;
 }
-
-
 
 .trailer {
   position: relative;
@@ -214,7 +203,7 @@ body.dark-theme {
   @media screen and (max-width: 767px) {
     width: 200px;
     min-height: 230px;
-  };
+  }
   @media screen and (min-width: $tablet) {
     width: 400px;
     min-height: 250px;
@@ -237,7 +226,6 @@ body.dark-theme {
   top: 50%;
   transform: translate(-50%, -50%);
 }
-
 
 .poop-close {
   position: absolute;
@@ -263,7 +251,48 @@ body.dark-theme {
   color: #fb8e2f;
 }
 
+// Scroll-bar start
+.modal-movie__overview {
+  height: 236px;
+  width: 240px;
+  overflow-y: scroll;
 
+  @media screen and (min-width: $mobile) {
+    height: 236px;
+    width: 240px;
+  }
+
+  @media screen and (min-width: $mobile) and (min-width: $tablet) {
+    height: 236px;
+    width: 264px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    height: 160px;
+    width: 391px;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  border: 5px solid transparent;
+  background-clip: content-box;
+  background-color: #d6dee1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #9ca6aa;
+}
+
+// Scroll-bar finish
 iframe {
   z-index: 3;
 }
