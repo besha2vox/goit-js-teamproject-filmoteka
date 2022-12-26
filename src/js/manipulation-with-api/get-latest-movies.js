@@ -3,6 +3,7 @@ import { createMovieCardMarkup } from '../create-movie-card';
 import { onMovieClick } from './modal-open';
 import { renderPagination } from '../pagination/pagination';
 import { getCurrentFunc } from '../utils/render-on switch-lang';
+import { createRandomCard } from '../template-random-card';
 
 const api = new API();
 
@@ -18,6 +19,7 @@ async function getLatestMovies() {
   moviesList.innerHTML = template;
   getCurrentFunc(getLatestMovies);
   renderPagination(movies.total_pages, getLatestMovies, api);
+  createRandomCard();
 }
 
 async function createMovieData() {
