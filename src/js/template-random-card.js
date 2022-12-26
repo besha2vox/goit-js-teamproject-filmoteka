@@ -5,7 +5,6 @@ import { getModalMarkup } from './modal';
 import { modal } from './manipulation-with-api/modal-open';
 
 async function createRandomCard() {
-  if (viewportWidth < 1280) return;
   const isUcrainian = loadDataFromLocalSt('language') === 'UA';
   const template = `<div class="js-random-card">
 ${imgForRandom}
