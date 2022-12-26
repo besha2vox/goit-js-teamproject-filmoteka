@@ -73,10 +73,11 @@ function addListenersMyLibBtns({ prevBtn, numberedBtns, nextBtn }) {
 }
 
 export function onMyLibPrevBtnClick(e) {
-  scrollOnClick();
+  // scrollOnClick();
   pagNums.page -= 1;
   setSliceIndxs();
   getCurrentPage();
+  console.log('getCurrentPage', getCurrentPage);
 }
 
 function onMyLibNextBtnClick(e) {

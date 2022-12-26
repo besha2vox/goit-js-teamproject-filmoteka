@@ -8,6 +8,7 @@ import {
   moviesList,
   logo,
   slider,
+  header,
 } from './firebase-auth/auth-refs';
 import {
   classToggle,
@@ -86,6 +87,9 @@ async function onLibraryPage(event) {
     resetPagNums();
   }
 
+  if (header.classList.contains('header__home'))
+    header.classList.remove('header__home');
+  header.classList.add('header__library');
   slider.style.display = 'none';
 
   libraryPageInterface();
@@ -179,6 +183,9 @@ function libraryPageInterface() {
 function onHomePage(event) {
   event.preventDefault();
 
+  if (header.classList.contains('header__library'))
+    header.classList.remove('header__library');
+  header.classList.add('header__home');
   slider.style.display = 'block';
   saveDataToLocalSt(PAGE_KEY, 'home');
 
@@ -239,3 +246,16 @@ export {
   fetchWatched,
   fetchQueue,
 };
+
+const isHomePage = loadDataFromLocalSt('page') === 'home';
+if (isHomePage) {
+  if (header.classList.contains('header__library'))
+    header.classList.remove('header__library');
+
+  header.classList.add('header__home');
+} else {
+  if (header.classList.contains('header__home'))
+    header.classList.remove('header__home');
+
+  header.classList.add('header__library');
+}
