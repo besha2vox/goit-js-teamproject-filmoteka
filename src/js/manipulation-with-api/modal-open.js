@@ -64,12 +64,12 @@ function filmModalOptions() {
   addToQueuedBtn.addEventListener('click', onQueueBtnClick);
 
   async function onWotchedBtnClick(event) {
-    const isUcrainian = loadDataFromLocalSt('language') === 'UA';
+    const isUkrainian = loadDataFromLocalSt('language') === 'UA';
 
     if (!loadDataFromLocalSt(KEY)) {
       loginFormNotify(
         notifyEl,
-        isUcrainian
+        isUkrainian
           ? 'Будь ласка, зареєструйтесь або увійдіть у свій обліковий запис, щоб мати можливість додавати фільми до списків відтворення.'
           : 'Please register or log in to your account to be able to add movies to playlists.'
       );
@@ -78,23 +78,27 @@ function filmModalOptions() {
 
     if (!event.target.classList.value.includes('button__header--active')) {
       classToggle(event.target, 'add', 'button__header--active');
-      event.target.textContent = 'in watched list';
+      event.target.textContent = isUkrainian
+        ? 'У переглянутих'
+        : 'in watched list';
 
       addFilmToTheList(filmId, event.target.dataset.list);
       loginFormNotify(
         notifyEl,
-        isUcrainian
+        isUkrainian
           ? 'Фільм додано до вашого списку перегляду!'
           : 'The movie has been added to your watch list!'
       );
     } else {
       classToggle(event.target, 'remove', 'button__header--active');
-      event.target.textContent = 'add to watched';
+      event.target.textContent = isUkrainian
+        ? 'У переглянуті'
+        : 'add to watched';
 
       deleteFilmFromList(filmId, 'watched');
       loginFormNotify(
         notifyEl,
-        isUcrainian
+        isUkrainian
           ? 'Фільм видалено зі списку переглядів!'
           : 'The movie has been removed from your Watched list!'
       );
@@ -102,11 +106,11 @@ function filmModalOptions() {
   }
 
   function onQueueBtnClick(event) {
-    const isUcrainian = loadDataFromLocalSt('language') === 'UA';
+    const isUkrainian = loadDataFromLocalSt('language') === 'UA';
     if (!loadDataFromLocalSt(KEY)) {
       loginFormNotify(
         notifyEl,
-        isUcrainian
+        isUkrainian
           ? 'Будь ласка, зареєструйтесь або увійдіть у свій обліковий запис, щоб мати можливість додавати фільми до списків відтворення.'
           : 'Please register or log in to your account to be able to add movies to playlists.'
       );
@@ -115,23 +119,23 @@ function filmModalOptions() {
 
     if (!event.target.classList.value.includes('button__header--active')) {
       classToggle(event.target, 'add', 'button__header--active');
-      event.target.textContent = 'in queue list';
+      event.target.textContent = isUkrainian ? 'У черзі' : 'in queue list';
 
       addFilmToTheList(filmId, event.target.dataset.list);
       loginFormNotify(
         notifyEl,
-        isUcrainian
+        isUkrainian
           ? 'Фільм додано до списку черги!'
           : 'The movie has been added to your Queue list!'
       );
     } else {
       classToggle(event.target, 'remove', 'button__header--active');
-      event.target.textContent = 'add to queue';
+      event.target.textContent = isUkrainian ? 'У чергу' : 'add to queue';
 
       deleteFilmFromList(filmId, 'queue');
       loginFormNotify(
         notifyEl,
-        isUcrainian
+        isUkrainian
           ? 'Фільм видалено з вашого списку черги!'
           : 'The movie has been removed from your Queue list!'
       );
@@ -143,18 +147,20 @@ function filmModalOptions() {
       btnList.style.display = 'flex';
       return;
     }
-
+    const isUkrainian = loadDataFromLocalSt('language') === 'UA';
     const watchedData = await getUserDataFromDB('watched');
     const queueData = await getUserDataFromDB('queue');
 
     if (Object.keys(watchedData).includes(String(filmId))) {
       classToggle(addToWatchedBtn, 'add', 'button__header--active');
-      addToWatchedBtn.textContent = 'in watched list';
+      addToWatchedBtn.textContent = isUkrainian
+        ? 'У переглянутих'
+        : 'in watched list';
     }
 
     if (Object.keys(queueData).includes(String(filmId))) {
       classToggle(addToQueuedBtn, 'add', 'button__header--active');
-      addToQueuedBtn.textContent = 'in queue list';
+      addToQueuedBtn.textContent = isUkrainian ? 'У черзі' : 'in queue list';
     }
 
     btnList.style.display = 'flex';

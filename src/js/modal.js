@@ -86,13 +86,15 @@ export const getModalMarkup = async ({
       
        <ul class="buttons-list buttons-list__film-modal">
      <li class="buttons-list__item">
-         <button class="button button--transparent" type="button" data-list="watched"  data-id=${id}>
-             add to Watched
+         <button class="button button--transparent" type="button" data-list="watched"  data-id=${id}>${
+    isUkrainian ? 'У переглянуті' : 'Add to watched'
+  }
          </button>
      </li>
      <li class="buttons-list__item">
-         <button class="button button--transparent" type="button" data-list="queue"  data-id=${id}>
-             add to queue
+         <button class="button button--transparent" type="button" data-list="queue"  data-id=${id}>${
+    isUkrainian ? 'У чергу' : 'Add to queue'
+  }
          </button>
      </li>
      <li class="buttons-list__item">
