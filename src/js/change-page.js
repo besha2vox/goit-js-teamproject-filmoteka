@@ -135,8 +135,7 @@ async function renderFilmLists(ids) {
     const localText = isUcrainian
       ? 'Наразі Ваша бібліотека пуста!'
       : 'Your library is currently empty!';
-    document.querySelector('.movies-grid').innerHTML =
-      await `<div class="empty-lib"><p>${localText}</p>
+    moviesList.innerHTML = await `<div class="empty-lib"><p>${localText}</p>
       ${emptyLib}
     </div>`;
     return;

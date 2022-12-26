@@ -154,7 +154,7 @@ export class API {
 
 //? ПЕРЕВІРКА ОБРАНОЇ МОВИ
 
-function getLanguage() {
+export function getLanguage() {
   const lang = loadDataFromLocalSt('language');
   if (lang === 'UA') return 'uk-UK';
   return 'en-US';
