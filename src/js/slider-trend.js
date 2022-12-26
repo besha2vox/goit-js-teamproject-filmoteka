@@ -60,7 +60,7 @@ async function renderModalTemplete(e) {
 // function renderModalTemplete(e) {
 //   if (!e.target.closest('li')) {
 //     return;
-//   }
+//   }/
 //   const parrent = e.target.closest('.img-div');
 //   const genreIds = parrent.dataset.genre.split(',').map(genre => Number(genre));
 //   const genres = searchGenres(genreIds);
