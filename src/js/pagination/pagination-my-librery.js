@@ -72,12 +72,15 @@ function addListenersMyLibBtns({ prevBtn, numberedBtns, nextBtn }) {
   );
 }
 
-export function onMyLibPrevBtnClick(e) {
-  // scrollOnClick();
+function onMyLibPrevBtnClick(e) {
+  scrollOnClick();
+  prevPage();
+}
+
+export function prevPage() {
   pagNums.page -= 1;
   setSliceIndxs();
   getCurrentPage();
-  console.log('getCurrentPage', getCurrentPage);
 }
 
 function onMyLibNextBtnClick(e) {
