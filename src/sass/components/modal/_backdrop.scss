@@ -12,6 +12,7 @@
   font-family: Roboto, sans-serif;
 
   background-color: $backdropColor;
+  overflow: scroll;
 
   @media screen and (min-width: $tablet) {
     padding: 32px 0;
