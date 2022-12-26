@@ -64,10 +64,14 @@ function filmModalOptions() {
   addToQueuedBtn.addEventListener('click', onQueueBtnClick);
 
   async function onWotchedBtnClick(event) {
+    const isUcrainian = loadDataFromLocalSt('language') === 'UA';
+
     if (!loadDataFromLocalSt(KEY)) {
       loginFormNotify(
         notifyEl,
-        'Please register or log in to your account to be able to add movies to playlists.'
+        isUcrainian
+          ? 'Будь ласка, зареєструйтесь або увійдіть у свій обліковий запис, щоб мати можливість додавати фільми до списків відтворення.'
+          : 'Please register or log in to your account to be able to add movies to playlists.'
       );
       return;
     }
@@ -77,7 +81,12 @@ function filmModalOptions() {
       event.target.textContent = 'in watched list';
 
       addFilmToTheList(filmId, event.target.dataset.list);
-      loginFormNotify(notifyEl, 'The movie has been added to your watch list!');
+      loginFormNotify(
+        notifyEl,
+        isUcrainian
+          ? 'Фільм додано до вашого списку перегляду!'
+          : 'The movie has been added to your watch list!'
+      );
     } else {
       classToggle(event.target, 'remove', 'button__header--active');
       event.target.textContent = 'add to watched';
@@ -85,16 +94,21 @@ function filmModalOptions() {
       deleteFilmFromList(filmId, 'watched');
       loginFormNotify(
         notifyEl,
-        'The movie has been removed from your Watched list!'
+        isUcrainian
+          ? 'Фільм видалено зі списку переглядів!'
+          : 'The movie has been removed from your Watched list!'
       );
     }
   }
 
   function onQueueBtnClick(event) {
+    const isUcrainian = loadDataFromLocalSt('language') === 'UA';
     if (!loadDataFromLocalSt(KEY)) {
       loginFormNotify(
         notifyEl,
-        'Please register or log in to your account to be able to add movies to playlists.'
+        isUcrainian
+          ? 'Будь ласка, зареєструйтесь або увійдіть у свій обліковий запис, щоб мати можливість додавати фільми до списків відтворення.'
+          : 'Please register or log in to your account to be able to add movies to playlists.'
       );
       return;
     }
@@ -104,7 +118,12 @@ function filmModalOptions() {
       event.target.textContent = 'in queue list';
 
       addFilmToTheList(filmId, event.target.dataset.list);
-      loginFormNotify(notifyEl, 'The movie has been added to your Queue list!');
+      loginFormNotify(
+        notifyEl,
+        isUcrainian
+          ? 'Фільм додано до списку черги!'
+          : 'The movie has been added to your Queue list!'
+      );
     } else {
       classToggle(event.target, 'remove', 'button__header--active');
       event.target.textContent = 'add to queue';
@@ -112,7 +131,9 @@ function filmModalOptions() {
       deleteFilmFromList(filmId, 'queue');
       loginFormNotify(
         notifyEl,
-        'The movie has been removed from your Queue list!'
+        isUcrainian
+          ? 'Фільм видалено з вашого списку черги!'
+          : 'The movie has been removed from your Queue list!'
       );
     }
   }
