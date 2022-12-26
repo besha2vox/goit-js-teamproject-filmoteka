@@ -7,7 +7,16 @@ import { modal } from './manipulation-with-api/modal-open';
 async function createRandomCard() {
   const isUcrainian = loadDataFromLocalSt('language') === 'UA';
   const template = `<div class="js-random-card">
-${imgForRandom}
+  
+<div class="js-random-card__wrapper">
+<div class="movie-card__info">
+<p class="movie-card__info-wrap">${
+    isUcrainian ? 'Отримай рандомний фільм!' : 'Get a random movie!'
+  }</p>
+<p  class="movie-card__name">${
+    isUcrainian ? 'Тисни на картку!' : 'Click on the card!'
+  }</p></div>
+${imgForRandom}</div>
 <div class="movie-card__info">
 <p  class="movie-card__name">${
     isUcrainian ? 'Тисни на картку!' : 'Click on the card!'
