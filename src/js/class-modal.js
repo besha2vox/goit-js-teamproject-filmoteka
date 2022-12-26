@@ -5,7 +5,7 @@ export class Modal {
     this.backdrop = null;
   }
 
-  open(markup) {
+  async open(markup) {
     const template = modalTemplate(markup);
     document.body.insertAdjacentHTML('afterend', template);
     document.body.classList.add('modal-open');

@@ -1,7 +1,8 @@
 import { loadDataFromLocalSt } from './utils/local-st-functions';
 import { fakePoster } from './utils/fake-poster';
+import { checkTrailer } from './trailer';
 
-export const getModalMarkup = ({
+export const getModalMarkup = async ({
   overview,
   vote_average,
   popularity,
@@ -15,22 +16,31 @@ export const getModalMarkup = ({
   const url = `https://image.tmdb.org/t/p/original${poster_path}`;
   const genresNames = genres.map(genre => genre.name).join(', ');
   const isUkrainian = loadDataFromLocalSt('language') === 'UA';
+
   const nonAbout = isUkrainian
     ? 'На жаль, опис фільму відсутній.'
     : 'Unfortunately, there is no description of the film.';
+
   const nonGenre = isUkrainian
     ? 'На жаль, жанри відсутні.'
     : 'Unfortunately, there are no genres.';
+
   const poster = poster_path ? url : fakePoster;
+
+  const isTrailerExist = await checkTrailer(id);
+  const trailerIcon = isTrailerExist
+    ? `
+<div class="trailer-wrapper">
+<a class="movie-poop">
+<img class="youpoop" width="50" height="35" src="https://www.freepnglogos.com/uploads/youtube-play-red-logo-png-transparent-background-6.png" alt="poop" />
+</a>
+    </div>`
+    : '';
 
   return `<div class="modal-movie" data-id='${id}'>
       <div class="poster-wrap">
-      <div class="trailer-wrapper">
-      <a class="movie-poop">
-      <img class="youpoop" width="50" height="35" src="https://www.freepnglogos.com/uploads/youtube-play-red-logo-png-transparent-background-6.png" alt="eat my poop" />
-      </a>
-          </div>
-  <img class="poster" width="375" src="${url}" alt="${title}" />
+     ${trailerIcon}
+  <img class="poster" width="375" src=${poster} />
   </div>
   <div class="modal-movie__descr">   
     
@@ -61,7 +71,7 @@ export const getModalMarkup = ({
     <li class="modal-movie__item">
     <p class="modal-movie__key">${isUkrainian ? 'Жанр' : 'Genre'}</p>
      <p class="modal-movie__value">${
-       genresNames.length < 1 ? genresNames : nonGenre
+       genresNames.length > 1 ? genresNames : nonGenre
      }</p>
     </li>
     
