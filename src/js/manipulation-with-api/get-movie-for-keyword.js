@@ -20,6 +20,7 @@ refs.form.addEventListener('submit', onFormSubmit);
 
 async function onFormSubmit(e) {
   e.preventDefault();
+  e.currentTarget.reset();
 
   const query = e.target.query.value;
   if (query === api.queryToFetch && api.pageToFetch === 1) return;
