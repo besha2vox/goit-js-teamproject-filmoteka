@@ -21,7 +21,7 @@ async function renderUpcoming() {
         <div class="img-div" data-genre="${upcomin.genre_ids}" data-ortitle="${upcomin.original_title}" data-popularity="${upcomin.popularity}" data-count="${upcomin.vote_count}" data-title="${upcomin.title}" data-overview="${upcomin.overview}" data-poster="https://image.tmdb.org/t/p/original/${upcomin.poster_path}" data-alt="${upcomin.original_title}" data-vote="${upcomin.vote_average}" data-relise="${upcomin.release_date}">
         <div><img  class="img-trend" src="https://image.tmdb.org/t/p/original/${upcomin.poster_path}" alt=""></div>
         <div class="info-trend">
-        <div class="relise-date">Relise: ${upcomin.release_date}</div>
+        <div class="relise-date">Release: ${upcomin.release_date}</div>
         </div>
         </div>
       </li>`;
