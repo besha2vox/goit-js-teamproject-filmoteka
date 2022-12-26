@@ -133,7 +133,7 @@ async function renderFilmLists(ids) {
   if (!templatePromise || templatePromise.length < 1) {
     const isUcrainian = loadDataFromLocalSt('language') === 'UA';
     const localText = isUcrainian
-      ? 'Наразі Ваша бібліотека пуста!'
+      ? 'Наразі Ваша бібліотека порожня!'
       : 'Your library is currently empty!';
     moviesList.innerHTML = await `<div class="empty-lib"><p>${localText}</p>
       ${emptyLib}
