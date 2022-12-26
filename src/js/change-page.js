@@ -185,7 +185,9 @@ function onHomePage(event) {
   if (header.classList.contains('header__library'))
     header.classList.remove('header__library');
   header.classList.add('header__home');
-  slider.style.display = 'block';
+  const viewportWidth = window.window.innerWidth;
+  if (viewportWidth > 767) slider.style.display = 'block';
+  console.log('viewportWidth', viewportWidth);
   saveDataToLocalSt(PAGE_KEY, 'home');
 
   classToggle(homeLink, 'add', 'active');

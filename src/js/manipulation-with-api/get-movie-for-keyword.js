@@ -29,18 +29,6 @@ async function onFormSubmit(e) {
   api.queryToFetch = query;
   api.pageToFetch = 1;
 
-  const movies = await createData();
-
-  if (!movies || !movies.results.length) {
-    const errorText =
-      loadDataFromLocalSt('language') === 'UA'
-        ? 'Результат пошуку хибний. Введіть вірну назву фільму та повторіть спробу.'
-        : 'Search result not successful. Enter the correct movie name and try again.';
-    // document.querySelector('.pagination-list').innerHTML = '';
-    // getLatestMovies();
-    loginFormNotify(refs.notifyEl, errorText);
-    return;
-  }
   refs.moviesList.innerHTML = '';
   getMoviesByKeyword();
 }
@@ -54,7 +42,19 @@ async function createData() {
 }
 
 async function getMoviesByKeyword() {
-  const movies = await getData();
+  const movies = await createData();
+
+  if (!movies || !movies.results.length) {
+    const errorText =
+      loadDataFromLocalSt('language') === 'UA'
+        ? 'Результат пошуку хибний. Введіть вірну назву фільму та повторіть спробу.'
+        : 'Search result not successful. Enter the correct movie name and try again.';
+    // document.querySelector('.pagination-list').innerHTML = '';
+    getLatestMovies();
+    loginFormNotify(refs.notifyEl, errorText);
+    return;
+  }
+
   const getPromise = movies.results.map(movie => createMovieCardMarkup(movie));
   const template = (await Promise.all(getPromise)).join('');
 
