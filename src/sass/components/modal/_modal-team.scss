@@ -7,8 +7,8 @@
   overflow: scroll;
 
   @media screen and (min-width: $tablet) {
-      padding: 40px 15px 40px;
-    }
+    padding: 40px 15px 40px;
+  }
 }
 
 .git-project {
@@ -19,7 +19,7 @@
 }
 
 .git-project svg {
-transition: fill 300ms $cubicBezier;
+  transition: fill 300ms $cubicBezier;
 }
 
 .git-project:hover svg,
@@ -34,30 +34,27 @@ transition: fill 300ms $cubicBezier;
   @media screen and (min-width: 768px) {
     margin-bottom: 30px;
   }
-
 }
 
 .team-list {
-display: grid;
+  display: grid;
   justify-content: center;
   align-items: center;
 
-      
-      grid-template-columns: repeat(1, 220px);
-      gap: 5px;
-
+  grid-template-columns: repeat(1, 220px);
+  gap: 5px;
 
   @media screen and (min-width: $tablet) {
-      display: grid;
-      grid-template-columns: repeat(3, 220px);
-      gap: 5px;
-    }
+    display: grid;
+    grid-template-columns: repeat(3, 220px);
+    gap: 5px;
+  }
 
   @media screen and (min-width: $desktop) {
-      display: grid;
-        grid-template-columns: repeat(6, 240px);
-        gap: 10px;
-    }
+    display: grid;
+    grid-template-columns: repeat(6, 240px);
+    gap: 10px;
+  }
 }
 .team-item {
   display: flex;
@@ -66,11 +63,11 @@ display: grid;
 
   border-radius: 5px;
   transition-duration: 500ms;
-     &:hover,
-     &:focus {
-       box-shadow: 1px 8px 20px grey;
-       transition: box-shadow 0.3s ease-in;
-     }
+  &:hover,
+  &:focus {
+    box-shadow: 1px 8px 20px grey;
+    transition: box-shadow 0.3s ease-in;
+  }
 }
 
 .team__member {
@@ -84,15 +81,15 @@ display: grid;
   display: block;
   width: 24px;
   height: 24px;
-    border-radius: 50%;
-    bottom: 5px;
-    right: 5px;
-    z-index: 10;
-    background-image: url(/src/images/team/github.svg);
-    background-position: center;
-    background-color: $primeryBackgroundColor;
-    background-repeat: no-repeat;
-  }
+  border-radius: 50%;
+  bottom: 5px;
+  right: 5px;
+  z-index: 10;
+  background-image: url(/src/images/team/github.svg);
+  background-position: center;
+  background-color: $primeryBackgroundColor;
+  background-repeat: no-repeat;
+}
 
 .team-img {
   object-fit: cover;
@@ -109,7 +106,8 @@ display: grid;
   transition: fill 300ms $cubicBezier;
 }
 
-.git-member:hover svg, .git-member:focus svg {
+.git-member:hover svg,
+.git-member:focus svg {
   fill: $accentColor;
 }
 
@@ -154,19 +152,19 @@ display: grid;
 // These are our KOTIKI
 .heading__wrapper {
   display: none;
-  @media screen and (min-width: $tablet) {
-      display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 15px;
-      
-        margin-bottom: 30px;
-    }
+  @media screen and (min-width: $desktop) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    margin-bottom: 30px;
+  }
 }
 
 .typing-team {
-  width: 590px;
-  animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+  width: 780px;
+  animation: typing 2s steps(22), blink 0.5s step-end infinite alternate;
   white-space: nowrap;
   overflow: hidden;
   border-right: 3px solid;
@@ -177,12 +175,12 @@ display: grid;
 
 @keyframes typing {
   from {
-    width: 0
+    width: 0;
   }
 }
 
 @keyframes blink {
   50% {
-    border-color: transparent
+    border-color: transparent;
   }
 }
