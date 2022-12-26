@@ -8,6 +8,7 @@ import {
   moviesList,
   logo,
   slider,
+  header,
 } from './firebase-auth/auth-refs';
 import {
   classToggle,
@@ -19,7 +20,10 @@ import {
   getLatestMovies,
   resetApiPage,
 } from './manipulation-with-api/get-latest-movies';
-import { saveDataToLocalSt } from './utils/local-st-functions';
+import {
+  loadDataFromLocalSt,
+  saveDataToLocalSt,
+} from './utils/local-st-functions';
 import {
   getUserDataFromDB,
   monitorsChangesInDB,
@@ -33,10 +37,11 @@ import { createMovieCardMarkup } from './create-movie-card';
 import { getCurrentFunc } from './utils/render-on switch-lang';
 import { fakePoster } from './utils/fake-poster';
 import { async } from 'regenerator-runtime';
-import { scrollOnClick } from './pagination/scroll';
+import { emptyLib } from './utils/fake-poster';
 
 const PAGE_KEY = 'page';
 const LIST_KEY = 'film-list';
+// const emptyImage = 'https://cdn-icons-png.flaticon.com/512/745/745752.png ';
 
 libraryLink.addEventListener('click', onLibraryPage);
 homeLink.addEventListener('click', onHomePage);
@@ -82,6 +87,9 @@ async function onLibraryPage(event) {
     resetPagNums();
   }
 
+  if (header.classList.contains('header__home'))
+    header.classList.remove('header__home');
+  header.classList.add('header__library');
   slider.style.display = 'none';
 
   libraryPageInterface();
@@ -121,6 +129,18 @@ async function renderFilmLists(ids) {
     async movie => await createMovieCardMarkup(movie)
   );
   const templatePromise = (await Promise.all(template)).join('');
+
+  if (!templatePromise || templatePromise.length < 1) {
+    const isUcrainian = loadDataFromLocalSt('language') === 'UA';
+    const localText = isUcrainian
+      ? 'Наразі Ваша бібліотека пуста!'
+      : 'Your library is currently empty!';
+    document.querySelector('.movies-grid').innerHTML =
+      await `<div class="empty-lib"><p>${localText}</p>
+      ${emptyLib}
+    </div>`;
+    return;
+  }
   moviesList.innerHTML = await templatePromise;
 }
 //!----------------| for pagination |------------------------
@@ -163,6 +183,9 @@ function libraryPageInterface() {
 function onHomePage(event) {
   event.preventDefault();
 
+  if (header.classList.contains('header__library'))
+    header.classList.remove('header__library');
+  header.classList.add('header__home');
   slider.style.display = 'block';
   saveDataToLocalSt(PAGE_KEY, 'home');
 
@@ -223,3 +246,16 @@ export {
   fetchWatched,
   fetchQueue,
 };
+
+const isHomePage = loadDataFromLocalSt('page') === 'home';
+if (isHomePage) {
+  if (header.classList.contains('header__library'))
+    header.classList.remove('header__library');
+
+  header.classList.add('header__home');
+} else {
+  if (header.classList.contains('header__home'))
+    header.classList.remove('header__home');
+
+  header.classList.add('header__library');
+}

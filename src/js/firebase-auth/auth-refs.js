@@ -15,6 +15,7 @@ const queueBtn = document.querySelector('.queue');
 const moviesList = document.querySelector('.movies-grid__list');
 const logo = document.querySelector('.logo');
 const slider = document.querySelector('.movies-slider');
+const header = document.querySelector('header.header');
 
 export {
   siteNav,
@@ -34,4 +35,5 @@ export {
   moviesList,
   logo,
   slider,
+  header,
 };

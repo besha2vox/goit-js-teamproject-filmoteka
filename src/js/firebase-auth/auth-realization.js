@@ -102,7 +102,7 @@ async function onLogoutClick(event) {
 
   homePageInterface();
 
-  // removeDataFromLocalSt(KEY);
+  removeDataFromLocalSt(KEY);
 
   //logout the user
   await signOut(auth);
