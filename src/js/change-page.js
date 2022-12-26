@@ -31,7 +31,7 @@ import {
 import {
   calculateFilms,
   resetPagNums,
-  onMyLibPrevBtnClick,
+  prevPage,
 } from './pagination/pagination-my-librery';
 import { createMovieCardMarkup } from './create-movie-card';
 import { getCurrentFunc } from './utils/render-on switch-lang';
@@ -151,7 +151,7 @@ async function renderFilmListsFromDB(list) {
   // const currentIds = filmsId.filter(id => arrayIds.includes(id));
   const currentIds = await calculateFilms(filmsId);
   if (currentIds.length < 1) {
-    onMyLibPrevBtnClick();
+    prevPage();
     return;
   }
 
